@@ -3,10 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ParachutisteComponent } from './parachutiste/parachutiste.component';
+import { ParachuteComponent } from './parachute/parachute.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ParachutisteComponent,
+    ParachuteComponent
   ],
   imports: [
     BrowserModule,

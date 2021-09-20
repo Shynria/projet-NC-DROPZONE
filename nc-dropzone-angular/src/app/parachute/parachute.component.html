@@ -1,0 +1,80 @@
+<p>parachute works!</p>
+
+<hr>
+
+<!-- LISTE DES PARACHUTES -->
+
+<table>
+    <thead>
+        <th>Harnais</th>
+        <th>Système de sécurité</th>
+        <th>Nom voile principale</th>
+        <th>Nom voile de secours</th>
+        <th>Taille voile principale</th>
+        <th>Taille voile de secours</th>
+        <th>Date de pliage voile de secours</th>
+        <th>Etat</th>
+        <th>Parachute perso/centre</th>
+        <th>Utilisateur</th>
+    </thead>
+    <tbody>
+        <tr *NgFor="let parachutiste of parachutistes">
+            <td> {{ parachute.nomHarnais }}</td>
+            <td> {{ parachute.systemeSecurite }}</td>
+            <td> {{ parachute.nomVoilePrincipale }}</td>
+            <td> {{ parachute.nomVoileSecours }}</td>
+            <td> {{ parachute.tailleVoilePrincipale }}</td>
+            <td> {{ parachute.tailleVoileSecours }}</td>
+            <td> {{ parachute.datePliageVoileSecours }}</td>
+            <td> {{ parachute.etat}}</td>
+            <td> {{ parachute.proprietaire}}</td>
+            <td> {{ parachute.utilisateur}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<!-- FORMULAIRE ADD-->
+
+<div>
+    <div>
+        <label>Nom du harnais : </label>
+        <input type="text" [(ngModel)]="formParachute.nomHarnais">
+    </div>
+    <div>
+        <label>Système de sécurité : </label>
+        <input type="text" [(ngModel)]="formParachute.systemeSecurite">
+    </div>
+    <div>
+        <label>Nom de la voile principale : </label>
+        <input type="text" [(ngModel)]="formParachute.nomVoilePrincipale">
+    </div>
+    <div>
+        <label>Nom de la voile de secours : </label>
+        <input type="text" [(ngModel)]="formParachute.nomVoileSecours">
+    </div>
+    <div>
+        <label>Taille de la voile principale : </label>
+        <input type="text" [(ngModel)]="formParachute.tailleVoilePrincipale">
+    </div>
+    <div>
+        <label>Taille de la voile de secours : </label>
+        <input type="text" [(ngModel)]="formParachute.tailleVoileSecours">
+    </div>
+    <div>
+        <label>Date de pliage de la voile de secours : </label>
+        <input type="text" [(ngModel)]="formParachute.datePliageVoileSecours">
+    </div>
+    <div>
+        <label>etat : </label>
+        <input type="text" [(ngModel)]="formParachute.etat">
+    </div>
+    <div>
+        <label>Propriétaire : </label>
+        <input type="text" [(ngModel)]="formParachute.proprietaire">
+    </div>
+    <div>
+        <button (click)="ajouterParachute()"> ajouter </button>
+    </div>
+</div>

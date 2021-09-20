@@ -1,0 +1,56 @@
+<p>parachutiste works!</p>
+
+<hr>
+
+<!-- LISTE DES PARACHUTISTES -->
+
+<table>
+    <thead>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Licence</th>
+        <th>Date licence</th>
+        <th>Parachute</th>
+        <th>Liste des parachutes</th>
+    </thead>
+    <tbody>
+        <tr *NgFor="let parachutiste of parachutistes">
+            <td> {{ parachutiste.nom }}</td>
+            <td> {{ parachutiste.prenom }}</td>
+            <td> {{ parachutiste.licence }}</td>
+            <td> {{ parachutiste.dateLicence }}</td>
+            <td> {{ parachutiste.parachuteEquip.nomHarnais }}</td>
+            <td> <button>Voir les parachutes</button> </td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<!-- FORMULAIRE ADD-->
+
+<div>
+    <div>
+        <label>Nom : </label>
+        <input type="text" [(ngModel)]="formParachutiste.nom">
+    </div>
+    <div>
+        <label>Prenom : </label>
+        <input type="text" [(ngModel)]="formParachutiste.prenom">
+    </div>
+    <div>
+        <label>Licence : </label>
+        <input type="text" [(ngModel)]="formParachutiste.licence">
+    </div>
+    <div>
+        <label>Date licence : </label>
+        <input type="text" [(ngModel)]="formParachutiste.dateLicence">
+    </div>
+    <div>
+        <label>Parachute : </label>
+        <button> Ajouter un parachute perso </button>
+    </div>
+    <div>
+        <button (click)="ajouterParachutiste()"> ajouter </button>
+    </div>
+</div>
