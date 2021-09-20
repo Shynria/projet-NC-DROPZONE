@@ -1,4 +1,4 @@
-<modal #modal titre="Produits">
+<modal #modal titre="{{ modalTitre }}">
     <div class="form-group">
         <label>Nom</label>
         <input type="text" [(ngModel)]="formAvion.nom" class="form-control">
@@ -21,10 +21,12 @@
     </div>
 
     <div>
-        <!-- <button (click)="modifierAvion()">Modifier</button>
-        <button (click)="ajouterAvion()">Ajouter</button> -->
+        <button *ngIf="edition" type="button" class="btn btn-outline-dark" (click)="modifierAvion()">Modifier</button>
+        <button *ngIf="!edition" type="button" class="btn btn-outline-dark" (click)="ajouterAvion()">Ajouter</button>
     </div>
 </modal>
+
+<button class="btn btn-success" (click)="ajouterAvionModal()">Ajouter</button>
 
 <table class="table table-striped">
     <thead>
@@ -46,8 +48,8 @@
             <td>{{ avion.nbRotaMax }}</td>
             <td>{{ avion.altitudeMax }}</td>
             <td>{{ avion.disponible }}</td>
-            <td><button class="btn btn-warning" (click)="editerAvion(avion)">Editer</button></td>
-            <!-- <td><button class="btn btn-danger" (click)="supprimerAvion(avion)">Supprimer</button></td> -->
+            <td><button class="btn btn-warning" (click)="modifierAvionModal(avion)">Editer</button></td>
+            <td><button class="btn btn-danger" (click)="supprimerAvion(avion)">Supprimer</button></td>
         </tr>
     </tbody>
 </table>

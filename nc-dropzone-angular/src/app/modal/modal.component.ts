@@ -20,4 +20,8 @@ export class ModalComponent implements OnInit {
   open() {
     this.modalService.open(this.content, {ariaLabelledBy: 'modal-basic-title'})
   }
+
+  close() {
+    this.modalService.dismissAll();
+  }
 }
