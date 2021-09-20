@@ -5,16 +5,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ParachutisteComponent } from './parachutiste/parachutiste.component';
 import { ParachuteComponent } from './parachute/parachute.component';
+import { AvionComponent } from './avion/avion.component';
+import { PiloteComponent } from './pilote/pilote.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
+    AvionComponent,
+    PiloteComponent,
     ParachutisteComponent,
     ParachuteComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
