@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ParachuteService } from '../parachute.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-parachute',
