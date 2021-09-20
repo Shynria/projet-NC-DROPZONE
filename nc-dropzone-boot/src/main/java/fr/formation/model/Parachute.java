@@ -12,6 +12,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import fr.formation.api.Views;
+
 @Entity
 @Table(name="parachute")
 public class Parachute {
@@ -19,30 +23,39 @@ public class Parachute {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="PARACHUTE_ID")
+    @JsonView(Views.Commons.class)
     private int id;
 
     @Column(name="PARACHUTE_NOM_HARNAIS", nullable = false, length = 50)
+    @JsonView(Views.Parachute.class)
     private String nomHarnais;
 
     @Column(name="PARACHUTE_SYSTEME_SECURITE", nullable = false, length = 50)
+    @JsonView(Views.Parachute.class)
     private String systemeSecurite;
 
     @Column(name="PARACHUTE_NOM_VOILE_PRINCIPALE", nullable = false, length = 50)
+    @JsonView(Views.Parachute.class)
     private String nomVoilePrincipale;
 
     @Column(name="PARACHUTE_NOM_VOILE_SECOURS", nullable = false, length = 50)
+    @JsonView(Views.Parachute.class)
     private String nomVoileSecours;
 
     @Column(name="PARACHUTE_TAILLE_VOILE_PRINCIPALE", nullable = false, length = 50)
+    @JsonView(Views.Parachute.class)
     private int tailleVoilePrincipale;
 
     @Column(name="PARACHUTE_TAILLE_VOILE_SECOURS", nullable = false, length = 50)
+    @JsonView(Views.Parachute.class)
     private int tailleVoileSecours;
 
     @Column(name="PARACHUTE_DATE_PLIAGE_VOILE_SECOURS", nullable = false)
+    @JsonView(Views.Parachute.class)
     private LocalDate datePliageVoileSecours;
 
     @Column(name="PARACHUTE_ETAT", nullable = false)
+    @JsonView(Views.Parachute.class)
     private boolean etat;
 
     @ManyToOne
