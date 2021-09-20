@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -19,6 +20,7 @@ public class Saut {
 	@Column(name = "SAUT_ID", nullable = false)
     private int id;
 
+    @ManyToMany
     @Column(name = "LISTE_PARTICIPANTS", nullable = false)
     private List<Parachutiste> parachutiste;
 
@@ -31,16 +33,6 @@ public class Saut {
 
     @Column(name = "SAUT_HAUTEUR", nullable = false)
     private Hauteur hauteur;
-
-    
-
-    public Hauteur getHauteur() {
-        return hauteur;
-    }
-
-    public void setHauteur(Hauteur hauteur) {
-        this.hauteur = hauteur;
-    }
 
     public int getId() {
         return id;
@@ -72,6 +64,14 @@ public class Saut {
 
     public void setVol(Vol vol) {
         this.vol = vol;
+    }
+
+    public Hauteur getHauteur() {
+        return hauteur;
+    }
+
+    public void setHauteur(Hauteur hauteur) {
+        this.hauteur = hauteur;
     }
 
     
