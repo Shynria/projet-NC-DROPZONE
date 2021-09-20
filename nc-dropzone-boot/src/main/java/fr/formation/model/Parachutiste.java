@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -40,11 +41,14 @@ public class Parachutiste {
     @JoinColumn(name = "PARACHUTE_EQUIPE", nullable = true)
     private Parachute parachuteEquipe;
 
-    @OneToOne(mappedBy = "responsableVol")
-    private Vol vol;
+    @OneToMany(mappedBy = "responsableVol")
+    private List<Vol> vol;
 
     @Column(name = "MEMBRE_NIVEAU")
     private Niveau niveau;
+
+    @ManyToMany(mappedBy = "parachutistes")
+    private Saut saut;
 
     
 
@@ -54,11 +58,18 @@ public class Parachutiste {
     public void setNiveau(Niveau niveau) {
         this.niveau = niveau;
     }
-    public Vol getVol() {
+    
+    public List<Vol> getVol() {
         return vol;
     }
-    public void setVol(Vol vol) {
+    public void setVol(List<Vol> vol) {
         this.vol = vol;
+    }
+    public Saut getSaut() {
+        return saut;
+    }
+    public void setSaut(Saut saut) {
+        this.saut = saut;
     }
     public int getId() {
         return id;

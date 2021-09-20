@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -21,7 +22,11 @@ public class Saut {
     private int id;
 
     @ManyToMany
-    @Column(name = "LISTE_PARTICIPANTS", nullable = false)
+    @JoinTable(
+        name = "LISTE_PARTICIPANTS",
+        joinColumns = @JoinColumn(name = "ID_SAUT", referencedColumnName = "SAUT_ID"),
+		inverseJoinColumns = @JoinColumn(name = "ID_MEMBRE", referencedColumnName = "MEMBRE_ID")
+    )
     private List<Parachutiste> parachutiste;
 
     @Column(name = "ATTERRISSAGE_RATE")

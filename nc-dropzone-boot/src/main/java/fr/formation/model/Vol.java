@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -36,7 +35,7 @@ public class Vol {
     @OneToMany(mappedBy = "vol")
     private List<Saut> sauts;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "VOL_MEMBRE_ID")
     private Parachutiste responsableVol;
 
