@@ -40,7 +40,17 @@ public class Parachutiste {
     @JoinColumn(name = "PARACHUTE_EQUIPE", nullable = true)
     private Parachute parachuteEquipe;
 
+    @OneToOne(mappedBy = "responsableVol")
+    private Vol vol;
 
+    
+
+    public Vol getVol() {
+        return vol;
+    }
+    public void setVol(Vol vol) {
+        this.vol = vol;
+    }
     public int getId() {
         return id;
     }
