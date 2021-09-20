@@ -1,10 +1,15 @@
 package fr.formation.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -15,27 +20,30 @@ public class BeerLine {
     @Column(name = "BEER_LINE_ID")
     private int id;
 
-    @Column(name = "BEER_LINE_NOM_MEMBRE")
-    private Parachutiste parachutiste;
+    @ManyToMany
+    @JoinTable(
+        name = "BEER_LINE_MEMBRE",
+        joinColumns = @JoinColumn(name = "ID_BEER_LINE", referencedColumnName = "BEER_LINE_ID"),
+		inverseJoinColumns = @JoinColumn(name = "ID_MEMBRE", referencedColumnName = "MEMBRE_ID")
+    )
+    private List<Parachutiste> parachutistes;
+
+
 
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
 
-    public Parachutiste getParachutiste() {
-        return parachutiste;
+    public List<Parachutiste> getParachutistes() {
+        return parachutistes;
+    }
+    public void setParachutistes(List<Parachutiste> parachutistes) {
+        this.parachutistes = parachutistes;
     }
 
-    public void setParachutiste(Parachutiste parachutiste) {
-        this.parachutiste = parachutiste;
-    }
-
-    public BeerLine(Parachutiste parachutiste) {
-        this.parachutiste = parachutiste;
-    }
+    
 
 }
