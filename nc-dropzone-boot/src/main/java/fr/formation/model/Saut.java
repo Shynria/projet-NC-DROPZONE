@@ -29,6 +29,19 @@ public class Saut {
     @JoinColumn(name = "SAUT_VOL_ID")
     private Vol vol;
 
+    @Column(name = "SAUT_HAUTEUR", nullable = false)
+    private Hauteur hauteur;
+
+    
+
+    public Hauteur getHauteur() {
+        return hauteur;
+    }
+
+    public void setHauteur(Hauteur hauteur) {
+        this.hauteur = hauteur;
+    }
+
     public int getId() {
         return id;
     }

@@ -43,8 +43,17 @@ public class Parachutiste {
     @OneToOne(mappedBy = "responsableVol")
     private Vol vol;
 
+    @Column(name = "MEMBRE_NIVEAU")
+    private Niveau niveau;
+
     
 
+    public Niveau getNiveau() {
+        return niveau;
+    }
+    public void setNiveau(Niveau niveau) {
+        this.niveau = niveau;
+    }
     public Vol getVol() {
         return vol;
     }
