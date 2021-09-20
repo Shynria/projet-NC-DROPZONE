@@ -1,0 +1,53 @@
+<modal #modal titre="Produits">
+    <div class="form-group">
+        <label>Nom</label>
+        <input type="text" [(ngModel)]="formAvion.nom" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Capacité</label>
+        <input type="number" [(ngModel)]="formAvion.capacite" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Nombre de rotation maximal</label>
+        <input type="number" [(ngModel)]="formAvion.nbRotaMax" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Altitude maximal</label>
+        <input type="number" [(ngModel)]="formAvion.altitudeMax" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Disponible</label>
+        <input type="checkbox" [(ngModel)]="formAvion.disponible" class="form-control">
+    </div>
+
+    <div>
+        <!-- <button (click)="modifierAvion()">Modifier</button>
+        <button (click)="ajouterAvion()">Ajouter</button> -->
+    </div>
+</modal>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Capacité</th>
+            <th>Nb rotation</th>
+            <th>Altitude max</th>
+            <th>Disponible</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- <tr *ngFor="let avion of avions | async"> -->
+            <tr *ngFor="let avion of avions ">
+            <td>{{ avion.nom }}</td>
+            <td>{{ avion.capacite }}</td>
+            <td>{{ avion.nbRotaMax }}</td>
+            <td>{{ avion.altitudeMax }}</td>
+            <td>{{ avion.disponible }}</td>
+            <td><button class="btn btn-warning" (click)="editerAvion(avion)">Editer</button></td>
+            <!-- <td><button class="btn btn-danger" (click)="supprimerAvion(avion)">Supprimer</button></td> -->
+        </tr>
+    </tbody>
+</table>

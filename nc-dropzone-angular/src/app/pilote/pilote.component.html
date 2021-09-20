@@ -1,0 +1,44 @@
+<div>
+    <label>Nom</label>
+    <input type="text" [(ngModel)]="formPilote.nom">
+</div>
+<div>
+    <label>Prenom</label>
+    <input type="text" [(ngModel)]="formPilote.prenom">
+</div>
+<div>
+    <label>Licence</label>
+    <input type="text" [(ngModel)]="formPilote.licence">
+</div>
+<div>
+    <label>Disponible</label>
+    <input type="checkbox" [(ngModel)]="formPilote.disponible">
+</div>
+
+<div>
+    <button (click)="modifierPilote()">Modifier</button>
+    <button (click)="ajouterPilote()">Ajouter</button>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Licence</th>
+            <th>Disponible</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let pilote of pilotes | async">
+            <td>{{ pilote.nom }}</td>
+            <td>{{ pilote.prenom }}</td>
+            <td>{{ pilote.license }}</td>
+            <td>{{ pilote.disponible }}</td>
+            <td><button class="btn btn-warning" (click)="editerPilote(pilote)">Editer</button></td>
+            <td><button class="btn btn-danger" (click)="supprimerPilote(pilote)">Supprimer</button></td>
+        </tr>
+    </tbody>
+</table>
