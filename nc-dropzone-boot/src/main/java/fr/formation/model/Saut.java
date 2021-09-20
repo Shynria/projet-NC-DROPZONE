@@ -27,7 +27,7 @@ public class Saut {
         joinColumns = @JoinColumn(name = "ID_SAUT", referencedColumnName = "SAUT_ID"),
 		inverseJoinColumns = @JoinColumn(name = "ID_MEMBRE", referencedColumnName = "MEMBRE_ID")
     )
-    private List<Parachutiste> parachutiste;
+    private List<Parachutiste> parachutistes;
 
     @Column(name = "ATTERRISSAGE_RATE")
     private boolean isOutsideZone;
@@ -47,12 +47,14 @@ public class Saut {
         this.id = id;
     }
 
-    public List<Parachutiste> getParachutiste() {
-        return parachutiste;
+    
+
+    public List<Parachutiste> getParachutistes() {
+        return parachutistes;
     }
 
-    public void setParachutiste(List<Parachutiste> parachutiste) {
-        this.parachutiste = parachutiste;
+    public void setParachutistes(List<Parachutiste> parachutistes) {
+        this.parachutistes = parachutistes;
     }
 
     public boolean isOutsideZone() {

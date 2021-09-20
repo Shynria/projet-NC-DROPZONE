@@ -48,7 +48,7 @@ public class Parachutiste {
     private Niveau niveau;
 
     @ManyToMany(mappedBy = "parachutistes")
-    private Saut saut;
+    private List<Saut> sauts;
 
     
 
@@ -65,11 +65,12 @@ public class Parachutiste {
     public void setVol(List<Vol> vol) {
         this.vol = vol;
     }
-    public Saut getSaut() {
-        return saut;
+  
+    public List<Saut> getSauts() {
+        return sauts;
     }
-    public void setSaut(Saut saut) {
-        this.saut = saut;
+    public void setSauts(List<Saut> sauts) {
+        this.sauts = sauts;
     }
     public int getId() {
         return id;
