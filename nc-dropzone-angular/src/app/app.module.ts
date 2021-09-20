@@ -8,6 +8,9 @@ import { ParachuteComponent } from './parachute/parachute.component';
 import { AvionComponent } from './avion/avion.component';
 import { PiloteComponent } from './pilote/pilote.component';
 import { FormsModule } from '@angular/forms';
+import { ModalComponent } from './modal/modal.component';
+import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -15,12 +18,15 @@ import { FormsModule } from '@angular/forms';
     AvionComponent,
     PiloteComponent,
     ParachutisteComponent,
-    ParachuteComponent
+    ParachuteComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
