@@ -25,10 +25,16 @@ nav a[id="1"]:hover {
 	animation: backInUp 0.5s;
   color: #ff5050;
 }
+nav a[id="1"]:focus{
+  color: #ff5050;
+}
 
 nav a[id="2"]:hover {
   padding-top: 25px;
 	animation: backInUp 0.5s;
+  color: #ffa600;
+}
+nav a[id="2"]:focus{
   color: #ffa600;
 }
 
@@ -37,10 +43,16 @@ nav a[id="3"]:hover {
 	animation: backInUp 0.5s;
   color: #ffff2e;
 }
+nav a[id="3"]:focus{
+  color: #ffff2e;
+}
 
 nav a[id="4"]:hover {
   padding-top: 25px;
 	animation: backInUp 0.5s;
+  color: #adff2f;
+}
+nav a[id="4"]:focus{
   color: #adff2f;
 }
 
@@ -49,16 +61,25 @@ nav a[id="5"]:hover {
 	animation: backInUp 0.5s;
   color: #0affff;
 }
+nav a[id="5"]:focus{
+  color: #0affff;
+}
 
 nav a[id="6"]:hover {
   padding-top: 25px;
 	animation: backInUp 0.5s;
   color: #7070ff;
 }
+nav a[id="6"]:focus{
+  color: #7070ff;
+}
 
 nav a[id="7"]:hover {
   padding-top: 25px;
 	animation: backInUp 0.5s;
-  color: #ac52ff;
+  color: #ab51ff;
+}
+nav a[id="7"]:focus{
+  color: #ab51ff;
 }
 
