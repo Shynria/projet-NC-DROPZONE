@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.formation.dao.IVolDaoJpaRepository;
+import fr.formation.model.EtatVol;
 import fr.formation.model.Vol;
 
 @RestController
@@ -29,7 +30,13 @@ public class VolApiController {
     @GetMapping
     @JsonView(Views.Vol.class)
     public List<Vol> findAll(){
-        return this.findAll();
+        return this.daoVol.findAll();
+    }
+
+    @GetMapping("/{etat}")
+    @JsonView(Views.Vol.class)
+    public List<Vol> findAllByEtatVol(@PathVariable EtatVol etat) {
+        return this.daoVol.findAllByEtatVol(etat);
     }
 
     @PostMapping

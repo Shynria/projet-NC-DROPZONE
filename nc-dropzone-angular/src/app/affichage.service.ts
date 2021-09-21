@@ -15,6 +15,10 @@ export class AffichageService {
     return this.http.get(this.apiUrl);
   }
 
+  findByEtatVol(vol: any) {
+    return this.http.get(`${ this.apiUrl }/${ vol.etat }`)
+  }
+
   add(vol: any) {
     return this.http.post(this.apiUrl, vol);
   }
