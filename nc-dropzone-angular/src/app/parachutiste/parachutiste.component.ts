@@ -15,49 +15,58 @@ export class ParachutisteComponent implements OnInit {
   formParachutiste: any ={
     nom: "",
     prenom: "",
-    licence: "",
-    dateLicence: "",
-    parachuteEquip: ""
+    licence: 0,
+    dateLicence: new Date(),
+    parachuteEquip: null
   };
 
   parachutistes: any = [
-  {
-    nom: "bobbinson",
-    prenom: "bobby",
-    licence: "yes",
-    dateLicence: "demain",
-    parachuteEquip: "parachute 1"
-  },
-  {
-    nom: "bobbinson",
-    prenom: "bobby",
-    licence: "yes",
-    dateLicence: "demain",
-    parachuteEquip: "parachute 1"
-  }];
+    {
+      nom: "",
+      prenom: "",
+      licence: 0,
+      dateLicence: new Date(),
+      parachuteEquip: null
+    }
+  ];
 
   constructor(private srvParachutiste: ParachutisteService, private modalService: NgbModal) {
-    //this.parachutistes = this.srvParachutiste.findAll().subscribe();
+    this.refresh();
    }
 
   ngOnInit(): void {
   }
 
   ajouterParachutiste(){
-    // this.srvParachutiste.add(this.formParachutiste).subscribe();
+     this.srvParachutiste.add(this.formParachutiste).subscribe(this.refresh);
+     this.initParachutiste();
   }
 
   editerParachutiste(parachutiste: any){
     this.formParachutiste = parachutiste;
-    this.modal.open();
   }
 
   modifierParachutiste(){
-    // this.srvParachutiste.edit(this.formParachutiste).subscribe();
+     this.srvParachutiste.edit(this.formParachutiste).subscribe(this.refresh);
   }
 
   supprimerParachutiste(parachutiste: any){
-    // this.srvParachutiste.delete(parachutiste).subscribe();
+     this.srvParachutiste.delete(parachutiste).subscribe(this.refresh);
   }
+
+  ouvrirModal(){
+    this.modal.open();
+  }
+
+  refresh = () => this.parachutistes = this.srvParachutiste.findAll();
   
+  initParachutiste(){
+    this.formParachutiste = {
+      nom: "",
+      prenom: "",
+      licence: 0,
+      dateLicence: new Date(),
+      parachuteEquip: null
+    }
+  }
 }

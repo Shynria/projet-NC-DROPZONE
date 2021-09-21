@@ -6,15 +6,17 @@
     <thead>
         <th>Nom</th>
         <th>Prenom</th>
+        <th>Niveau</th>
         <th>Licence</th>
         <th>Date licence</th>
         <th>Parachute</th>
         <th>Liste des parachutes</th>
     </thead>
     <tbody>
-        <tr *ngFor="let parachutiste of parachutistes">
+        <tr *ngFor="let parachutiste of parachutistes | async">
             <td> {{ parachutiste.nom }}</td>
             <td> {{ parachutiste.prenom }}</td>
+            <td> {{ parachutiste.niveau }}</td>
             <td> {{ parachutiste.licence }}</td>
             <td> {{ parachutiste.dateLicence }}</td>
             <td> {{ parachutiste.parachuteEquip }}</td>
@@ -28,7 +30,9 @@
 
 <!-- FORMULAIRE ADD-->
 
-<modal #modal titre="Modification parachutiste">
+<button (click)="ouvrirModal()" class="form-control btn btn-success"> ajouter </button>
+
+<modal #modal titre="Ajout parachutiste">
         <div class="form-group">
             <label>Nom : </label>
             <input type="text" [(ngModel)]="formParachutiste.nom" class="form-control">
@@ -39,15 +43,11 @@
         </div>
         <div class="form-group">
             <label>Licence : </label>
-            <input type="text" [(ngModel)]="formParachutiste.licence" class="form-control">
+            <input type="number" [(ngModel)]="formParachutiste.licence" class="form-control">
         </div>
         <div class="form-group">
             <label>Date licence : </label>
-            <input type="text" [(ngModel)]="formParachutiste.dateLicence" class="form-control">
-        </div>
-        <div class="form-group">
-            <label>Parachute : </label>
-            <button> Ajouter un parachute perso </button>
+            <input type="date" [(ngModel)]="formParachutiste.dateLicence" class="form-control">
         </div>
         <div>
             <button (click)="ajouterParachutiste()"> ajouter </button>

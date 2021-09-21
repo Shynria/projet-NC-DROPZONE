@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ParachuteService } from '../parachute.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { getLocaleDateFormat, getLocaleDayNames } from '@angular/common';
@@ -9,9 +9,9 @@ import { getLocaleDateFormat, getLocaleDayNames } from '@angular/common';
   styleUrls: ['./parachute.component.css']
 })
 export class ParachuteComponent implements OnInit {
+  @ViewChild('modal') modal: any;
 
   parachutiste: any = {
-
   }
 
   formParachute: any =     {
@@ -26,8 +26,6 @@ export class ParachuteComponent implements OnInit {
     proprietaire: null,
     utilisateur: null
   };
-
-
 
   parachutes: any = [
     {
@@ -46,11 +44,15 @@ export class ParachuteComponent implements OnInit {
 
   parachutistes: any = [];
 
-  constructor(private srvParachute: ParachuteService) {
+  constructor(private srvParachute: ParachuteService, private modalService: NgbModal) {
     this.refresh();
    }
 
   ngOnInit(): void {
+  }
+
+  ouvrirModal(){
+    this.modal.open();
   }
 
   ajouterParachute(){
