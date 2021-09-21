@@ -9,7 +9,7 @@ export class PiloteService {
 
   constructor(private http: HttpClient) { }
 
-  private apiUrl: string = `${environment.apiUrl}/avion`;
+  private apiUrl: string = `${environment.apiUrl}/pilote`;
 
   findAll() {
     return this.http.get(this.apiUrl)
