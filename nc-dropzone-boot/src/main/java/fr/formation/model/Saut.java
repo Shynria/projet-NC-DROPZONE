@@ -13,12 +13,17 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import fr.formation.api.Views;
+
 @Entity
 @Table(name = "Saut")
 public class Saut {
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "SAUT_ID", nullable = false)
+    @JsonView(Views.Commons.class)
     private int id;
 
     @ManyToMany
@@ -30,13 +35,16 @@ public class Saut {
     private List<Parachutiste> parachutistes;
 
     @Column(name = "ATTERRISSAGE_RATE")
+    @JsonView(Views.Saut.class)
     private boolean isOutsideZone;
 
     @ManyToOne
     @JoinColumn(name = "SAUT_VOL_ID")
+    @JsonView(Views.Vol.class)
     private Vol vol;
 
     @Column(name = "SAUT_HAUTEUR", nullable = false)
+    @JsonView(Views.Saut.class)
     private Hauteur hauteur;
 
     public int getId() {
