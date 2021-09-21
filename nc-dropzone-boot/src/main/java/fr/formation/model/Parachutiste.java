@@ -14,37 +14,49 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import fr.formation.api.Views;
+
 @Entity
 @Table(name = "Membre")
 public class Parachutiste {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MEMBRE_ID", nullable = false)
+    @JsonView(Views.Commons.class)
     private int id;
 
     @Column(name = "MEMBRE_NOM", nullable = false, length = 50)
+    @JsonView(Views.Parachutiste.class)
     private String nom;
 
     @Column(name = "MEMBRE_PRENOM", nullable = false, length = 50)
+    @JsonView(Views.Parachutiste.class)
     private String prenom;
 
     @Column(name = "MEMBRE_LICENCE", nullable = false, length = 50)
+    @JsonView(Views.Parachutiste.class)
     private String licence;
 
     @Column(name = "MEMBRE_DATE_LICENCE", nullable = false)
+    @JsonView(Views.Parachutiste.class)
     private LocalDate dateLicence;
 
     @OneToMany(mappedBy = "proprietaire")
+    @JsonView(Views.Parachutiste.class)
     private List<Parachute> listeParachute;
 
     @OneToOne
     @JoinColumn(name = "PARACHUTE_EQUIPE", nullable = true)
+    @JsonView(Views.Parachutiste.class)
     private Parachute parachuteEquipe;
 
     @OneToMany(mappedBy = "responsableVol")
     private List<Vol> vol;
 
     @Column(name = "MEMBRE_NIVEAU")
+    @JsonView(Views.Parachutiste.class)
     private Niveau niveau;
 
     @ManyToMany(mappedBy = "parachutistes")

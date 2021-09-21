@@ -43,7 +43,7 @@ public class ParachuteApiController {
     }
 
     @DeleteMapping("/{id}")
-    public boolean edit(@PathVariable int id) {
+    public boolean delete(@PathVariable int id) {
         try {
             this.daoParachute.deleteById(id);
             return true;
