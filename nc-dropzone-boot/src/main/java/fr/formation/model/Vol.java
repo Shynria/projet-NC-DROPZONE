@@ -12,6 +12,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import fr.formation.api.Views;
+
 @Entity
 @Table(name = "vol")
 public class Vol {
@@ -19,9 +23,11 @@ public class Vol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "VOL_ID")
+    @JsonView(Views.Commons.class)
     private int id;
 
     @Column(name = "VOL_ETAT_VOL")
+    @JsonView(Views.Vol.class)
     private EtatVol etatVol;
 
     @ManyToOne
