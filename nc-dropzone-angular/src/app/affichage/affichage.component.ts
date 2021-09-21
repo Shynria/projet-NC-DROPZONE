@@ -9,6 +9,7 @@ import { ParachutisteService } from '../parachutiste.service';
 })
 export class AffichageComponent implements OnInit {
   vols: any = [];
+  vols2: any = [];
   parachutistes: any = [];
 
   constructor(private srvAffichage: AffichageService, private srvParachutiste : ParachutisteService) {
@@ -19,7 +20,10 @@ export class AffichageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  refresh = () => this.vols = this.srvAffichage.findAll();
-  refresh2 = () => this.parachutistes = this.srvParachutiste.findAll();
-
+  refresh = () => this.vols = this.srvAffichage.findAllByEtatVol("EN_VOL");
+  refresh2(){
+    this.vols2.push(this.srvAffichage.findAllByEtatVol("EN_ATTENTE"));
+    this.vols2.push(this.srvAffichage.findAllByEtatVol("EN_PREPARATION"));
+    this.vols2.push(this.srvAffichage.findAllByEtatVol("EN_ENBARQUEMENT"));
+  }
 }

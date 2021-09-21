@@ -15,8 +15,8 @@ export class AffichageService {
     return this.http.get(this.apiUrl);
   }
 
-  findByEtatVol(vol: any) {
-    return this.http.get(`${ this.apiUrl }/${ vol.etat }`)
+  findAllByEtatVol(etat: string) {
+    return this.http.get(`${ this.apiUrl }/${etat}`)
   }
 
   add(vol: any) {
