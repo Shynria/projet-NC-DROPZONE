@@ -12,12 +12,17 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import fr.formation.api.Views;
+
 @Entity
 @Table(name = "Beer_line")
 public class BeerLine {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "BEER_LINE_ID")
+    @JsonView(Views.Commons.class)
     private int id;
 
     @ManyToMany
@@ -26,6 +31,7 @@ public class BeerLine {
         joinColumns = @JoinColumn(name = "ID_BEER_LINE", referencedColumnName = "BEER_LINE_ID"),
 		inverseJoinColumns = @JoinColumn(name = "ID_MEMBRE", referencedColumnName = "MEMBRE_ID")
     )
+    @JsonView(Views.BeerLine.class)
     private List<Parachutiste> parachutistes;
 
 
