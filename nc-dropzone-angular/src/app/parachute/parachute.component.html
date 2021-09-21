@@ -9,7 +9,7 @@
         <th>Nom voile de secours</th>
         <th>Taille voile principale</th>
         <th>Taille voile de secours</th>
-        <th>Date de pliage voile de secours</th>
+        <th>Date de pliage</th>
         <th>Etat</th>
         <th>Utilisateur</th>
     </thead>
@@ -24,6 +24,8 @@
             <td> {{ parachute.datePliageVoileSecours }}</td>
             <td> {{ parachute.etat}}</td>
             <td> {{ parachute.utilisateur}}</td>
+            <td><button (click)="editerParachute(parachute)" class="btn btn-warning">Editer</button></td>
+            <td><button (click)="supprimerParachute(parachute)" class="btn btn-warning">Supprimer</button></td>
         </tr>
     </tbody>
 </table>
@@ -32,10 +34,10 @@
 
 <!-- FORMULAIRE ADD-->
 
-<button (click)="ouvrirModal()" class="form-control btn btn-success"> ajouter </button>
+<button (click)="ouvrirModalAjout()" class="form-control btn btn-success"> ajouter </button>
 
 
-<modal #modal titre="Ajout parachute">
+<modal #modal titre="{{ modalTitre }}">
 <div>
     <div class="form-group">
         <label>Nom du harnais  </label>
@@ -68,11 +70,15 @@
         <label>Date de pliage de la voile de secours  </label>
         <input type="date" [(ngModel)]="formParachute.datePliageVoileSecours" class="form-control">
     </div>
-    <div class="form-group">
-        <label>etat  </label>
-        <input type="text" [(ngModel)]="formParachute.etat" class="form-control">
-    </div>
+    <!-- <div class="form-group">
+        <label>Utilisateur  </label>
+        <select [(ngModel)]="formParachute.utilisateur" class="form-control">
+            <option value="null">null</option>
+            <option value="parachutiste" *ngFor="let parachutiste of parachutistes | async">{{parachutiste.nom}}</option>
+        </select>
+    </div> -->
     <hr>
-    <button (click)="ajouterParachute()" class="form-control btn btn-success"> ajouter </button>
+    <button *ngIf="!edit" (click)="ajouterParachute()" class="form-control btn btn-success"> ajouter </button>
+    <button *ngIf="edit" (click)="modifierParachute()" class="form-control btn btn-warning"> Modifier </button>
 </div>
 </modal>

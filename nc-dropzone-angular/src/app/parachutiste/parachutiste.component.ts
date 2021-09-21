@@ -12,13 +12,7 @@ export class ParachutisteComponent implements OnInit {
 
   @ViewChild('modal') modal: any;
 
-  formParachutiste: any ={
-    nom: "",
-    prenom: "",
-    licence: 0,
-    dateLicence: new Date(),
-    parachuteEquip: null
-  };
+  formParachutiste: any = {};
 
   parachutistes: any = [
     {
@@ -29,6 +23,10 @@ export class ParachutisteComponent implements OnInit {
       parachuteEquip: null
     }
   ];
+
+  edit: boolean = false;
+
+  modalTitre: string = "";
 
   constructor(private srvParachutiste: ParachutisteService, private modalService: NgbModal) {
     this.refresh();
@@ -43,19 +41,26 @@ export class ParachutisteComponent implements OnInit {
   }
 
   editerParachutiste(parachutiste: any){
-    this.formParachutiste = parachutiste;
+    this.modal.open();
+    this.formParachutiste = Object.assign({}, parachutiste);
+    this.edit = true;
+    this.modalTitre = "Modification parachutiste"
   }
 
   modifierParachutiste(){
      this.srvParachutiste.edit(this.formParachutiste).subscribe(this.refresh);
+     this.initParachutiste();
   }
 
   supprimerParachutiste(parachutiste: any){
      this.srvParachutiste.delete(parachutiste).subscribe(this.refresh);
   }
 
-  ouvrirModal(){
+  ouvrirModalAjout(){
+    this.initParachutiste();
     this.modal.open();
+    this.edit = false;
+    this.modalTitre = "Ajout parachutiste"
   }
 
   refresh = () => this.parachutistes = this.srvParachutiste.findAll();

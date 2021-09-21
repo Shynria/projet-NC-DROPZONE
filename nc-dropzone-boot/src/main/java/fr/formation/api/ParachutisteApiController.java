@@ -41,7 +41,7 @@ public class ParachutisteApiController {
         }
     }
     @DeleteMapping("/{id}")
-    public boolean delete(@PathVariable int id, @RequestBody Parachutiste parachutiste){
+    public boolean delete(@PathVariable int id){
         try {
             this.daoParachutiste.deleteById(id);
             return true;

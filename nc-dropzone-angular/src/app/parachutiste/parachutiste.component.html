@@ -21,7 +21,8 @@
             <td> {{ parachutiste.dateLicence }}</td>
             <td> {{ parachutiste.parachuteEquip }}</td>
             <td> <button>Voir les parachutes</button> </td>
-            <td><button (click)="editerParachutiste(parachutiste)">Editer</button></td>
+            <td><button (click)="editerParachutiste(parachutiste)" class="btn btn-warning">Editer</button></td>
+            <td><button (click)="supprimerParachutiste(parachutiste)" class="btn btn-warning">Supprimer</button></td>
         </tr>
     </tbody>
 </table>
@@ -30,9 +31,9 @@
 
 <!-- FORMULAIRE ADD-->
 
-<button (click)="ouvrirModal()" class="form-control btn btn-success"> ajouter </button>
+<button (click)="ouvrirModalAjout()" class="form-control btn btn-success"> ajouter </button>
 
-<modal #modal titre="Ajout parachutiste">
+<modal #modal titre="{{ modalTitre }}">
         <div class="form-group">
             <label>Nom : </label>
             <input type="text" [(ngModel)]="formParachutiste.nom" class="form-control">
@@ -49,7 +50,9 @@
             <label>Date licence : </label>
             <input type="date" [(ngModel)]="formParachutiste.dateLicence" class="form-control">
         </div>
+        <hr>
         <div>
-            <button (click)="ajouterParachutiste()"> ajouter </button>
+            <button *ngIf="!edit" (click)="ajouterParachutiste()" class="form-control btn btn-success"> ajouter </button>
+            <button *ngIf="edit" (click)="modifierParachutiste()" class="form-control btn btn-warning"> Modifier </button>
         </div>
 </modal>
