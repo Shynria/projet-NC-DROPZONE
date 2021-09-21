@@ -10,7 +10,7 @@ import { AvionService } from '../avion.service';
 export class AvionComponent implements OnInit {
 
   constructor(private srvAvion: AvionService) {
-    // this.refresh();
+    this.refresh();
   }
 
   ngOnInit(): void {

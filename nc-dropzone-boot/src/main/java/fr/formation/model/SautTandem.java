@@ -30,7 +30,6 @@ public class SautTandem extends Saut {
     @JoinColumn(name = "TANDEM_VIDEOMAN")
     public Parachutiste videoman;
     
-
     public int getId() {
         return id;
     }
