@@ -17,7 +17,7 @@
             <td> {{ parachutiste.nom }}</td>
             <td> {{ parachutiste.prenom }}</td>
             <td> {{ parachutiste.niveau }}</td>
-            <td> {{ parachutiste.licence }}</td>
+            <td> {{ parachutiste.id }}</td>
             <td> {{ parachutiste.dateLicence }}</td>
             <td> {{ parachutiste.parachuteEquip }}</td>
             <td> <button>Voir les parachutes</button> </td>
@@ -43,8 +43,12 @@
             <input type="text" [(ngModel)]="formParachutiste.prenom" class="form-control">
         </div>
         <div class="form-group">
-            <label>Licence : </label>
-            <input type="number" [(ngModel)]="formParachutiste.licence" class="form-control">
+            <label>Niveau  </label>
+            <select [(ngModel)]="formParachutiste.niveau" class="form-control">
+                <option value="DEBUTANT">Débutant</option>
+                <option value="INTERMEDIAIRE">Intermediaire</option>
+                <option value="CONFIRME">Confirmé</option>
+            </select>
         </div>
         <div class="form-group">
             <label>Date licence : </label>
