@@ -8,10 +8,6 @@
         <input type="text" [(ngModel)]="formPilote.prenom" class="form-control">
     </div>
     <div class="form-group">
-        <label>Licence</label>
-        <input type="text" [(ngModel)]="formPilote.licence" class="form-control">
-    </div>
-    <div class="form-group">
         <label>Disponible</label>
         <input type="checkbox" [(ngModel)]="formPilote.disponible" class="form-control">
     </div>
@@ -39,7 +35,7 @@
         <tr *ngFor="let pilote of pilotes | async">
             <td>{{ pilote.nom }}</td>
             <td>{{ pilote.prenom }}</td>
-            <td>{{ pilote.licence }}</td>
+            <td>{{ pilote.id }}</td>
             <td>{{ pilote.disponible }}</td>
             <td><button class="btn btn-warning" (click)="modifierPiloteModal(pilote)">Editer</button></td>
             <td><button class="btn btn-danger" (click)="supprimerPilote(pilote)">Supprimer</button></td>

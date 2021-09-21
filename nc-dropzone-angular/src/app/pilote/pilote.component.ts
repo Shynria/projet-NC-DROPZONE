@@ -57,7 +57,6 @@ export class PiloteComponent implements OnInit {
     return {
       nom: "",
       prenom: "",
-      licence: "",
       disponible: false
     };
   }

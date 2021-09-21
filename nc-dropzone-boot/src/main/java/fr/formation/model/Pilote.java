@@ -32,11 +32,6 @@ public class Pilote {
     @JsonView(Views.Pilote.class)
     private String prenom;
 
-    @Column(name = "PILOTE_LICENCE", length = 20, nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @JsonView(Views.Pilote.class)
-    private int licence;
-
     @Column(name = "PILOTE_DISPONIBLE", nullable = false)
     @JsonView(Views.Pilote.class)
     private boolean disponible;
@@ -66,14 +61,6 @@ public class Pilote {
 
     public void setPrenom(String prenom) {
         this.prenom = prenom;
-    }
-
-    public int getLicence() {
-        return licence;
-    }
-
-    public void setLicence(int licence) {
-        this.licence = licence;
     }
 
     public boolean isDisponible() {
