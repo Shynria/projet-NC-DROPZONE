@@ -16,8 +16,6 @@ export class AvionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  @ViewChild('modal') modal: any;
-
   avions: any = [
     {
       nom: "TEST",
@@ -30,6 +28,7 @@ export class AvionComponent implements OnInit {
 
   formAvion = this.initAvion();
 
+  @ViewChild('modal') modal: any;
   modalTitre : string = "pas de titre";
   edition: boolean = false; // si false => creation, si true modification
 
