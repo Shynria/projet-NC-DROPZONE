@@ -10,5 +10,6 @@ public interface Views {
     public static interface Pilote extends Commons { }
     public static interface Avion extends Commons { }
     public static interface BeerLine extends Commons { }
+    public static interface SautTandem extends Commons { }
     
 }
