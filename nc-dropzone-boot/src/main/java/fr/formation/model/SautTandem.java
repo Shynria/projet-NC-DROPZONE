@@ -28,4 +28,27 @@ public class SautTandem extends Saut {
     @JsonView(Views.SautTandem.class)
     public Parachutiste videoman;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Parachutiste getInstructeur() {
+        return instructeur;
+    }
+
+    public void setInstructeur(Parachutiste instructeur) {
+        this.instructeur = instructeur;
+    }
+
+    public Parachutiste getVideoman() {
+        return videoman;
+    }
+
+    public void setVideoman(Parachutiste videoman) {
+        this.videoman = videoman;
+    }
 }
