@@ -10,6 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import fr.formation.api.Views;
+
 @Entity
 @Table(name = "pilote")
 public class Pilote {
@@ -17,18 +21,23 @@ public class Pilote {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PILOTE_ID")
+    @JsonView(Views.Commons.class)
     private int id;
 
     @Column(name = "PILOTE_NOM", length = 50, nullable = false)
+    @JsonView(Views.Pilote.class)
     private String nom;
 
     @Column(name = "PILOTE_PRENOM", length = 50, nullable = false)
+    @JsonView(Views.Pilote.class)
     private String prenom;
 
     @Column(name = "PILOTE_LICENCE", length = 20, nullable = false)
+    @JsonView(Views.Pilote.class)
     private String licence;
 
     @Column(name = "PILOTE_DISPONIBLE", nullable = false)
+    @JsonView(Views.Pilote.class)
     private boolean disponible;
 
     @OneToMany(mappedBy = "pilote")
