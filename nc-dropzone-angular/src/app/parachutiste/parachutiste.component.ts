@@ -12,7 +12,13 @@ export class ParachutisteComponent implements OnInit {
 
   @ViewChild('modal') modal: any;
 
-  formParachutiste: any;
+  formParachutiste: any ={
+    nom: "",
+    prenom: "",
+    licence: "",
+    dateLicence: "",
+    parachuteEquip: ""
+  };
 
   parachutistes: any = [
   {

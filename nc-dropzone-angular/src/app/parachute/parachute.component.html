@@ -4,7 +4,7 @@
 
 <!-- LISTE DES PARACHUTES -->
 
-<table>
+<table class="table table-striped">
     <thead>
         <th>Harnais</th>
         <th>Système de sécurité</th>
@@ -18,7 +18,7 @@
         <th>Utilisateur</th>
     </thead>
     <tbody>
-        <tr *NgFor="let parachute of parachutes">
+        <tr *ngFor="let parachute of parachutes | async">
             <td> {{ parachute.nomHarnais }}</td>
             <td> {{ parachute.systemeSecurite }}</td>
             <td> {{ parachute.nomVoilePrincipale }}</td>
@@ -38,43 +38,55 @@
 <!-- FORMULAIRE ADD-->
 
 <div>
-    <div>
+    <div class="form-group">
         <label>Nom du harnais : </label>
-        <input type="text" [(ngModel)]="formParachute.nomHarnais">
+        <input type="text" [(ngModel)]="formParachute.nomHarnais" class="form-control">
     </div>
-    <div>
+    <div class="form-group">
         <label>Système de sécurité : </label>
-        <input type="text" [(ngModel)]="formParachute.systemeSecurite">
+        <input type="text" [(ngModel)]="formParachute.systemeSecurite" class="form-control">
     </div>
-    <div>
+    <div class="form-group">
         <label>Nom de la voile principale : </label>
-        <input type="text" [(ngModel)]="formParachute.nomVoilePrincipale">
+        <input type="text" [(ngModel)]="formParachute.nomVoilePrincipale" class="form-control">
     </div>
-    <div>
+    <div class="form-group">
         <label>Nom de la voile de secours : </label>
-        <input type="text" [(ngModel)]="formParachute.nomVoileSecours">
+        <input type="text" [(ngModel)]="formParachute.nomVoileSecours" class="form-control">
     </div>
-    <div>
+    <div class="form-group">
         <label>Taille de la voile principale : </label>
-        <input type="text" [(ngModel)]="formParachute.tailleVoilePrincipale">
+        <input type="number" [(ngModel)]="formParachute.tailleVoilePrincipale" class="form-control">
     </div>
-    <div>
+    <div class="form-group">
         <label>Taille de la voile de secours : </label>
-        <input type="text" [(ngModel)]="formParachute.tailleVoileSecours">
+        <input type="number" [(ngModel)]="formParachute.tailleVoileSecours" class="form-control">
     </div>
-    <div>
+    <div class="form-group">
         <label>Date de pliage de la voile de secours : </label>
-        <input type="text" [(ngModel)]="formParachute.datePliageVoileSecours">
+        <input type="date" [(ngModel)]="formParachute.datePliageVoileSecours" class="form-control">
     </div>
-    <div>
+    <div class="form-group">
         <label>etat : </label>
-        <input type="text" [(ngModel)]="formParachute.etat">
+        <input type="text" [(ngModel)]="formParachute.etat" class="form-control">
     </div>
-    <div>
+    <div class="form-group">
         <label>Propriétaire : </label>
-        <input type="text" [(ngModel)]="formParachute.proprietaire">
+        <select [(ngModel)]="formParachute.proprietaire" class="form-control">
+            <option value="null" selected>CENTRE</option>
+            <option value="parachutiste" *ngFor="let parachutiste of parachutistes">
+                {{parachutiste.nom}}
+            </option>
+        </select>
     </div>
-    <div>
-        <button (click)="ajouterParachute()"> ajouter </button>
+    <div class="form-group">
+        <label>Utilisateur : </label>
+        <select [(ngModel)]="formParachute.utilisateur" class="form-control">
+            <option value="null" selected>Pas utilisé</option>
+            <option value="parachutiste" *ngFor="let parachutiste of parachutistes">
+                {{parachutiste.nom}}
+            </option>
+        </select>
     </div>
+    <button (click)="ajouterParachute()" class="form-control btn btn-success"> ajouter </button>
 </div>
