@@ -22,7 +22,7 @@
             <td> {{ parachute.tailleVoilePrincipale }}</td>
             <td> {{ parachute.tailleVoileSecours }}</td>
             <td> {{ parachute.datePliageVoileSecours }}</td>
-            <td> {{ parachute.etat}}</td>
+            <td> {{ (parachute.etat | disponible)}}</td>
             <td> {{ parachute.utilisateur}}</td>
             <td><button (click)="editerParachute(parachute)" class="btn btn-warning">Editer</button></td>
             <td><button (click)="supprimerParachute(parachute)" class="btn btn-warning">Supprimer</button></td>

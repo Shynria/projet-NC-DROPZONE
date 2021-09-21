@@ -14,6 +14,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { AffichageComponent } from './affichage/affichage.component';
 import { VolEditionComponent } from './vol-edition/vol-edition.component';
+import { DisponiblePipe } from './disponible.pipe';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { VolEditionComponent } from './vol-edition/vol-edition.component';
     ModalComponent,
     InscriptionComponent,
     AffichageComponent,
-    VolEditionComponent
+    VolEditionComponent,
+    DisponiblePipe
   ],
   imports: [
     BrowserModule,
