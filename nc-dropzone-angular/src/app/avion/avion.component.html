@@ -41,8 +41,7 @@
         </tr>
     </thead>
     <tbody>
-        <!-- <tr *ngFor="let avion of avions | async"> -->
-            <tr *ngFor="let avion of avions ">
+        <tr *ngFor="let avion of avions | async">
             <td>{{ avion.nom }}</td>
             <td>{{ avion.capacite }}</td>
             <td>{{ avion.nbRotaMax }}</td>

@@ -32,11 +32,11 @@ export class AvionComponent implements OnInit {
   modalTitre : string = "pas de titre";
   edition: boolean = false; // si false => creation, si true modification
 
-  //refresh = () => this.avions = this.srvAvion.findAll();
+  refresh = () => this.avions = this.srvAvion.findAll();
 
   ajouterAvion() {
     this.modal.close();
-    // this.srvAvion.add(this.formAvion).subscribe(this.refresh);
+    this.srvAvion.add(this.formAvion).subscribe(this.refresh);
   }
 
   ajouterAvionModal() {
@@ -47,12 +47,12 @@ export class AvionComponent implements OnInit {
   }
 
   supprimerAvion(avion: any) {
-    // this.srvAvion.delete(avion).subscribe(this.refresh);
+    this.srvAvion.delete(avion).subscribe(this.refresh);
   }
 
   modifierAvion() {
     this.modal.close();
-    // this.srvAvion.update(this.formAvion).subscribe(this.refresh);
+    this.srvAvion.update(this.formAvion).subscribe(this.refresh);
   }
 
   modifierAvionModal(avion: any) {
