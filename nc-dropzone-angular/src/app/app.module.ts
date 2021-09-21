@@ -12,6 +12,7 @@ import { ModalComponent } from './modal/modal.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InscriptionComponent } from './inscription/inscription.component';
+import { AffichageComponent } from './affichage/affichage.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { InscriptionComponent } from './inscription/inscription.component';
     ParachutisteComponent,
     ParachuteComponent,
     ModalComponent,
-    InscriptionComponent
+    InscriptionComponent,
+    AffichageComponent
   ],
   imports: [
     BrowserModule,

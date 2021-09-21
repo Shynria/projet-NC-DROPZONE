@@ -1,0 +1,75 @@
+<div class="row align-items-center">
+  <div class="col">
+    <h1>Vol en cours</h1>
+
+    <hr>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nom de l'avion</th>
+          <th>ID du vol</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let v of vols | async">
+          <td>{{ v.avion.nom }}</td>
+          <td>{{ v.id }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col">
+    <h1>Prochains vols</h1>
+
+    <hr>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nom de l'avion</th>
+          <th>ID du vol</th>
+          <th>Passagers</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let v of vols | async">
+          <td>{{ v.avion.nom }}</td>
+          <td>{{ v.id }}</td>
+          <td>
+            <table>
+              <thead>
+                <tr>
+                  <th>Nom</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let p of parachutistes">
+                  <td>{{ p.nom }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col">
+    <h1>Parachutistes en attente</h1>
+
+    <hr>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nom</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of parachutistes | async">
+          <td>{{ p.nom }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
