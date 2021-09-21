@@ -11,7 +11,7 @@ import { ParachutisteService } from '../parachutiste.service';
 })
 export class InscriptionComponent implements OnInit {
   constructor(private srvParachutiste: ParachutisteService) {}
-  //noms: String = this.srvParachutiste.findByNom;
+  noms: any = new Observable();
   
   
   public model: any;
@@ -21,8 +21,16 @@ export class InscriptionComponent implements OnInit {
       debounceTime(200),
       distinctUntilChanged(),
       map(term => term.length < 2 ? []
-        : this.noms.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
+        : this.noms.filter((v: string) => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
     )
+
+    voirParachutiste(parachutiste: any){
+      this.noms = this.noms;
+
+      this.srvParachutiste
+        .findByNom(parachutiste)
+        .subscribe();
+    }
   
   ngOnInit(): void {
     throw new Error('Method not implemented.');
