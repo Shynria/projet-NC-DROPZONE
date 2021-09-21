@@ -1,11 +1,35 @@
-<h2>Inscription à un vol: </h2>
+<div class="container">
+    <h4>Inscription à un saut: </h4>
 
-<label>Nom :</label>
-<input type="text" class="form-control" />
+    <div>
+        <label>Nombre de personnes :</label>
+        <input type="number" name="nbPersonnes" id="nbPersonnes">
+    </div>
 
-<label>Parachute :</label>
-<select name="parachute" id="parachute">
-    <option value="1">parachute 1</option>
-</select>
+    <button class="btn btn-success">Continuer</button>
 
-<p>Voullez-vous ajouter des membres ?</p>
+    <div>
+        <label>Nom :</label>
+        <input id="typeahead-basic" type="text" [(ngModel)]="model" [ngbTypeahead]="search"/>
+    </div>
+
+    <div>
+        <label>Parachute :</label>
+        <select name="parachute" id="parachute">
+            <option value="1">parachute 1</option>
+        </select>
+    </div>
+
+    <div>
+        <label>Hauteur du saut :</label>
+        <select name="hauteur" id="hauteur">
+            <option value="1200">1 200 m</option>
+            <option value="1600">1 600 m</option>
+        </select>
+    </div>
+
+    <div>
+        <p>Voullez-vous ajouter des membres ?</p>
+    </div>
+    
+</div>
