@@ -11,7 +11,7 @@ import { ParachutisteService } from '../parachutiste.service';
 })
 export class InscriptionComponent implements OnInit {
   constructor(private srvParachutiste: ParachutisteService) {}
-  noms: any = new Observable();
+  noms: any = this.srvParachutiste.findByNom;
   
   
   public model: any;
@@ -25,9 +25,7 @@ export class InscriptionComponent implements OnInit {
     )
 
     voirParachutiste(parachutiste: any){
-      this.noms = this.noms;
-
-      this.srvParachutiste
+      this.noms = this.srvParachutiste
         .findByNom(parachutiste)
         .subscribe();
     }
