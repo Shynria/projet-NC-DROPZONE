@@ -40,7 +40,6 @@ public class Saut {
 
     @ManyToOne
     @JoinColumn(name = "SAUT_VOL_ID")
-    @JsonView(Views.Vol.class)
     private Vol vol;
 
     @Column(name = "SAUT_HAUTEUR", nullable = false)

@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -30,19 +28,4 @@ public class SautTandem extends Saut {
     @JsonView(Views.SautTandem.class)
     public Parachutiste videoman;
 
-    @Column(name = "TANDEM_PRATIQUANT", nullable = false)
-    @JsonView(Views.SautTandem.class)
-    public Parachutiste pratiquant;
-
-    @Column(name = "ATTERRISSAGE_RATE")
-    @JsonView(Views.SautTandem.class)
-    private boolean isOutsideZone;
-
-    @ManyToOne
-    @JoinColumn(name = "TANDEM_VOL_ID")
-    private Vol vol;
-
-    @Column(name = "TANDEM_HAUTEUR", nullable = false)
-    @JsonView(Views.SautTandem.class)
-    private Hauteur hauteur;
 }
