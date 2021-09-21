@@ -158,4 +158,7 @@ public class Parachutiste {
         this.dateLicence = dateLicence;
     }
 
+    public Parachutiste() {
+    }
+
 }
