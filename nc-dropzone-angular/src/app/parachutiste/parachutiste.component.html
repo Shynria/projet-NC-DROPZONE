@@ -1,5 +1,3 @@
-<p>parachutiste works!</p>
-
 <hr>
 
 <!-- LISTE DES PARACHUTISTES -->
@@ -21,7 +19,7 @@
             <td> {{ parachutiste.dateLicence }}</td>
             <td> {{ parachutiste.parachuteEquip }}</td>
             <td> <button>Voir les parachutes</button> </td>
-            <td><button (click)="editerParachutiste(parachutiste)"></button></td>
+            <td><button (click)="editerParachutiste(parachutiste)">Editer</button></td>
         </tr>
     </tbody>
 </table>
@@ -47,7 +45,7 @@
             <label>Date licence : </label>
             <input type="text" [(ngModel)]="formParachutiste.dateLicence" class="form-control">
         </div>
-        <div>
+        <div class="form-group">
             <label>Parachute : </label>
             <button> Ajouter un parachute perso </button>
         </div>

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class ParachutisteService {
 
   }
 
-  private ApiUrl: string = ``
+  private ApiUrl: string = `${environment.apiUrl}/parachutiste`
 
   findAll(){
     return this.http.get(this.ApiUrl)
@@ -21,7 +22,7 @@ export class ParachutisteService {
   }
 
   edit(parachutiste: any){
-    return this.http.put(this.ApiUrl+`/{parachutiste.id}`, parachutiste)
+    return this.http.put(this.ApiUrl+`/${parachutiste.id}`, parachutiste)
   }
 
   delete(parachutiste: any){

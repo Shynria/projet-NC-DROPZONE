@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { ModalComponent } from './modal/modal.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { InscriptionComponent } from './inscription/inscription.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     PiloteComponent,
     ParachutisteComponent,
     ParachuteComponent,
-    ModalComponent
+    ModalComponent,
+    InscriptionComponent
   ],
   imports: [
     BrowserModule,
