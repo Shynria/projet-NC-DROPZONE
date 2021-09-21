@@ -2,11 +2,6 @@
     <h4>Inscription à un saut: </h4>
 
     <div>
-        <label>Nombre de personnes :</label>
-        <input type="number" name="nbPersonnes" id="nbPersonnes">
-    </div>
-
-    <div>
         <label>Hauteur du saut :</label>
         <select name="hauteur" id="hauteur">
             <option value="1200">1 200 m</option>
@@ -18,23 +13,91 @@
         </select>
     </div>
 
+    <div>
+        <label>Nombre de personnes :</label>
+        <input type="number" name="nbPersonnes" id="nbPersonnes" [(ngModel)]="nbPersonnes">
+    </div>
+
     <button class="btn btn-success">Continuer</button>
 
-    <!-- <div *ngIf="nbPersonnes != 1" > -->
-        <div>
-            <label for="typeahead-basic">Nom :</label>
-            <input id="typeahead-basic" type="text" [(ngModel)]="model" [ngbTypeahead]="search" />
-        </div>
-    
-        <div>
-            <label>Parachute :</label>
-            <select name="parachute" id="parachute">
-                <option value="1">parachute 1</option>
-            </select>
-        </div>
+    <div *ngIf="nbPersonnes == 1">
 
-    <!-- </div> -->
-    
-    
-    
+        <table class="table">
+            <thead style="text-align: center;">
+                <tr>
+                    <th>Nom</th>
+                    <th>Choisir un parachute :</th>
+                </tr>
+            </thead>
+            <tbody style="text-align: center;">
+                <tr>
+                    <td>
+                        <div>
+                            <label for="typeahead-basic">Nom :</label>
+                            <input id="typeahead-basic" type="text" [(ngModel)]="model" [ngbTypeahead]="search" />
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-grid gap-2 d-md-block">
+                            <button class="btn btn-primary">Club</button>
+                            <button class="btn btn-success">Personnel</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="nbPersonnes > 1">
+        <table class="table">
+            <thead style="text-align: center;">
+                <tr>
+                    <th>Nom</th>
+                    <th>Choisir un parachute :</th>
+                </tr>
+            </thead>
+            <tbody style="text-align: center;">
+                <tr>
+                    <td>
+                        <div>
+                            <label for="typeahead-basic">Nom :</label>
+                            <input id="typeahead-basic" type="text" [(ngModel)]="model" [ngbTypeahead]="search" />
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-grid gap-2 d-md-block">
+                            <button class="btn btn-primary">Club</button>
+                            <button class="btn btn-success">Personnel</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
 </div>
+
+<modal #modal titre="Liste des parachutes">
+    <table class="table table-striped">
+        <thead>
+            <tr style="text-align: center;">
+                <th>Harnais</th>
+                <th>Système de sécurité</th>
+                <th>Voile principale</th>
+                <th>Voile de secours</th>
+                <th>Etat</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr *ngFor="let p of parachutes" style="text-align: center;">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr> -->
+        </tbody>
+    </table>
+</modal>
