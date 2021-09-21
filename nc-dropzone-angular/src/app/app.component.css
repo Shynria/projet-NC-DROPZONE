@@ -17,3 +17,9 @@ nav a:hover {
 	animation: backInUp 1s;
   color: yellow;
 }
+
+nav img {
+  width: 9%;
+  padding-right : 10px;
+  padding-top: 4px;
+}
