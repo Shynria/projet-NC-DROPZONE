@@ -1,25 +1,64 @@
 nav {
   background-color: rgb(94, 91, 91);
-  height: 60px;
+  height: 80px;
+}
+
+img[name="dropZone"]{
+  position: fixed;
+  left: 50px;
+  height: 70px;
+  margin-top: 5px;
+  
 }
 
 nav a {
   display: block;
-  font: normal bold 17px/21px "Roboto",Helvetica,Arial,Verdana,sans-serif;
+  font: normal bold 19px/23px "Roboto",Helvetica,Arial,Verdana,sans-serif;
   color: white;
   text-decoration: initial;
-	transition: all 0.5s ease-in-out;
-  padding-top: 20px;
+	transition: all 0.25s ease-in-out;
+  padding-top: 30px;
 }
 
-nav a:hover {
-  padding-top: 15px;
-	animation: backInUp 1s;
-  color: yellow;
+nav a[id="1"]:hover {
+  padding-top: 25px;
+	animation: backInUp 0.5s;
+  color: #ff5050;
 }
 
-nav img {
-  width: 9%;
-  padding-right : 10px;
-  padding-top: 4px;
+nav a[id="2"]:hover {
+  padding-top: 25px;
+	animation: backInUp 0.5s;
+  color: #ffa600;
 }
+
+nav a[id="3"]:hover {
+  padding-top: 25px;
+	animation: backInUp 0.5s;
+  color: #ffff2e;
+}
+
+nav a[id="4"]:hover {
+  padding-top: 25px;
+	animation: backInUp 0.5s;
+  color: #adff2f;
+}
+
+nav a[id="5"]:hover {
+  padding-top: 25px;
+	animation: backInUp 0.5s;
+  color: #0affff;
+}
+
+nav a[id="6"]:hover {
+  padding-top: 25px;
+	animation: backInUp 0.5s;
+  color: #7070ff;
+}
+
+nav a[id="7"]:hover {
+  padding-top: 25px;
+	animation: backInUp 0.5s;
+  color: #ac52ff;
+}
+
