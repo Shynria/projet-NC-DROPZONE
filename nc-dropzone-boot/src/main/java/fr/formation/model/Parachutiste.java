@@ -36,8 +36,9 @@ public class Parachutiste {
     private String prenom;
 
     @Column(name = "MEMBRE_LICENCE", nullable = false, length = 50)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @JsonView(Views.Parachutiste.class)
-    private String licence;
+    private int licence;
 
     @Column(name = "MEMBRE_DATE_LICENCE", nullable = false)
     @JsonView(Views.Parachutiste.class)
@@ -122,10 +123,10 @@ public class Parachutiste {
         this.prenom = prenom;
     }
 
-    public String getLicence() {
+    public int getLicence() {
         return licence;
     }
-    public void setLicence(String licence) {
+    public void setLicence(int licence) {
         this.licence = licence;
     }
 
@@ -150,7 +151,7 @@ public class Parachutiste {
         this.parachuteEquipe = parachuteEquipe;
     }
 
-    public Parachutiste(String nom, String prenom, String licence, LocalDate dateLicence) {
+    public Parachutiste(String nom, String prenom, int licence, LocalDate dateLicence) {
         this.nom = nom;
         this.prenom = prenom;
         this.licence = licence;
