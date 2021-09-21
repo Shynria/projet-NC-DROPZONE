@@ -29,7 +29,7 @@ export class ParachutisteService {
     return this.http.delete(this.ApiUrl+`/${parachutiste.id}`)
   }
 
-  findByNom(parachutiste: any){
+  findAllByNom(parachutiste: any){
     return this.http.get(`${ this.ApiUrl }/by-prenom/${ parachutiste.nom }`);
   }
 

@@ -6,30 +6,35 @@
         <input type="number" name="nbPersonnes" id="nbPersonnes">
     </div>
 
-    <button class="btn btn-success">Continuer</button>
-
-    <div>
-        <label for="typeahead-basic">Nom :</label>
-        <input id="typeahead-basic" type="text" [(ngModel)]="model" [ngbTypeahead]="search"/>
-    </div>
-
-    <div>
-        <label>Parachute :</label>
-        <select name="parachute" id="parachute">
-            <option value="1">parachute 1</option>
-        </select>
-    </div>
-
     <div>
         <label>Hauteur du saut :</label>
         <select name="hauteur" id="hauteur">
             <option value="1200">1 200 m</option>
             <option value="1600">1 600 m</option>
+            <option value="2000">2 000 m</option>
+            <option value="2500">2 500 m</option>
+            <option value="4000">4 000 m</option>
+            <option value="6000">6 000 m</option>
         </select>
     </div>
 
-    <div>
-        <p>Voullez-vous ajouter des membres ?</p>
-    </div>
+    <button class="btn btn-success">Continuer</button>
+
+    <!-- <div *ngIf="nbPersonnes != 1" > -->
+        <div>
+            <label for="typeahead-basic">Nom :</label>
+            <input id="typeahead-basic" type="text" [(ngModel)]="model" [ngbTypeahead]="search" />
+        </div>
+    
+        <div>
+            <label>Parachute :</label>
+            <select name="parachute" id="parachute">
+                <option value="1">parachute 1</option>
+            </select>
+        </div>
+
+    <!-- </div> -->
+    
+    
     
 </div>

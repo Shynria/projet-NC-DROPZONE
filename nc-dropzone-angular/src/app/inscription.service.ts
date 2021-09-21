@@ -12,7 +12,4 @@ export class InscriptionService {
 
   }
 
-  findByNom(parachutiste: any){
-    return this.http.get(`${ this.apiUrl }/by-prenom/${ parachutiste.prenom }`);
-  }
 }

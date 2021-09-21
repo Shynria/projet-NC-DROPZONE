@@ -59,4 +59,8 @@ public class ParachutisteApiController {
             return false;
         }
     }
+    @GetMapping("/by-parachutiste/{parachutiste.nom}")
+    public List<Parachutiste> findAllByNom(@PathVariable String nom){
+        return this.daoParachutiste.findAllByNom(nom);
+    } 
 }
