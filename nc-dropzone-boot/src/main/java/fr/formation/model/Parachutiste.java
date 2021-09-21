@@ -60,8 +60,27 @@ public class Parachutiste {
     @ManyToMany(mappedBy = "parachutistes")
     private List<Saut> sauts;
 
+    @OneToMany(mappedBy = "instructeur")
+    private List<SautTandem> ListeSautInstructeur;
+
+    @OneToMany(mappedBy = "videoman")
+    private List<SautTandem> ListeSautVideoman;
+
+
     
 
+    public List<SautTandem> getListeSautInstructeur() {
+        return ListeSautInstructeur;
+    }
+    public void setListeSautInstructeur(List<SautTandem> listeSautInstructeur) {
+        ListeSautInstructeur = listeSautInstructeur;
+    }
+    public List<SautTandem> getListeSautVideoman() {
+        return ListeSautVideoman;
+    }
+    public void setListeSautVideoman(List<SautTandem> listeSautVideoman) {
+        ListeSautVideoman = listeSautVideoman;
+    }
     public Niveau getNiveau() {
         return niveau;
     }

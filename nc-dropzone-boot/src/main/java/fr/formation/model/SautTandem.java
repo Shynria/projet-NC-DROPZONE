@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -20,13 +22,14 @@ public class SautTandem extends Saut {
     @JsonView(Views.Commons.class)
     private int id;
 
-    @Column(name = "TANDEM_INSTRUCTEUR", nullable = false)
-    @JsonView(Views.SautTandem.class)
+    @ManyToOne
+    @JoinColumn(name = "TANDEM_INSTRUCTEUR")
     public Parachutiste instructeur;
-
-    @Column(name = "TANDEM_VIDEOMAN", nullable = false)
-    @JsonView(Views.SautTandem.class)
+    
+    @ManyToOne
+    @JoinColumn(name = "TANDEM_VIDEOMAN")
     public Parachutiste videoman;
+    
 
     public int getId() {
         return id;
