@@ -33,8 +33,9 @@ public class Pilote {
     private String prenom;
 
     @Column(name = "PILOTE_LICENCE", length = 20, nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @JsonView(Views.Pilote.class)
-    private String licence;
+    private int licence;
 
     @Column(name = "PILOTE_DISPONIBLE", nullable = false)
     @JsonView(Views.Pilote.class)
@@ -67,11 +68,11 @@ public class Pilote {
         this.prenom = prenom;
     }
 
-    public String getLicence() {
+    public int getLicence() {
         return licence;
     }
 
-    public void setLicence(String licence) {
+    public void setLicence(int licence) {
         this.licence = licence;
     }
 
