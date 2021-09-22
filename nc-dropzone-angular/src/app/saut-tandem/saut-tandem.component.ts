@@ -23,23 +23,7 @@ export class SautTandemComponent implements OnInit {
   parachutistesConfirme: any = [];
 
 
-  sautsTandem: any = [
-    {
-      hauteur: 0,
-      parachutiste: {
-        nom: "",
-        prenom: ""
-      },
-      instructeur: {
-        nom: "",
-        prenom: ""
-      },
-      videoman: {
-        nom: "",
-        prenom:""
-      }
-    }
-  ];
+  sautTandem: any = {};
 
   formSautTandem = this.initSautTandem();
 
@@ -47,7 +31,7 @@ export class SautTandemComponent implements OnInit {
   modalTitre : string = "pas de titre";
   edition: boolean = false; // si false => creation, si true modification
 
-  refresh = () => this.sautsTandem = this.srvSautTandem.findAll();
+  refresh = () => this.sautTandem = this.srvSautTandem.findAll();
 
   ajouterSautTandem() {
     this.modal.close();
