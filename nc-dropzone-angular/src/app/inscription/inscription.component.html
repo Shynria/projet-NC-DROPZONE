@@ -13,68 +13,30 @@
         </select>
     </div>
 
-    <div>
-        <label>Nombre de personnes :</label>
-        <input type="number" name="nbPersonnes" id="nbPersonnes" [(ngModel)]="nbPersonnes">
-    </div>
-
-    <button class="btn btn-success">Continuer</button>
-
-    <div *ngIf="nbPersonnes == 1">
-
-        <table class="table">
-            <thead style="text-align: center;">
-                <tr>
-                    <th>Nom</th>
-                    <th>Choisir un parachute :</th>
-                </tr>
-            </thead>
-            <tbody style="text-align: center;">
-                <tr>
-                    <td>
-                        <div>
-                            <label for="typeahead-basic">Nom :</label>
-                            <input id="typeahead-basic" type="text" [(ngModel)]="model" [ngbTypeahead]="search" />
-                        </div>
-                    </td>
-                    <td>
-                        <div class="d-grid gap-2 d-md-block">
-                            <button class="btn btn-primary">Club</button>
-                            <button class="btn btn-success">Personnel</button>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div *ngIf="nbPersonnes > 1">
-        <table class="table">
-            <thead style="text-align: center;">
-                <tr>
-                    <th>Nom</th>
-                    <th>Choisir un parachute :</th>
-                </tr>
-            </thead>
-            <tbody style="text-align: center;">
-                <tr>
-                    <td>
-                        <div>
-                            <label for="typeahead-basic">Nom :</label>
-                            <input id="typeahead-basic" type="text" [(ngModel)]="model" [ngbTypeahead]="search" />
-                        </div>
-                    </td>
-                    <td>
-                        <div class="d-grid gap-2 d-md-block">
-                            <button class="btn btn-primary">Club</button>
-                            <button class="btn btn-success">Personnel</button>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
+    <table class="table">
+        <thead style="text-align: center;">
+            <tr>
+                <th>Nom</th>
+                <th>Choisir un parachute :</th>
+            </tr>
+        </thead>
+        <tbody style="text-align: center;">
+            <tr>
+                <td>
+                    <div>
+                        <label for="typeahead-basic">Nom :</label>
+                        <input id="typeahead-basic" type="text" [(ngModel)]="model" [ngbTypeahead]="search" />
+                    </div>
+                </td>
+                <td>
+                    <div class="d-grid gap-2 d-md-block">
+                        <button class="btn btn-primary">Club</button>
+                        <button class="btn btn-success">Personnel</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
 <modal #modal titre="Liste des parachutes">
