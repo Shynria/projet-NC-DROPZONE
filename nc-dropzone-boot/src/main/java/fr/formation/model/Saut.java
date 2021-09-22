@@ -27,6 +27,7 @@ public class Saut {
     private int id;
 
     @ManyToMany
+    @JsonView(Views.Saut.class)
     @JoinTable(
         name = "LISTE_PARTICIPANTS",
         joinColumns = @JoinColumn(name = "ID_SAUT", referencedColumnName = "SAUT_ID"),
@@ -53,8 +54,6 @@ public class Saut {
     public void setId(int id) {
         this.id = id;
     }
-
-    
 
     public List<Parachutiste> getParachutistes() {
         return parachutistes;

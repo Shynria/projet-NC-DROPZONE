@@ -1,37 +1,38 @@
 <div class="container">
     <h4>Inscription à un saut: </h4>
 
+    <div>
+        <label>Hauteur du saut :</label>
+        <select name="hauteur" id="hauteur" [(ngModel)]="formSaut.hauteur">
+            <option value="MILLE_DEUX_CENTS">1 200 m</option>
+            <option value="MILLE_SIX_CENTS">1 600 m</option>
+            <option value="DEUX_MILLES">2 000 m</option>
+            <option value="DEUX_MILLES_CINQ_CENTS">2 500 m</option>
+            <option value="QUATRE_MILLES">4 000 m</option>
+            <option value="SIX_MILLES">6 000 m</option>
+        </select>
+    </div>
+
+    <div>
+        <label>Taille du groupe</label>
+        <input type="number" [(ngModel)]="tailleGroupe">
+    </div>
     <table class="table">
         <thead style="text-align: center;">
             <tr>
                 <th>Nom</th>
-                <th>Hauteur du saut :</th>
                 <th>Choisir un parachute :</th>
             </tr>
         </thead>
         <tbody style="text-align: center;">
-            <tr>
+            <ng-template #rt let-r="result" let-t="term"> <!-- pour generer la liste sous le typehead -->
+                <span>{{ r.nom }} {{ r.prenom }}</span>
+            </ng-template>
+            <tr *ngFor="let temp of counter(tailleGroupe); let i = index"> <!-- counter -> function pour generer un tableau de taille: tailleGroupe (voir component) -->
                 <td>
                     <div>
                         <label for="typeahead-basic">Nom :</label>
-                        <input type="text" name="nom" [(ngModel)]="parachutiste.nom" />
-                    </div>
-                </td>
-                <td>
-                    <div class="row">
-                        <div class="col">
-                            <div ngbDropdown class="d-inline-block">
-                                <button class="btn btn-outline-dark" id="hauteur" ngbDropdownToggle>Hauteur</button>
-                                <div ngbDropdownMenu aria-labelledby="hauteur">
-                                    <button ngbDropdownItem [(ngModel)]="hauteur">1 200 m</button>
-                                    <button ngbDropdownItem [(ngModel)]="hauteur">1 600 m</button>
-                                    <button ngbDropdownItem [(ngModel)]="hauteur">2 000 m</button>
-                                    <button ngbDropdownItem [(ngModel)]="hauteur">2 500 m</button>
-                                    <button ngbDropdownItem [(ngModel)]="hauteur">4 000 m</button>
-                                    <button ngbDropdownItem [(ngModel)]="hauteur">6 000 m</button>
-                                </div>
-                            </div>
-                        </div>
+                        <input id="typeahead-basic" type="text" [(ngModel)]="formSaut.parachutistes[i]" [ngbTypeahead]="search" [inputFormatter]="formatter" [resultTemplate]="rt"/>
                     </div>
                 </td>
                 <td>
@@ -39,23 +40,26 @@
                         <div ngbDropdown class="d-inline-block">
                             <button class="btn btn-success" id="dropdownBasic1" ngbDropdownToggle>Personnel</button>
 
-                            <div ngbDropdownMenu aria-labelledby="dropdownBasic1" *ngFor="let parachute of parachutes">
+                            <!-- <div ngbDropdownMenu aria-labelledby="dropdownBasic1" *ngFor="let parachute of parachutes">
                                 <button ngbDropdownItem>{{ parachute.nomHarnais }}, {{ parachute.etat }}</button>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div ngbDropdown class="d-inline-block">
                         <button class="btn btn-primary" id="dropdownBasic1" ngbDropdownToggle>Club</button>
 
-                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1" *ngFor="let parachute of parachutes">
+                        <!-- <div ngbDropdownMenu aria-labelledby="dropdownBasic1" *ngFor="let parachute of parachutes">
                             <button ngbDropdownItem>{{ parachute.nomHarnais }}, {{ parachute.etat }}</button>
-                        </div>
+                        </div> -->
 
                     </div>
                 </td>
             </tr>
         </tbody>
     </table>
+    <div>
+        <button (click)="ajouterSaut()">Sauter!</button>
+    </div>
 </div>
 
 <modal #modal titre="Liste des parachutes">

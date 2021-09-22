@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, OperatorFunction } from 'rxjs';
+import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
+import { InscriptionService } from '../inscription.service';
 import { ParachutisteService } from '../parachutiste.service';
 
 @Component({
@@ -8,27 +10,46 @@ import { ParachutisteService } from '../parachutiste.service';
   styleUrls: ['./inscription.component.css']
 })
 export class InscriptionComponent implements OnInit {
-  
-  nbPersonnes: any = new Observable;
-  hauteur: any = new Observable;
-  parachutiste: any = {
-    nom: ""
-  };
-  nom: any = new Observable;
-  parachute: any = {
-    nomHarnais: "",
-    etat: Boolean
-  };
-  parachutes: any = [];
-  
-  constructor(private srvParachutiste: ParachutisteService) {
-    this.parachutiste = this.srvParachutiste.findAll();
-  }
-  
-  
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
+
+  constructor(private srvSaut: InscriptionService, private srvParachutiste: ParachutisteService) {
+    this.refresh();
+    this.initSaut();
   }
 
+  ngOnInit(): void { }
 
+  parachutistes: any = [];
+  formSaut: any = {};
+
+  public listePara: any = [];
+  public tailleGroupe: any = 1;
+
+  refresh = () => {
+    this.srvParachutiste.findAll().subscribe(parachutistes => { this.parachutistes = parachutistes });
+  }
+
+  ajouterSaut() {
+    this.srvSaut.add(this.formSaut).subscribe();
+  }
+
+  search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) =>
+    text$.pipe(
+      debounceTime(200),
+      distinctUntilChanged(),
+      map(term => term.length < 2 ? []
+        : this.parachutistes.filter((p: any) => p.nom.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
+    )
+
+  formatter = (para: { nom: string, prenom: string }) => `${para.nom} ${para.prenom}`;
+
+  counter(i: number) {
+    return new Array(i);
+  }
+
+  initSaut(){
+    this.formSaut = {
+      hauteur: "",
+      parachutistes: []
+    };
+  }
 }
