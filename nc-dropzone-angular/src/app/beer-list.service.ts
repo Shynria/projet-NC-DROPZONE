@@ -13,17 +13,17 @@ export class BeerListService {
 
   findAll(){
     return this.http.get(this.ApiUrl)
-  }
+  };
 
   add(beerList: any){
     return this.http.post(this.ApiUrl, beerList)
-  }
+  };
 
   edit(beerList: any){
     return this.http.put(this.ApiUrl+`/${beerList.id}`, beerList)
-  }
+  };
 
   delete(beerList: any){
     return this.http.delete(this.ApiUrl+`/${beerList.id}`)
-  }
+  };
 }

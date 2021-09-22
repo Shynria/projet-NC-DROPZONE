@@ -10,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -52,7 +51,7 @@ public class Parachutiste {
     private List<Vol> vol;
 
     @Column(name = "MEMBRE_NIVEAU")
-    @JsonView(Views.Parachutiste.class)
+    @JsonView({Views.Parachutiste.class, Views.BeerLine.class})
     private Niveau niveau;
 
     @ManyToMany(mappedBy = "parachutistes")
@@ -64,8 +63,7 @@ public class Parachutiste {
     @OneToMany(mappedBy = "videoman")
     private List<SautTandem> ListeSautVideoman;
 
-    @ManyToOne
-    @JoinColumn(name = "MEMBRE_BEER_LIST")
+    @OneToOne(mappedBy = "parachutiste")
     private BeerLine membreBeerLine;
 
     

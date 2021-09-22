@@ -12,12 +12,13 @@ export class BeerListComponent implements OnInit {
 
   modalTitre: string = "";
 
-  parachutiste: any = {};
   parachutistes: any = [];
+
+  parachutiste: any = {};
 
   beerList: any = {
     id: 0,
-    parachutistes: [] 
+    parachutiste: {} 
   };
 
   constructor(private srvBeerList: BeerListService, private srvParachutiste: ParachutisteService) { 

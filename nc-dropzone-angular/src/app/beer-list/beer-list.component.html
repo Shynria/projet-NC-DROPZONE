@@ -29,7 +29,7 @@
 </nav>
 
 <div class="container">
-    <button style="background-color: #f050ff; margin-bottom: 5px;" class="btn" (click)="ouvrirModal()">Ajouter un membre</button>
+    <button style="background-color: #f050ff; margin-bottom: 5px;" class="btn" (click)="ouvrirModal()">Voir la liste des membres</button>
 </div>
 
 
@@ -44,14 +44,16 @@
                 <th>Nom</th>
                 <th>Prenom</th>
                 <th>Niveau</th>
+                <th>licence</th>
                 <th></th>
             </tr>
         </thead>
-        <tbody *ngFor="let parachutistes of beerList | async">
-            <tr *ngFor="let parachutiste of parachutistes" style="text-align: center;">
-                <td>{{ parachutiste.nom }}</td>
-                <td>{{ parachutiste.prenom }}</td>
-                <td>{{ parachutiste.niveau }}</td>
+        <tbody >
+            <tr *ngFor="let b of beerList | async" style="text-align: center;">
+                <td>{{ b.parachutiste.nom }}</td>
+                <td>{{ b.parachutiste.prenom }}</td>
+                <td>{{ b.parachutiste.niveau }}</td>
+                <td>{{ b.parachutiste.id }}</td>
                 <td>
                     <button class="btn btn-warning" (click)="retirerMembre(parachutiste)">Retirer de la
                         liste</button>
@@ -81,7 +83,7 @@
                 <td>{{ p.prenom }}</td>
                 <td>{{ p.niveau }}</td>
                 <td>
-                    <button class="btn btn-warning" (click)="ajouterMembre(parachutistes)">Ajouter à la Beer
+                    <button class="btn btn-warning" (click)="ajouterMembre(parachutiste)">Ajouter à la Beer
                         list</button>
                 </td>
             </tr>

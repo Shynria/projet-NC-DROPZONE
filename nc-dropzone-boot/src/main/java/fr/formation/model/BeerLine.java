@@ -1,13 +1,12 @@
 package fr.formation.model;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -23,9 +22,11 @@ public class BeerLine {
     @JsonView(Views.Commons.class)
     private int id;
 
-    @OneToMany(mappedBy = "membreBeerLine")
+    
+    @OneToOne
+    @JoinColumn(name = "BEER_LINE_MEMBRE")
     @JsonView({Views.BeerLine.class, Views.Parachutiste.class})
-    private List<Parachutiste> parachutistes;
+    private Parachutiste parachutiste;
 
 
 
@@ -37,13 +38,14 @@ public class BeerLine {
     public void setId(int id) {
         this.id = id;
     }
+    public Parachutiste getParachutiste() {
+        return parachutiste;
+    }
+    public void setParachutiste(Parachutiste parachutiste) {
+        this.parachutiste = parachutiste;
+    }
 
-    public List<Parachutiste> getParachutistes() {
-        return parachutistes;
-    }
-    public void setParachutistes(List<Parachutiste> parachutistes) {
-        this.parachutistes = parachutistes;
-    }
+    
 
     
 

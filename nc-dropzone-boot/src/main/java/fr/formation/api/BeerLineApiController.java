@@ -33,8 +33,9 @@ public class BeerLineApiController {
     }
 
     @PostMapping
-    public boolean ajouter(@RequestBody BeerLine beerLine){
+    public boolean ajouter(@RequestBody BeerLine beerLine, @RequestBody Parachutiste parachutiste){
         try {
+            beerLine.setParachutiste(parachutiste);
             this.daoBeerLine.save(beerLine);
             return true;
         } catch (Exception e) {
@@ -55,16 +56,11 @@ public class BeerLineApiController {
     @PutMapping("/{id}")
     public boolean edit(@PathVariable int id, @RequestBody BeerLine beerLine){
         try {
-            beerLine.setId(id);
             this.daoBeerLine.save(beerLine);
             return true;
         } catch (Exception e) {
             return false;
         }
     }
-    @GetMapping("/membres-beer-line")
-    @JsonView({Views.BeerLine.class, Views.Parachutiste.class})
-    public List<Parachutiste> affiche(){
-        return daoBeerLine.findAllFetchingParachutistes();
-    }
+    
 }
