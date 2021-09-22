@@ -19,15 +19,4 @@ export class AffichageService {
     return this.http.get(`${ this.apiUrl }/${etat}`)
   }
 
-  add(vol: any) {
-    return this.http.post(this.apiUrl, vol);
-  }
-
-  update(vol: any) {
-    return this.http.put(`${ this.apiUrl }/${ vol.id }`, vol);
-  }
-
-  delete(vol: any) {
-    return this.http.delete(`${ this.apiUrl }/${ vol.id }`)
-  }
 }

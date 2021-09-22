@@ -16,6 +16,7 @@ import { AffichageComponent } from './affichage/affichage.component';
 import { VolEditionComponent } from './vol-edition/vol-edition.component';
 import { DisponiblePipe } from './disponible.pipe';
 import { BeerListComponent } from './beer-list/beer-list.component';
+import { SautTandemComponent } from './saut-tandem/saut-tandem.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { BeerListComponent } from './beer-list/beer-list.component';
     AffichageComponent,
     VolEditionComponent,
     DisponiblePipe,
-    BeerListComponent
+    BeerListComponent,
+    SautTandemComponent
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { ParachuteComponent } from './parachute/parachute.component';
 import { ParachutisteComponent } from './parachutiste/parachutiste.component';
 import { PiloteComponent } from './pilote/pilote.component';
+import { SautTandemComponent } from './saut-tandem/saut-tandem.component';
 import { VolEditionComponent } from './vol-edition/vol-edition.component';
 
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path: "inscription", component: InscriptionComponent},
   {path: "affichage", component: AffichageComponent},
   {path: "vol", component: VolEditionComponent},
-  {path: "beer-list", component: BeerListComponent}
+  {path: "beer-list", component: BeerListComponent},
+  {path: "saut-tandem", component: SautTandemComponent}
 ];
 
 @NgModule({
