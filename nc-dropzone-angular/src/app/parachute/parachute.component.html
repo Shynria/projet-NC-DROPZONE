@@ -57,7 +57,7 @@
             <td> {{ parachute.nomVoileSecours }}</td>
             <td> {{ parachute.tailleVoilePrincipale }}</td>
             <td> {{ parachute.tailleVoileSecours }}</td>
-            <td> {{ parachute.datePliageVoileSecours }}</td>
+            <td> {{ parachute.datePliageVoileSecours | date: 'dd-MM-yyyy'}}</td>
             <td> {{ (parachute.etat | disponible)}}</td>
             <td>
                 <div *ngIf="parachute.utilisateur != null">
