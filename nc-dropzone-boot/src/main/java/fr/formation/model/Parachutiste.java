@@ -65,7 +65,7 @@ public class Parachutiste {
     private List<SautTandem> ListeSautVideoman;
 
     @Column(name = "MEMBRE_BEER_LINE")
-    private boolean isBeerLine;
+    private boolean isBeerLine = false;
 
     
     

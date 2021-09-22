@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ParachutisteService } from '../parachutiste.service';
 
 @Component({
@@ -7,7 +8,8 @@ import { ParachutisteService } from '../parachutiste.service';
   styleUrls: ['./beer-list.component.css']
 })
 export class BeerListComponent implements OnInit {
-  
+  public radioGroupForm: FormGroup;
+
   parachutiste: any = {
     nom: "",
       prenom: "",
@@ -16,22 +18,19 @@ export class BeerListComponent implements OnInit {
   }
 
   parachutistes: any = [
-    {
-      nom: "",
-      prenom: "",
-      licence: 0,
-      isBeerLine: false
-    }
   ];
 
  
-  constructor(private srvParachutiste: ParachutisteService) { 
+  constructor(private srvParachutiste: ParachutisteService, private formBuilder: FormBuilder) { 
     this.parachutistes = this.srvParachutiste.findAll();
   }
 
   refresh = () => this.parachutistes = this.srvParachutiste.findAll();
 
   ngOnInit(): void {
+    this.radioGroupForm = this.formBuilder.group({
+      'model': false
+    });
   }
 
 }
