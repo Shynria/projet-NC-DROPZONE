@@ -24,6 +24,10 @@ public class Pilote {
     @JsonView(Views.Commons.class)
     private int id;
 
+    @Column(name = "PILOTE_LICENCE")
+    @JsonView(Views.Pilote.class)
+    private String licence;
+
     @Column(name = "PILOTE_NOM", length = 50, nullable = false)
     @JsonView(Views.Pilote.class)
     private String nom;
@@ -77,6 +81,14 @@ public class Pilote {
 
     public void setVols(List<Vol> vols) {
         this.vols = vols;
+    }
+
+    public String getLicence() {
+        return licence;
+    }
+
+    public void setLicence(String licence) {
+        this.licence = licence;
     }
 
     
