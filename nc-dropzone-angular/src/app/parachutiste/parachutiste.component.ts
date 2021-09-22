@@ -14,7 +14,11 @@ export class ParachutisteComponent implements OnInit {
 
   @ViewChild('modal') modal: any;
 
+  @ViewChild('modalParachute') modalParachute: any;
+
   formParachutiste: any = {};
+
+  formParachute: any = {};
 
   parachutistes: any = [
     {
@@ -45,6 +49,10 @@ export class ParachutisteComponent implements OnInit {
       proprietaire: null,
       utilisateur: null
     }]
+
+    parachutesPerso: any = [];
+
+    afficheParachutePerso: boolean = false;
 
   constructor(private srvParachutiste: ParachutisteService, private srvParachute: ParachuteService, private modalService: NgbModal) {
     this.refresh();
@@ -104,5 +112,62 @@ export class ParachutisteComponent implements OnInit {
     this.formParachutiste = Object.assign({}, parachutiste);
     this.formParachutiste.parachuteEquipe = null;
     this.srvParachutiste.edit(this.formParachutiste).subscribe(this.refresh);
+  }
+
+  parachutisteVoirParachute: any;
+
+  voirParachutePerso(parachutiste: any){
+    this.parachutesPerso = parachutiste.listeParachute;
+    this.afficheParachutePerso = true;
+    this.parachutisteVoirParachute = parachutiste;
+  }
+
+  retourParachutistes(){
+    this.afficheParachutePerso = false;
+  }
+
+  editerParachute(parachute: any){
+    this.modalParachute.open();
+    this.formParachute = Object.assign({}, parachute);
+    this.formParachute.proprietaire = this.parachutisteVoirParachute;
+    this.edit = true;
+    this.modalTitre = "Modification parachute"
+  }
+
+  ajouterParachute(){
+    this.formParachute.proprietaire = this.parachutisteVoirParachute;
+    this.srvParachute.add(this.formParachute).subscribe(this.refresh)
+    this.initParachute();
+  }
+
+  modifierParachute(){
+    this.srvParachute.edit(this.formParachute).subscribe(this.refresh);
+    this.initParachute();
+  }
+
+  supprimerParachute(parachute: any){
+    this.srvParachute.delete(parachute).subscribe(this.refresh);
+  }
+
+  ouvrirModalAjoutParachute(){
+    this.initParachute();
+    this.modalParachute.open();
+    this.edit = false;
+    this.modalTitre = "Ajout parachute"
+  }
+
+  initParachute(){
+    this.formParachute = {
+      nomHarnais: "",
+      systemeSecurite: "",
+      nomVoilePrincipale: "",
+      nomVoileSecours: "",
+      tailleVoilePrincipale: 0,
+      tailleVoileSecours: 0,
+      datePliageVoileSecours: new Date(),
+      etat: true,
+      proprietaire: null,
+      utilisateur: null
+    };
   }
 }
