@@ -1,4 +1,3 @@
-
 <!-- LISTE DES PARACHUTES -->
 
 <table class="table table-striped">
@@ -23,7 +22,11 @@
             <td> {{ parachute.tailleVoileSecours }}</td>
             <td> {{ parachute.datePliageVoileSecours }}</td>
             <td> {{ (parachute.etat | disponible)}}</td>
-            <td> {{ parachute.utilisateur}}</td>
+            <td>
+                <div *ngIf="parachute.utilisateur != null">
+                    {{ parachute.utilisateur.nom}}
+                </div>
+            </td>
             <td><button (click)="editerParachute(parachute)" class="btn btn-warning">Editer</button></td>
             <td><button (click)="supprimerParachute(parachute)" class="btn btn-warning">Supprimer</button></td>
         </tr>
@@ -38,47 +41,40 @@
 
 
 <modal #modal titre="{{ modalTitre }}">
-<div>
-    <div class="form-group">
-        <label>Nom du harnais  </label>
-        <input type="text" [(ngModel)]="formParachute.nomHarnais" class="form-control">
+    <div>
+        <div class="form-group">
+            <label>Nom du harnais </label>
+            <input type="text" [(ngModel)]="formParachute.nomHarnais" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Système de sécurité </label>
+            <select [(ngModel)]="formParachute.systemeSecurite" class="form-control">
+                <option value="CYPRESS">CYPRESS</option>
+                <option value="VIGIL">VIGIL</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Nom de la voile principale </label>
+            <input type="text" [(ngModel)]="formParachute.nomVoilePrincipale" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Nom de la voile de secours </label>
+            <input type="text" [(ngModel)]="formParachute.nomVoileSecours" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Taille de la voile principale </label>
+            <input type="number" [(ngModel)]="formParachute.tailleVoilePrincipale" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Taille de la voile de secours </label>
+            <input type="number" [(ngModel)]="formParachute.tailleVoileSecours" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Date de pliage de la voile de secours </label>
+            <input type="date" [(ngModel)]="formParachute.datePliageVoileSecours" class="form-control">
+        </div>
+        <hr>
+        <button *ngIf="!edit" (click)="ajouterParachute()" class="form-control btn btn-success"> ajouter </button>
+        <button *ngIf="edit" (click)="modifierParachute()" class="form-control btn btn-warning"> Modifier </button>
     </div>
-    <div class="form-group">
-        <label>Système de sécurité  </label>
-        <select [(ngModel)]="formParachute.systemeSecurite" class="form-control">
-            <option value="CYPRESS">CYPRESS</option>
-            <option value="VIGIL">VIGIL</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label>Nom de la voile principale  </label>
-        <input type="text" [(ngModel)]="formParachute.nomVoilePrincipale" class="form-control">
-    </div>
-    <div class="form-group">
-        <label>Nom de la voile de secours  </label>
-        <input type="text" [(ngModel)]="formParachute.nomVoileSecours" class="form-control">
-    </div>
-    <div class="form-group">
-        <label>Taille de la voile principale  </label>
-        <input type="number" [(ngModel)]="formParachute.tailleVoilePrincipale" class="form-control">
-    </div>
-    <div class="form-group">
-        <label>Taille de la voile de secours  </label>
-        <input type="number" [(ngModel)]="formParachute.tailleVoileSecours" class="form-control">
-    </div>
-    <div class="form-group">
-        <label>Date de pliage de la voile de secours  </label>
-        <input type="date" [(ngModel)]="formParachute.datePliageVoileSecours" class="form-control">
-    </div>
-    <!-- <div class="form-group">
-        <label>Utilisateur  </label>
-        <select [(ngModel)]="formParachute.utilisateur" class="form-control">
-            <option value="null">null</option>
-            <option value="parachutiste" *ngFor="let parachutiste of parachutistes | async">{{parachutiste.nom}}</option>
-        </select>
-    </div> -->
-    <hr>
-    <button *ngIf="!edit" (click)="ajouterParachute()" class="form-control btn btn-success"> ajouter </button>
-    <button *ngIf="edit" (click)="modifierParachute()" class="form-control btn btn-warning"> Modifier </button>
-</div>
 </modal>

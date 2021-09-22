@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ParachutisteService } from '../parachutiste.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ParachuteService } from '../parachute.service';
+
 
 
 @Component({
@@ -28,8 +30,25 @@ export class ParachutisteComponent implements OnInit {
 
   modalTitre: string = "";
 
-  constructor(private srvParachutiste: ParachutisteService, private modalService: NgbModal) {
+  parachute: any = {}
+
+  parachutes: any = [
+    {
+      nomHarnais: "oe salut",
+      systemeSecurite: "",
+      nomVoilePrincipale: "",
+      nomVoileSecours: "",
+      tailleVoilePrincipale: 0,
+      tailleVoileSecours: 0,
+      datePliageVoileSecours: new Date(),
+      etat: true,
+      proprietaire: null,
+      utilisateur: null
+    }]
+
+  constructor(private srvParachutiste: ParachutisteService, private srvParachute: ParachuteService, private modalService: NgbModal) {
     this.refresh();
+    this.parachutes = this.srvParachute.findAll();
    }
 
   ngOnInit(): void {
@@ -73,5 +92,17 @@ export class ParachutisteComponent implements OnInit {
       dateLicence: new Date(),
       parachuteEquip: null
     }
+  }
+
+  associerParachute(parachutiste: any, parachute: any){
+    this.formParachutiste = Object.assign({}, parachutiste);
+    this.formParachutiste.parachuteEquipe = parachute;
+    this.srvParachutiste.edit(this.formParachutiste).subscribe(this.refresh);
+  }
+
+  retirerParachute(parachutiste: any){
+    this.formParachutiste = Object.assign({}, parachutiste);
+    this.formParachutiste.parachuteEquipe = null;
+    this.srvParachutiste.edit(this.formParachutiste).subscribe(this.refresh);
   }
 }

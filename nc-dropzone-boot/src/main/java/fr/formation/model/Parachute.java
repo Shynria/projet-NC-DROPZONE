@@ -63,6 +63,7 @@ public class Parachute {
     private Parachutiste proprietaire;
 
     @OneToOne(mappedBy = "parachuteEquipe")
+    @JsonView(Views.Parachute.class)
     private Parachutiste utilisateur;
 
     public int getId() {
