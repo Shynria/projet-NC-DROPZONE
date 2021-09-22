@@ -24,15 +24,15 @@ public class Parachutiste {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MEMBRE_ID", nullable = false)
-    @JsonView(Views.Commons.class)
+    @JsonView({Views.Commons.class, Views.BeerLine.class})
     private int id;
 
     @Column(name = "MEMBRE_NOM", nullable = false, length = 50)
-    @JsonView({Views.Parachutiste.class,Views.Parachute.class})
+    @JsonView({Views.Parachutiste.class, Views.Parachute.class, Views.BeerLine.class})
     private String nom;
 
     @Column(name = "MEMBRE_PRENOM", nullable = false, length = 50)
-    @JsonView(Views.Parachutiste.class)
+    @JsonView({Views.Parachutiste.class, Views.BeerLine.class})
     private String prenom;
 
     @Column(name = "MEMBRE_DATE_LICENCE", nullable = false)
@@ -67,7 +67,7 @@ public class Parachutiste {
     private List<BeerLine> beerLines;
 
     
-    
+
     public List<BeerLine> getBeerLines() {
         return beerLines;
     }
