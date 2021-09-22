@@ -1,8 +1,41 @@
-<hr>
+<nav>
+    <ul class="nav justify-content-center">
+        <img src="../assets/images/dropzonenc.png" name="dropZone">
+        <li class="nav-item">
+            <a id="accueilVol" class="nav-link" [routerLink]="[ '/' ]">Accueil</a>
+        </li>
+        <li class="nav-item">
+            <a id="affichage" class="nav-link" [routerLink]="[ '/affichage' ]">Affichage</a>
+        </li>
+        <li class="nav-item">
+            <a id="saut-tandem" class="nav-link" [routerLink]="[ '/saut-tandem' ]">Saut Tandem</a>
+        </li>
+        <li class="nav-item">
+            <a id="parachutiste" class="nav-link" [routerLink]="[ '/parachutiste' ]">Parachutiste</a>
+        </li>
+        <li class="nav-item">
+            <a id="parachute" class="nav-link" [routerLink]="[ '/parachute' ]">Parachute</a>
+        </li>
+        <li class="nav-item">
+            <a id="avion" class="nav-link" [routerLink]="[ '/avion' ]">Avion</a>
+        </li>
+        <li class="nav-item">
+            <a id="pilote" class="nav-link" [routerLink]="[ '/pilote' ]">Pilote</a>
+        </li>
+        <li class="nav-item">
+            <a id="beer-list" class="nav-link" [routerLink]="[ '/beer-list' ]">Beer list</a>
+        </li>
+    </ul>
+</nav>
 
 <!-- LISTE DES PARACHUTISTES -->
 
 <div *ngIf="!afficheParachutePerso">
+
+    <div class="container">
+        <button style="background-color: #adff2f; margin-bottom: 5px;" class="btn" (click)="ouvrirModalAjout()">Ajouter un parachutiste</button>
+    </div>
+
     <table class="table table-striped">
         <thead>
             <th>Nom</th>
@@ -12,6 +45,9 @@
             <th>Date licence</th>
             <th>Parachute</th>
             <th>Liste des parachutes</th>
+            <th></th>
+            <th></th>
+            <th></th>
         </thead>
         <tbody>
             <tr *ngFor="let parachutiste of parachutistes | async">
@@ -25,29 +61,32 @@
                         {{ parachutiste.parachuteEquipe.id }}
                     </ul>
                 </td>
-                <td> <button (click)="voirParachutePerso(parachutiste)">Voir les parachutes</button> </td>
+                <td> <button style="background-color: #0affff;" class="btn" (click)="voirParachutePerso(parachutiste)">Voir les parachutes</button> </td>
                 <td>
                     <div class="row">
                         <div class="col">
                             <div ngbDropdown class="d-inline-block">
-                                <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Associer parachute</button>
+                                <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Associer
+                                    parachute</button>
                                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                                    <button ngbDropdownItem (click)="retirerParachute(parachutiste)">Retirer parachute</button>
-                                    <button ngbDropdownItem *ngFor="let parachute of parachutes | async" (click)="associerParachute(parachutiste,parachute)">{{parachute.id}}</button>
+                                    <button ngbDropdownItem (click)="retirerParachute(parachutiste)">Retirer
+                                        parachute</button>
+                                    <button ngbDropdownItem *ngFor="let parachute of parachutes | async"
+                                        (click)="associerParachute(parachutiste,parachute)">{{parachute.id}}</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </td>
                 <td><button (click)="editerParachutiste(parachutiste)" class="btn btn-warning">Editer</button></td>
-                <td><button (click)="supprimerParachutiste(parachutiste)" class="btn btn-warning">Supprimer</button></td>
+                <td><button (click)="supprimerParachutiste(parachutiste)" class="btn btn-danger">Supprimer</button></td>
             </tr>
         </tbody>
     </table>
 
     <hr>
 
-    <button (click)="ouvrirModalAjout()" class="form-control btn btn-success"> ajouter </button>
+
 </div>
 
 <!-- FORMULAIRE ADD PARACHUTISTE-->
