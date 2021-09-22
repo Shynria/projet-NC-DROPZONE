@@ -21,8 +21,7 @@
                     <div class="row">
                         <div class="col">
                             <div ngbDropdown class="d-inline-block">
-                                <button class="btn btn-outline-dark" id="hauteur"
-                                    ngbDropdownToggle>Hauteur</button>
+                                <button class="btn btn-outline-dark" id="hauteur" ngbDropdownToggle>Hauteur</button>
                                 <div ngbDropdownMenu aria-labelledby="hauteur">
                                     <button ngbDropdownItem [(ngModel)]="hauteur">1 200 m</button>
                                     <button ngbDropdownItem [(ngModel)]="hauteur">1 600 m</button>
@@ -39,16 +38,19 @@
                     <div class="d-grid gap-2 d-md-block">
                         <div ngbDropdown class="d-inline-block">
                             <button class="btn btn-success" id="dropdownBasic1" ngbDropdownToggle>Personnel</button>
+
                             <div ngbDropdownMenu aria-labelledby="dropdownBasic1" *ngFor="let parachute of parachutes">
                                 <button ngbDropdownItem>{{ parachute.nomHarnais }}, {{ parachute.etat }}</button>
                             </div>
                         </div>
-                        <div ngbDropdown class="d-inline-block">
-                            <button class="btn btn-primary" id="dropdownBasic1" ngbDropdownToggle>Club</button>
-                            <div ngbDropdownMenu aria-labelledby="dropdownBasic1" *ngFor="let parachute of parachutes">
-                                <button ngbDropdownItem>{{ parachute.nomHarnais }}, {{ parachute.etat }}</button>
-                            </div>
+                    </div>
+                    <div ngbDropdown class="d-inline-block">
+                        <button class="btn btn-primary" id="dropdownBasic1" ngbDropdownToggle>Club</button>
+
+                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1" *ngFor="let parachute of parachutes">
+                            <button ngbDropdownItem>{{ parachute.nomHarnais }}, {{ parachute.etat }}</button>
                         </div>
+
                     </div>
                 </td>
             </tr>

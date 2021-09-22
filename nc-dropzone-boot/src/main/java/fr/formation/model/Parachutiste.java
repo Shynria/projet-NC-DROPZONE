@@ -63,9 +63,17 @@ public class Parachutiste {
     @OneToMany(mappedBy = "videoman")
     private List<SautTandem> ListeSautVideoman;
 
+    @ManyToMany(mappedBy = "parachutistes")
+    private List<BeerLine> beerLines;
 
     
-
+    
+    public List<BeerLine> getBeerLines() {
+        return beerLines;
+    }
+    public void setBeerLines(List<BeerLine> beerLines) {
+        this.beerLines = beerLines;
+    }
     public List<SautTandem> getListeSautInstructeur() {
         return ListeSautInstructeur;
     }

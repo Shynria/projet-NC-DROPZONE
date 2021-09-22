@@ -11,9 +11,14 @@ export class InscriptionComponent implements OnInit {
   
   nbPersonnes: any = new Observable;
   hauteur: any = new Observable;
-  parachutiste: any = {};
+  parachutiste: any = {
+    nom: ""
+  };
   nom: any = new Observable;
-  parachute: any = {};
+  parachute: any = {
+    nomHarnais: "",
+    etat: Boolean
+  };
   parachutes: any = [];
   
   constructor(private srvParachutiste: ParachutisteService) {

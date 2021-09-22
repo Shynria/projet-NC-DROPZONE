@@ -2,6 +2,17 @@
     <h4>Les membres qui doivent payer une bière sont :</h4>
 </div>
 
+<hr>
+
+<div>
+    <Label>Ajouter un membre :</Label>
+    <div>
+        <button class="btn btn-success" (click)="ouvrirModal()">Liste des membres</button>
+    </div>
+</div>
+
+<hr>
+
 <div>
     <table class="table table-stripped">
         <thead>
@@ -13,7 +24,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let parachutiste of beerList | async" style="text-align: center;">
+            <tr *ngFor="let parachutiste of beerLists | async" style="text-align: center;">
                 <td>{{ parachutiste.nom }}</td>
                 <td>{{ parachutiste.prenom }}</td>
                 <td>{{ parachutiste.id }}</td>
@@ -24,3 +35,26 @@
         </tbody>
     </table>
 </div>
+
+<modal #modal titre="{{ modalTitre }}">
+    <table class="table table-striped">
+        <thead>
+            <tr style="text-align: center;">
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Niveau</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of parachutistes | async" style="text-align: center;">
+                <td>{{ p.nom }}</td>
+                <td>{{ p.prenom }}</td>
+                <td>{{ p.niveau }}</td>
+                <td>
+                    <button class="btn btn-warning" (click)="ajouterMembre(parachutiste)">Ajouter à la Beer list</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</modal>
