@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -63,16 +64,18 @@ public class Parachutiste {
     @OneToMany(mappedBy = "videoman")
     private List<SautTandem> ListeSautVideoman;
 
-    @ManyToMany(mappedBy = "parachutistes")
-    private List<BeerLine> beerLines;
+    @ManyToOne
+    @JoinColumn(name = "MEMBRE_BEER_LIST")
+    private BeerLine membreBeerLine;
 
     
 
-    public List<BeerLine> getBeerLines() {
-        return beerLines;
+    
+    public BeerLine getMembreBeerLine() {
+        return membreBeerLine;
     }
-    public void setBeerLines(List<BeerLine> beerLines) {
-        this.beerLines = beerLines;
+    public void setMembreBeerLine(BeerLine membreBeerLine) {
+        this.membreBeerLine = membreBeerLine;
     }
     public List<SautTandem> getListeSautInstructeur() {
         return ListeSautInstructeur;

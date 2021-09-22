@@ -7,9 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -25,14 +23,11 @@ public class BeerLine {
     @JsonView(Views.Commons.class)
     private int id;
 
-    @ManyToMany
-    @JoinTable(
-        name = "BEER_LINE_MEMBRE",
-        joinColumns = @JoinColumn(name = "ID_BEER_LINE", referencedColumnName = "BEER_LINE_ID"),
-		inverseJoinColumns = @JoinColumn(name = "ID_MEMBRE", referencedColumnName = "MEMBRE_ID")
-    )
-    @JsonView(Views.BeerLine.class)
+    @OneToMany(mappedBy = "membreBeerLine")
+    @JsonView({Views.BeerLine.class, Views.Parachutiste.class})
     private List<Parachutiste> parachutistes;
+
+
 
 
 

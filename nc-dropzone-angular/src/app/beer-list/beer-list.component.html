@@ -13,12 +13,12 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let beerList of beerLists | async" style="text-align: center;">
-                <td>{{ parachutiste.nom }}</td>
-                <td>{{ parachutiste.prenom }}</td>
-                <td>{{ parachutiste.id }}</td>
+            <tr *ngFor="let parachutistes of beerList | async" style="text-align: center;">
+                <td>{{ parachutistes.nom }}</td>
+                <td>{{ parachutistes.prenom }}</td>
+                <td>{{ parachutistes.id }}</td>
                 <td>
-                    <button class="btn btn-warning" (click)="supprimerMembre(parachutiste)">Retirer de la liste</button>
+                    <button class="btn btn-warning" (click)="supprimerMembre(parachutistes)">Retirer de la liste</button>
                 </td>
             </tr>
         </tbody>
@@ -50,7 +50,7 @@
                 <td>{{ p.prenom }}</td>
                 <td>{{ p.niveau }}</td>
                 <td>
-                    <button class="btn btn-warning" (click)="ajouterMembre(parachutiste)">Ajouter à la Beer list</button>
+                    <button class="btn btn-warning" (click)="ajouterMembre(parachutistes)">Ajouter à la Beer list</button>
                 </td>
             </tr>
         </tbody>

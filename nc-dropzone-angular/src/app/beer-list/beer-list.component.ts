@@ -11,41 +11,39 @@ export class BeerListComponent implements OnInit {
   @ViewChild('modal') modal: any;
 
   modalTitre: string = "";
-  
-  beerLists: any = [];
-  beerList: any = {
-    id: 0,
-    parachutiste: {
+
+  parachutistes: any = [
+    {
       nom: "",
       prenom: "",
-      niveau: ""
+      licence: 0
     }
-  }
-  parachutistes: any = [];
+  ];
 
-  parachutiste: any = {};
-  
-  
+  beerList: any = {
+    id: 0,
+    parachutistes: [] 
+  };
 
   constructor(private srvBeerList: BeerListService, private srvParachutiste: ParachutisteService) { 
-    this.beerLists = this.srvBeerList.findAll();
+    this.beerList = this.srvBeerList.findAll();
     this.parachutistes = this.srvParachutiste.findAll();
   }
 
-  refresh = () => this.beerLists = this.srvBeerList.findAll();
+  refresh = () => this.beerList = this.srvBeerList.findAll();
 
   ouvrirModal(){
     this.modal.open();
     this.modalTitre = "Liste des membres du club"
   }
 
-  ajouterMembre(parachutiste: any){
-    this.srvBeerList.add(parachutiste).subscribe(this.refresh);
+  ajouterMembre(parachutistes: any){
+    this.srvBeerList.add(parachutistes).subscribe(this.refresh);
     // il faut le subscribe pour que ça marche
   };
 
-  supprimerMembre(parachutiste: any){
-    this.srvBeerList.delete(parachutiste).subscribe(this.refresh);
+  supprimerMembre(parachutistes: any){
+    this.srvBeerList.delete(parachutistes).subscribe(this.refresh);
   };
 
 
