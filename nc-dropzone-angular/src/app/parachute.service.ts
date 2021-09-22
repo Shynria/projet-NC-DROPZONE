@@ -28,4 +28,8 @@ export class ParachuteService {
   delete(parachute: any){
     return this.http.delete(this.ApiUrl+`/${parachute.id}`)
   }
+
+  findAllByProprioId(proprietaireId: number){
+    return this.http.get(`${this.ApiUrl}/by-proprietaire/${proprietaireId}`)
+  }
 }

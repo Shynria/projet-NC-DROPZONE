@@ -32,6 +32,12 @@ public class ParachuteApiController {
         return this.daoParachute.findAll();
     }
 
+    @GetMapping("/by-proprietaire/{proprietaireId}")
+    @JsonView(Views.Parachute.class)
+    public List<Parachute> findAllByProprioId(@PathVariable int prorpietaireId) {
+        return this.daoParachute.findAllByProprietaireId(prorpietaireId);
+    }
+
     @PostMapping
     public boolean ajouter(@RequestBody Parachute parachute) {
         try {

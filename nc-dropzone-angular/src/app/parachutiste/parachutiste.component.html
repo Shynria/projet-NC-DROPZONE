@@ -85,10 +85,11 @@
 
 
 <div *ngIf="afficheParachutePerso">
-    <h2>Parachutes de {{parachutisteVoirParachute.prenom}} {{parachutisteVoirParachute.nom}}</h2>
+    <h2>Parachutes de {{proprietaireParachute.prenom}} {{proprietaireParachute.nom}}</h2>
     <hr>
     <table class="table table-striped">
         <thead>
+            <th>id</th>
             <th>Harnais</th>
             <th>Système de sécurité</th>
             <th>Nom voile principale</th>
@@ -97,10 +98,10 @@
             <th>Taille voile de secours</th>
             <th>Date de pliage</th>
             <th>Etat</th>
-            <th>Utilisateur</th>
         </thead>
         <tbody>
-            <tr *ngFor="let parachute of parachutesPerso | async">
+            <tr *ngFor="let parachute of parachutesPerso">
+                <td> {{ parachute.id }}</td>
                 <td> {{ parachute.nomHarnais }}</td>
                 <td> {{ parachute.systemeSecurite }}</td>
                 <td> {{ parachute.nomVoilePrincipale }}</td>
@@ -108,9 +109,9 @@
                 <td> {{ parachute.tailleVoilePrincipale }}</td>
                 <td> {{ parachute.tailleVoileSecours }}</td>
                 <td> {{ parachute.datePliageVoileSecours }}</td>
-                <td> {{ (parachute.etat | disponible)}}</td>
-                <!-- <td><button (click)="editerParachute(parachute)" class="btn btn-warning">Editer</button></td>
-                <td><button (click)="supprimerParachute(parachute)" class="btn btn-warning">Supprimer</button></td> -->
+                <td> {{ parachute.etat }}</td>
+                <td><button (click)="editerParachute(parachute)" class="btn btn-warning">Editer</button></td>
+                <td><button (click)="supprimerParachute(parachute)" class="btn btn-warning">Supprimer</button></td>
             </tr>
         </tbody>
     </table>
