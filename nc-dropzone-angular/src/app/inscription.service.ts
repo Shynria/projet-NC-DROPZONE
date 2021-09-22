@@ -6,10 +6,25 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class InscriptionService {
-  private apiUrl: string = `${environment.apiUrl}/parachutiste`
+  private ApiUrl: string = `${environment.apiUrl}/saut`
   
   constructor(private http: HttpClient) {
+  }
 
+  findAll(){
+    return this.http.get(this.ApiUrl)
+  }
+
+  add(saut: any){
+    return this.http.post(this.ApiUrl, saut)
+  }
+
+  edit(saut: any){
+    return this.http.put(this.ApiUrl+`/${saut.id}`, saut)
+  }
+
+  delete(saut: any){
+    return this.http.delete(this.ApiUrl+`/${saut.id}`)
   }
 
 }

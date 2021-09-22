@@ -10,8 +10,11 @@ import { ParachutisteService } from '../parachutiste.service';
 export class InscriptionComponent implements OnInit {
   
   nbPersonnes: any = new Observable;
+  hauteur: any = new Observable;
   parachutiste: any = {};
   nom: any = new Observable;
+  parachute: any = {};
+  parachutes: any = [];
   
   constructor(private srvParachutiste: ParachutisteService) {
     this.parachutiste = this.srvParachutiste.findAll();

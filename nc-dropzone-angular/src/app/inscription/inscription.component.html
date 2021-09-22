@@ -5,7 +5,7 @@
         <thead style="text-align: center;">
             <tr>
                 <th>Nom</th>
-                <th>Hauteur du saut  :</th>
+                <th>Hauteur du saut :</th>
                 <th>Choisir un parachute :</th>
             </tr>
         </thead>
@@ -14,23 +14,41 @@
                 <td>
                     <div>
                         <label for="typeahead-basic">Nom :</label>
-                        <input type="text"/>
+                        <input type="text" name="nom" [(ngModel)]="parachutiste.nom" />
                     </div>
                 </td>
                 <td>
-                    <select name="hauteur" id="hauteur">
-                        <option value="1200">1 200 m</option>
-                        <option value="1600">1 600 m</option>
-                        <option value="2000">2 000 m</option>
-                        <option value="2500">2 500 m</option>
-                        <option value="4000">4 000 m</option>
-                        <option value="6000">6 000 m</option>
-                    </select>
+                    <div class="row">
+                        <div class="col">
+                            <div ngbDropdown class="d-inline-block">
+                                <button class="btn btn-outline-dark" id="hauteur"
+                                    ngbDropdownToggle>Hauteur</button>
+                                <div ngbDropdownMenu aria-labelledby="hauteur">
+                                    <button ngbDropdownItem [(ngModel)]="hauteur">1 200 m</button>
+                                    <button ngbDropdownItem [(ngModel)]="hauteur">1 600 m</button>
+                                    <button ngbDropdownItem [(ngModel)]="hauteur">2 000 m</button>
+                                    <button ngbDropdownItem [(ngModel)]="hauteur">2 500 m</button>
+                                    <button ngbDropdownItem [(ngModel)]="hauteur">4 000 m</button>
+                                    <button ngbDropdownItem [(ngModel)]="hauteur">6 000 m</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </td>
                 <td>
                     <div class="d-grid gap-2 d-md-block">
-                        <button class="btn btn-primary">Club</button>
-                        <button class="btn btn-success">Personnel</button>
+                        <div ngbDropdown class="d-inline-block">
+                            <button class="btn btn-success" id="dropdownBasic1" ngbDropdownToggle>Personnel</button>
+                            <div ngbDropdownMenu aria-labelledby="dropdownBasic1" *ngFor="let parachute of parachutes">
+                                <button ngbDropdownItem>{{ parachute.nomHarnais }}, {{ parachute.etat }}</button>
+                            </div>
+                        </div>
+                        <div ngbDropdown class="d-inline-block">
+                            <button class="btn btn-primary" id="dropdownBasic1" ngbDropdownToggle>Club</button>
+                            <div ngbDropdownMenu aria-labelledby="dropdownBasic1" *ngFor="let parachute of parachutes">
+                                <button ngbDropdownItem>{{ parachute.nomHarnais }}, {{ parachute.etat }}</button>
+                            </div>
+                        </div>
                     </div>
                 </td>
             </tr>
