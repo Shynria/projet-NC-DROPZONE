@@ -17,7 +17,7 @@ const routes: Routes = [
   {path: "pilote", component: PiloteComponent},
   {path: "inscription", component: InscriptionComponent},
   {path: "affichage", component: AffichageComponent},
-  {path: "vol", component: VolEditionComponent},
+  {path: "", component: VolEditionComponent},
   {path: "beer-list", component: BeerListComponent},
   {path: "saut-tandem", component: SautTandemComponent}
 ];

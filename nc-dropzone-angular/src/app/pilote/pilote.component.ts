@@ -32,7 +32,7 @@ export class PiloteComponent implements OnInit {
 
   ajouterPiloteModal() {
     this.formPilote = this.initPilote();
-    this.modalTitre = "Ajouter un avion";
+    this.modalTitre = "Ajouter un pilote";
     this.edition = false;
     this.modal.open();
   }
@@ -48,7 +48,7 @@ export class PiloteComponent implements OnInit {
 
   modifierPiloteModal(avion: any) {
     this.formPilote = Object.assign({}, avion);
-    this.modalTitre = "Modifier un avion";
+    this.modalTitre = "Modifier un pilote";
     this.edition = true;
     this.modal.open();
   }

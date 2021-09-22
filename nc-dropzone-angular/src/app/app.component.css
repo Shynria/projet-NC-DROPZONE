@@ -1,6 +1,7 @@
 nav {
   background-color: rgb(94, 91, 91);
   height: 80px;
+  margin-bottom: 5px;
 }
 
 img[name="dropZone"]{
