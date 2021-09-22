@@ -4,22 +4,20 @@
       <input type="text" [(ngModel)]="formSautTandem.parachutiste.nom" class="form-control">
   </div>
   <div class="form-group">
-      <label>Capacité</label>
-      <input type="number" [(ngModel)]="formSautTandem.capacite" class="form-control">
+      <label>Prenom du parachutiste</label>
+      <input type="number" [(ngModel)]="formSautTandem.parachutiste.prenom" class="form-control">
   </div>
   <div class="form-group">
-      <label>Nombre de rotation maximal</label>
-      <input type="number" [(ngModel)]="formSautTandem.nbRotaMax" class="form-control">
+      <label>Nom de l'instructeur</label>
+      <select class="form-control">
+        <option *ngFor="let p of parachutistes" value="p.nom">{{ p.nom }}</option>
+      </select>
   </div>
   <div class="form-group">
-      <label>Altitude maximal</label>
-      <input type="number" [(ngModel)]="formSautTandem.altitudeMax" class="form-control">
-  </div>
-  <div class="form-group">
-      <label>Disponible</label>
-      <input type="checkbox" [(ngModel)]="formSautTandem.disponible" class="form-control">
-  </div>
-
+      <label>Nom du videoman</label>
+      <select class="form-control">
+        <option *ngFor="let p of parachutistes" value="p.nom">{{ p.nom }}</option>
+      </select>  </div>
   <div>
       <button *ngIf="edition" type="button" class="btn btn-outline-dark form-control" (click)="modifierSautTandem()">Modifier</button>
       <button *ngIf="!edition" type="button" class="btn btn-outline-dark form-control" (click)="ajouterSautTandem()">Ajouter</button>
@@ -31,24 +29,26 @@
 <table class="table table-striped">
   <thead>
       <tr>
-          <th>Nom</th>
-          <th>Capacité</th>
-          <th>Nb rotation</th>
-          <th>Altitude max</th>
-          <th>Disponible</th>
+          <th>Nom du parachutiste</th>
+          <th>Prénom du parachutiste</th>
+          <th>Nom de l'instructeur</th>
+          <th>Prénom de l'instructeur</th>
+          <th>Nom du vidéoman</th>
+          <th>Prénom du vidéoman</th>
           <th></th>
           <th></th>
       </tr>
   </thead>
   <tbody>
       <tr *ngFor="let s of sautsTandem | async">
-          <td>{{ sautsTandem.nom }}</td>
-          <td>{{ avion.capacite }}</td>
-          <td>{{ avion.nbRotaMax }}</td>
-          <td>{{ avion.altitudeMax }}</td>
-          <td>{{ avion.disponible }}</td>
-          <td><button class="btn btn-warning" (click)="modifierAvionModal(avion)">Editer</button></td>
-          <td><button class="btn btn-danger" (click)="supprimerAvion(avion)">Supprimer</button></td>
+          <td>{{ s.parachutiste.nom }}</td>
+          <td>{{ s.parachutiste.prenom }}</td>
+          <td>{{ s.instructeur.nom }}</td>
+          <td>{{ s.instructeur.prenom }}</td>
+          <td>{{ s.videoman.nom }}</td>
+          <td>{{ s.videoman.prenom }}</td>
+          <td><button class="btn btn-warning" (click)="modifierSautTandemModal(s)">Editer</button></td>
+          <td><button class="btn btn-danger" (click)="supprimerSautTandem(s)">Supprimer</button></td>
       </tr>
   </tbody>
 </table>
