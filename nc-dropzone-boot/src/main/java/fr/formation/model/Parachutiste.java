@@ -40,6 +40,7 @@ public class Parachutiste {
     private LocalDate dateLicence;
 
     @OneToMany(mappedBy = "proprietaire")
+    @JsonView(Views.Parachutiste.class)
     private List<Parachute> listeParachute;
 
     @OneToOne
