@@ -1,3 +1,33 @@
+<nav>
+    <ul class="nav justify-content-center">
+        <img src="../assets/images/dropzonenc.png" name="dropZone">
+        <li class="nav-item">
+            <a id="accueilVol" class="nav-link" [routerLink]="[ '/' ]">Accueil</a>
+        </li>
+        <li class="nav-item">
+            <a id="affichage" class="nav-link" [routerLink]="[ '/affichage' ]">Affichage</a>
+        </li>
+        <li class="nav-item">
+            <a id="saut-tandem" class="nav-link" [routerLink]="[ '/saut-tandem' ]">Saut Tandem</a>
+        </li>
+        <li class="nav-item">
+            <a id="parachutiste" class="nav-link" [routerLink]="[ '/parachutiste' ]">Parachutiste</a>
+        </li>
+        <li class="nav-item">
+            <a id="parachute" class="nav-link" [routerLink]="[ '/parachute' ]">Parachute</a>
+        </li>
+        <li class="nav-item">
+            <a id="avion" class="nav-link" [routerLink]="[ '/avion' ]">Avion</a>
+        </li>
+        <li class="nav-item">
+            <a id="pilote" class="nav-link" [routerLink]="[ '/pilote' ]">Pilote</a>
+        </li>
+        <li class="nav-item">
+            <a id="beer-list" class="nav-link" [routerLink]="[ '/beer-list' ]">Beer list</a>
+        </li>
+    </ul>
+</nav>
+
 <div class="container">
     <div class="row">
         <div class="col-sm-5">
@@ -56,7 +86,7 @@
                 </div>
             </div>
             <div class="row">
-                <button class="btn btn-warning form-control">Ajouter un vol</button>
+                <button style="background-color: #ff5050;" class="btn form-control">Ajouter un vol</button>
             </div>
         </div>
     </div>

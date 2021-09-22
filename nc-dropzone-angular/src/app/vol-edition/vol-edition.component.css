@@ -3,6 +3,130 @@ table ul {
     padding-left: 0;
 }
 
-h3 {
+nav {
+    background-color: rgb(94, 91, 91);
+    height: 80px;
+    margin-bottom: 5px;
+    margin-left: -500px;
+    margin-right: -500px;
+  }
+  
+  img[name="dropZone"]{
+    position: fixed;
+    left: 50px;
+    height: 70px;
+    margin-top: 5px;
+    
+  }
+  
+  nav a[id="accueilVol"]{
+    display: block;
+    font: normal bold 19px/23px "Roboto",Helvetica,Arial,Verdana,sans-serif;
+    color: #ff5050;
+    text-decoration: initial;
+      transition: all 0.25s ease-in-out;
+    padding-top: 30px;
+  }
+  nav a[id="accueilVol"]:hover {
+    padding-top: 25px;
+      animation: backInUp 0.5s;
+    color: #ff5050;
+  }
+
+  nav a[id="affichage"]{
+    display: block;
+    font: normal bold 19px/23px "Roboto",Helvetica,Arial,Verdana,sans-serif;
     color: white;
-}
+    text-decoration: initial;
+      transition: all 0.25s ease-in-out;
+    padding-top: 30px;
+  }
+  nav a[id="affichage"]:hover {
+    padding-top: 25px;
+      animation: backInUp 0.5s;
+    color: #ffa600;
+  }
+  
+  nav a[id="saut-tandem"]{
+    display: block;
+    font: normal bold 19px/23px "Roboto",Helvetica,Arial,Verdana,sans-serif;
+    color: white;
+    text-decoration: initial;
+      transition: all 0.25s ease-in-out;
+    padding-top: 30px;
+  }
+  nav a[id="saut-tandem"]:hover {
+    padding-top: 25px;
+      animation: backInUp 0.5s;
+    color: #ffff2e;
+  }
+  
+  nav a[id="parachutiste"]{
+    display: block;
+    font: normal bold 19px/23px "Roboto",Helvetica,Arial,Verdana,sans-serif;
+    color: white;
+    text-decoration: initial;
+      transition: all 0.25s ease-in-out;
+    padding-top: 30px;
+  }
+  nav a[id="parachutiste"]:hover {
+    padding-top: 25px;
+      animation: backInUp 0.5s;
+    color: #adff2f;
+  }
+  
+  nav a[id="parachute"]{
+    display: block;
+    font: normal bold 19px/23px "Roboto",Helvetica,Arial,Verdana,sans-serif;
+    color: white;
+    text-decoration: initial;
+      transition: all 0.25s ease-in-out;
+    padding-top: 30px;
+  }
+  nav a[id="parachute"]:hover {
+    padding-top: 25px;
+      animation: backInUp 0.5s;
+    color: #0affff;
+  }
+  
+  nav a[id="avion"]{
+    display: block;
+    font: normal bold 19px/23px "Roboto",Helvetica,Arial,Verdana,sans-serif;
+    color: white;
+    text-decoration: initial;
+      transition: all 0.25s ease-in-out;
+    padding-top: 30px;
+  }
+  nav a[id="avion"]:hover {
+    padding-top: 25px;
+      animation: backInUp 0.5s;
+    color: #7070ff;
+  }
+  
+  nav a[id="pilote"]{
+    display: block;
+    font: normal bold 19px/23px "Roboto",Helvetica,Arial,Verdana,sans-serif;
+    color: white;
+    text-decoration: initial;
+      transition: all 0.25s ease-in-out;
+    padding-top: 30px;
+  }
+  nav a[id="pilote"]:hover {
+    padding-top: 25px;
+      animation: backInUp 0.5s;
+    color: #a456fd;
+  }
+
+  nav a[id="beer-list"]{
+    display: block;
+    font: normal bold 19px/23px "Roboto",Helvetica,Arial,Verdana,sans-serif;
+    color: white;
+    text-decoration: initial;
+      transition: all 0.25s ease-in-out;
+    padding-top: 30px;
+  }
+  nav a[id="beer-list"]:hover {
+    padding-top: 25px;
+      animation: backInUp 0.5s;
+    color: #f050ff;
+  }
