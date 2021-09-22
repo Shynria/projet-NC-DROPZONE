@@ -64,17 +64,16 @@ public class Parachutiste {
     @OneToMany(mappedBy = "videoman")
     private List<SautTandem> ListeSautVideoman;
 
-    @OneToOne(mappedBy = "parachutiste")
-    private BeerLine membreBeerLine;
+    @Column(name = "MEMBRE_BEER_LINE")
+    private boolean isBeerLine;
 
     
-
     
-    public BeerLine getMembreBeerLine() {
-        return membreBeerLine;
+    public boolean isBeerLine() {
+        return isBeerLine;
     }
-    public void setMembreBeerLine(BeerLine membreBeerLine) {
-        this.membreBeerLine = membreBeerLine;
+    public void setBeerLine(boolean isBeerLine) {
+        this.isBeerLine = isBeerLine;
     }
     public List<SautTandem> getListeSautInstructeur() {
         return ListeSautInstructeur;

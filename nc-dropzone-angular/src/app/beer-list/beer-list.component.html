@@ -28,15 +28,6 @@
     </ul>
 </nav>
 
-<div class="container">
-    <button style="background-color: #f050ff; margin-bottom: 5px;" class="btn" (click)="ouvrirModal()">Voir la liste des membres</button>
-</div>
-
-
-<div>
-    <h4>Les membres qui doivent payer une bière sont :</h4>
-</div>
-
 <div>
     <table class="table table-stripped">
         <thead>
@@ -49,44 +40,22 @@
             </tr>
         </thead>
         <tbody >
-            <tr *ngFor="let b of beerList | async" style="text-align: center;">
-                <td>{{ b.parachutiste.nom }}</td>
-                <td>{{ b.parachutiste.prenom }}</td>
-                <td>{{ b.parachutiste.niveau }}</td>
-                <td>{{ b.parachutiste.id }}</td>
+            <tr *ngFor="let p of parachutistes | async" style="text-align: center;">
+                <td>{{ p.nom }}</td>
+                <td>{{ p.prenom }}</td>
+                <td>{{ p.niveau }}</td>
+                <td>{{ p.licence }}</td>
                 <td>
-                    <button class="btn btn-warning" (click)="retirerMembre(parachutiste)">Retirer de la
-                        liste</button>
+                    <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic">
+                        <label ngbButtonLabel class="btn-outline-success">
+                          <input ngbButton type="radio" value="false" [{ngModel}]="{p.isBeerLine}"> Non
+                        </label>
+                        <label ngbButtonLabel class="btn-outline-warning">
+                          <input ngbButton type="radio" value="true" [{ngModel}]="{p.isBeerLine}"> Oui
+                        </label>
+                      </div>
                 </td>
             </tr>
         </tbody>
     </table>
 </div>
-
-<hr>
-
-
-
-<modal #modal titre="{{ modalTitre }}">
-    <table class="table table-striped">
-        <thead>
-            <tr style="text-align: center;">
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Niveau</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let p of parachutistes | async" style="text-align: center;">
-                <td>{{ p.nom }}</td>
-                <td>{{ p.prenom }}</td>
-                <td>{{ p.niveau }}</td>
-                <td>
-                    <button class="btn btn-warning" (click)="ajouterMembre(parachutiste)">Ajouter à la Beer
-                        list</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</modal>

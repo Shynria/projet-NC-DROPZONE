@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { BeerListService } from '../beer-list.service';
+import { Component, OnInit } from '@angular/core';
 import { ParachutisteService } from '../parachutiste.service';
 
 @Component({
@@ -8,40 +7,29 @@ import { ParachutisteService } from '../parachutiste.service';
   styleUrls: ['./beer-list.component.css']
 })
 export class BeerListComponent implements OnInit {
-  @ViewChild('modal') modal: any;
+  
+  parachutiste: any = {
+    nom: "",
+      prenom: "",
+      licence: 0,
+      isBeerLine: false
+  }
 
-  modalTitre: string = "";
+  parachutistes: any = [
+    {
+      nom: "",
+      prenom: "",
+      licence: 0,
+      isBeerLine: false
+    }
+  ];
 
-  parachutistes: any = [];
-
-  parachutiste: any = {};
-
-  beerList: any = {
-    id: 0,
-    parachutiste: {} 
-  };
-
-  constructor(private srvBeerList: BeerListService, private srvParachutiste: ParachutisteService) { 
-    this.beerList = this.srvBeerList.findAll();
+ 
+  constructor(private srvParachutiste: ParachutisteService) { 
     this.parachutistes = this.srvParachutiste.findAll();
   }
 
-  refresh = () => this.beerList = this.srvBeerList.findAll();
-
-  ouvrirModal(){
-    this.modal.open();
-    this.modalTitre = "Liste des membres du club"
-  }
-
-  ajouterMembre(parachutiste: any){
-    this.srvBeerList.add(parachutiste).subscribe(this.refresh);
-    // il faut le subscribe pour que ça marche
-  };
-
-  retirerMembre(parachutiste: any){
-    this.srvBeerList.delete(parachutiste).subscribe(this.refresh);
-  };
-
+  refresh = () => this.parachutistes = this.srvParachutiste.findAll();
 
   ngOnInit(): void {
   }
