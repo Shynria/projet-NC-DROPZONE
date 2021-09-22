@@ -1,72 +1,107 @@
+<nav>
+  <ul class="nav justify-content-center">
+    <img src="../assets/images/dropzonenc.png" name="dropZone">
+    <li class="nav-item">
+      <a id="accueilVol" class="nav-link" [routerLink]="[ '/' ]">Accueil</a>
+    </li>
+    <li class="nav-item">
+      <a id="affichage" class="nav-link" [routerLink]="[ '/affichage' ]">Affichage</a>
+    </li>
+    <li class="nav-item">
+      <a id="saut-tandem" class="nav-link" [routerLink]="[ '/saut-tandem' ]">Saut Tandem</a>
+    </li>
+    <li class="nav-item">
+      <a id="parachutiste" class="nav-link" [routerLink]="[ '/parachutiste' ]">Parachutiste</a>
+    </li>
+    <li class="nav-item">
+      <a id="parachute" class="nav-link" [routerLink]="[ '/parachute' ]">Parachute</a>
+    </li>
+    <li class="nav-item">
+      <a id="avion" class="nav-link" [routerLink]="[ '/avion' ]">Avion</a>
+    </li>
+    <li class="nav-item">
+      <a id="pilote" class="nav-link" [routerLink]="[ '/pilote' ]">Pilote</a>
+    </li>
+    <li class="nav-item">
+      <a id="beer-list" class="nav-link" [routerLink]="[ '/beer-list' ]">Beer list</a>
+    </li>
+  </ul>
+</nav>
+
 <modal #modal titre="{{ modalTitre }}">
   <div class="form-group">
     <label>Hauteur du saut</label>
-        <select [(ngModel)]="formSautTandem.hauteur" class="form-control">
-            <option value="MILLE_DEUX_CENTS">1200</option>
-            <option value="MILLE_SIX_CENTS">1600</option>
-            <option value="DEUX_MILLES">2000</option>
-            <option value="DEUX_MILLES_CINQ_CENTS">2500</option>
-            <option value="QUATRE_MILLES">4000</option>
-            <option value="SIX_MILLES">6000</option>
-        </select>
+    <select [(ngModel)]="formSautTandem.hauteur" class="form-control">
+      <option value="MILLE_DEUX_CENTS">1200</option>
+      <option value="MILLE_SIX_CENTS">1600</option>
+      <option value="DEUX_MILLES">2000</option>
+      <option value="DEUX_MILLES_CINQ_CENTS">2500</option>
+      <option value="QUATRE_MILLES">4000</option>
+      <option value="SIX_MILLES">6000</option>
+    </select>
   </div>
   <div class="form-group">
-      <label>Nom du parachustiste</label>
-      <select [(ngModel)]="formSautTandem.parachutiste.nom" class="form-control">
-        <option *ngFor="let p of parachutistesDebutant | async" value="p.nom">{{ p.nom }}</option>
-      </select>
+    <label>Nom du parachustiste</label>
+    <select [(ngModel)]="formSautTandem.parachutiste.nom" class="form-control">
+      <option *ngFor="let p of parachutistesDebutant | async" value="p.nom">{{ p.nom }}</option>
+    </select>
   </div>
   <div class="form-group">
-      <label>Prenom du parachutiste</label>
-      <select [(ngModel)]="formSautTandem.parachutiste.prenom" class="form-control">
-        <option *ngFor="let p of parachutistesDebutant | async" value="p.nom">{{ p.prenom }}</option>
-      </select>
+    <label>Prenom du parachutiste</label>
+    <select [(ngModel)]="formSautTandem.parachutiste.prenom" class="form-control">
+      <option *ngFor="let p of parachutistesDebutant | async" value="p.nom">{{ p.prenom }}</option>
+    </select>
   </div>
   <div class="form-group">
-      <label>Nom de l'instructeur</label>
-      <select [(ngModel)]="formSautTandem.instructeur.nom" class="form-control">
-        <option *ngFor="let p of parachutistesConfirme | async" value="p.nom">{{ p.nom }} {{ p.prenom }}</option>
-      </select>
+    <label>Nom de l'instructeur</label>
+    <select [(ngModel)]="formSautTandem.instructeur.nom" class="form-control">
+      <option *ngFor="let p of parachutistesConfirme | async" value="p.nom">{{ p.nom }} {{ p.prenom }}</option>
+    </select>
   </div>
   <div class="form-group">
-      <label>Nom du videoman</label>
-      <select [(ngModel)]="formSautTandem.videoman.nom" class="form-control">
-        <option *ngFor="let p of parachutistesConfirme | async" value="p.nom">{{ p.nom }} {{ p.prenom }}</option>
-      </select>
+    <label>Nom du videoman</label>
+    <select [(ngModel)]="formSautTandem.videoman.nom" class="form-control">
+      <option *ngFor="let p of parachutistesConfirme | async" value="p.nom">{{ p.nom }} {{ p.prenom }}</option>
+    </select>
   </div>
   <div>
-      <button *ngIf="edition" type="button" class="btn btn-outline-dark form-control" (click)="modifierSautTandem()">Modifier</button>
-      <button *ngIf="!edition" type="button" class="btn btn-outline-dark form-control" (click)="ajouterSautTandem()">Ajouter</button>
+    <button *ngIf="edition" type="button" class="btn btn-outline-dark form-control"
+      (click)="modifierSautTandem()">Modifier</button>
+    <button *ngIf="!edition" type="button" class="btn btn-outline-dark form-control"
+      (click)="ajouterSautTandem()">Ajouter</button>
   </div>
 </modal>
 
-<button class="btn btn-success" (click)="ajouterSautTandemModal()">Ajouter</button>
+<div class="container">
+  <button style="background-color: #ffff2e; margin-bottom: 5px;" class="btn"
+    (click)="ajouterSautTandemModal()">Ajouter un saut-tandem</button>
+</div>
 
 <table class="table table-striped">
   <thead>
-      <tr>
-          <th>Hauteur du saut</th>
-          <th>Nom du parachutiste</th>
-          <th>Prénom du parachutiste</th>
-          <th>Nom de l'instructeur</th>
-          <th>Prénom de l'instructeur</th>
-          <th>Nom du vidéoman</th>
-          <th>Prénom du vidéoman</th>
-          <th></th>
-          <th></th>
-      </tr>
+    <tr>
+      <th>Hauteur du saut</th>
+      <th>Nom du parachutiste</th>
+      <th>Prénom du parachutiste</th>
+      <th>Nom de l'instructeur</th>
+      <th>Prénom de l'instructeur</th>
+      <th>Nom du vidéoman</th>
+      <th>Prénom du vidéoman</th>
+      <th></th>
+      <th></th>
+    </tr>
   </thead>
   <tbody>
-      <tr *ngFor="let s of sautTandem | async">
-          <td>{{ s.hauteur }}</td>
-          <td>{{ s.parachutiste.nom }}</td>
-          <td>{{ s.parachutiste.prenom }}</td>
-          <td>{{ s.instructeur.nom }}</td>
-          <td>{{ s.instructeur.prenom }}</td>
-          <td>{{ s.videoman.nom }}</td>
-          <td>{{ s.videoman.prenom }}</td>
-          <td><button class="btn btn-warning" (click)="modifierSautTandemModal(s)">Editer</button></td>
-          <td><button class="btn btn-danger" (click)="supprimerSautTandem(s)">Supprimer</button></td>
-      </tr>
+    <tr *ngFor="let s of sautTandem | async">
+      <td>{{ s.hauteur }}</td>
+      <td>{{ s.parachutiste.nom }}</td>
+      <td>{{ s.parachutiste.prenom }}</td>
+      <td>{{ s.instructeur.nom }}</td>
+      <td>{{ s.instructeur.prenom }}</td>
+      <td>{{ s.videoman.nom }}</td>
+      <td>{{ s.videoman.prenom }}</td>
+      <td><button class="btn btn-warning" (click)="modifierSautTandemModal(s)">Editer</button></td>
+      <td><button class="btn btn-danger" (click)="supprimerSautTandem(s)">Supprimer</button></td>
+    </tr>
   </tbody>
 </table>
