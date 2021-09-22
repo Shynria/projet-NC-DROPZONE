@@ -15,6 +15,7 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { AffichageComponent } from './affichage/affichage.component';
 import { VolEditionComponent } from './vol-edition/vol-edition.component';
 import { DisponiblePipe } from './disponible.pipe';
+import { BeerListComponent } from './beer-list/beer-list.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { DisponiblePipe } from './disponible.pipe';
     InscriptionComponent,
     AffichageComponent,
     VolEditionComponent,
-    DisponiblePipe
+    DisponiblePipe,
+    BeerListComponent
   ],
   imports: [
     BrowserModule,
