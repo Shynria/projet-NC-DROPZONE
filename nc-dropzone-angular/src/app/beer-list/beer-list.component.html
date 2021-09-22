@@ -1,1 +1,26 @@
-<p>beer-list works!</p>
+<div>
+    <h4>Les membres qui doivent payer une bière sont :</h4>
+</div>
+
+<div>
+    <table class="table table-stripped">
+        <thead>
+            <tr style="text-align: center;">
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Numero de licence</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let parachutiste of beerList | async" style="text-align: center;">
+                <td>{{ parachutiste.nom }}</td>
+                <td>{{ parachutiste.prenom }}</td>
+                <td>{{ parachutiste.id }}</td>
+                <td>
+                    <button class="btn btn-warning" (click)="supprimerMembre(parachutiste)">Retirer de la liste</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
