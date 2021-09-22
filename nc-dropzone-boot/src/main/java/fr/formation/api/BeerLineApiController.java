@@ -63,6 +63,7 @@ public class BeerLineApiController {
         }
     }
     @GetMapping("/membres-beer-line")
+    @JsonView({Views.BeerLine.class, Views.Parachutiste.class})
     public List<Parachutiste> affiche(){
         return daoBeerLine.findAllFetchingParachutistes();
     }

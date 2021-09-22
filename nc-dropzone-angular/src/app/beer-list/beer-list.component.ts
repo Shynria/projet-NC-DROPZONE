@@ -32,13 +32,13 @@ export class BeerListComponent implements OnInit {
     this.modalTitre = "Liste des membres du club"
   }
 
-  ajouterMembre(parachutistes: any){
-    this.srvBeerList.add(parachutistes).subscribe(this.refresh);
+  ajouterMembre(parachutiste: any){
+    this.srvBeerList.add(parachutiste).subscribe(this.refresh);
     // il faut le subscribe pour que ça marche
   };
 
-  supprimerMembre(parachutistes: any){
-    this.srvBeerList.delete(parachutistes).subscribe(this.refresh);
+  retirerMembre(parachutiste: any){
+    this.srvBeerList.delete(parachutiste).subscribe(this.refresh);
   };
 
 
