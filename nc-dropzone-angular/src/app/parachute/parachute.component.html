@@ -45,6 +45,7 @@
         <th>Date de pliage</th>
         <th>Etat</th>
         <th>Utilisateur</th>
+        <th>Propriétaire</th>
         <th></th>
         <th></th>
     </thead>
@@ -58,6 +59,7 @@
             <td> {{ parachute.tailleVoileSecours }}</td>
             <td> {{ parachute.datePliageVoileSecours }}</td>
             <td> {{ (parachute.etat | disponible)}}</td>
+            <td>{{ parachute.proprietaire }}</td>
             <td>
                 <div *ngIf="parachute.utilisateur != null">
                     {{ parachute.utilisateur.nom}}
