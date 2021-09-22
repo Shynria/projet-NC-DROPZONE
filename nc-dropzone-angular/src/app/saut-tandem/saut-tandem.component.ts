@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { ParachutisteService } from '../parachutiste.service';
 import { SautTandemService } from '../saut-tandem.service';
 
 @Component({
@@ -9,10 +10,15 @@ import { SautTandemService } from '../saut-tandem.service';
 })
 export class SautTandemComponent implements OnInit {
 
-  constructor(private srvSautTandem: SautTandemService) { }
+  constructor(private srvSautTandem: SautTandemService, private srvParachutiste: ParachutisteService) {
+    this.refresh();
+    this.parachutistes = this.srvParachutiste.findAll();
+   }
 
   ngOnInit(): void {
   }
+
+  parachutistes: any = [];
 
   sautsTandem: any = [
     {
