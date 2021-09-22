@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fr.formation.dao.IBeerLineDaoJpaRepository;
 import fr.formation.model.BeerLine;
+import fr.formation.model.Parachutiste;
 
 @RestController
 @CrossOrigin("*")
@@ -60,5 +61,9 @@ public class BeerLineApiController {
         } catch (Exception e) {
             return false;
         }
+    }
+    @GetMapping("/membres-beer-line")
+    public List<Parachutiste> affiche(){
+        return daoBeerLine.findAllFetchingParachutistes();
     }
 }

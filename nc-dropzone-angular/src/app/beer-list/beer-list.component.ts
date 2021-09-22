@@ -12,13 +12,8 @@ export class BeerListComponent implements OnInit {
 
   modalTitre: string = "";
 
-  parachutistes: any = [
-    {
-      nom: "",
-      prenom: "",
-      licence: 0
-    }
-  ];
+  parachutiste: any = {};
+  parachutistes: any = [];
 
   beerList: any = {
     id: 0,
