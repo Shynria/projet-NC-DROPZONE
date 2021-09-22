@@ -24,10 +24,12 @@ public class SautTandem extends Saut {
 
     @ManyToOne
     @JoinColumn(name = "TANDEM_INSTRUCTEUR")
+    @JsonView(Views.Parachutiste.class)
     public Parachutiste instructeur;
     
     @ManyToOne
     @JoinColumn(name = "TANDEM_VIDEOMAN")
+    @JsonView(Views.Parachutiste.class)
     public Parachutiste videoman;
     
     public int getId() {

@@ -25,7 +25,21 @@ export class SautTandemComponent implements OnInit {
 
   sautTandem: any = {};
 
-  formSautTandem = this.initSautTandem();
+  formSautTandem: any = {
+    hauteur: 0,
+    parachutiste: {
+      nom: "",
+      prenom: ""
+    },
+    instructeur: {
+      nom: "",
+      prenom: ""
+    },
+    videoman: {
+      nom: "",
+      prenom:""
+    }
+  };
 
   @ViewChild('modal') modal: any;
   modalTitre : string = "pas de titre";
@@ -39,7 +53,7 @@ export class SautTandemComponent implements OnInit {
   }
 
   ajouterSautTandemModal() {
-    this.formSautTandem = this.initSautTandem();
+    // this.formSautTandem = this.initSautTandem();
     this.modalTitre = "Ajouter un Saut Tandem";
     this.edition = false;
     this.modal.open();
