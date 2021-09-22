@@ -1,3 +1,38 @@
+<nav>
+    <ul class="nav justify-content-center">
+        <img src="../assets/images/dropzonenc.png" name="dropZone">
+        <li class="nav-item">
+            <a id="accueilVol" class="nav-link" [routerLink]="[ '/' ]">Accueil</a>
+        </li>
+        <li class="nav-item">
+            <a id="affichage" class="nav-link" [routerLink]="[ '/affichage' ]">Affichage</a>
+        </li>
+        <li class="nav-item">
+            <a id="saut-tandem" class="nav-link" [routerLink]="[ '/saut-tandem' ]">Saut Tandem</a>
+        </li>
+        <li class="nav-item">
+            <a id="parachutiste" class="nav-link" [routerLink]="[ '/parachutiste' ]">Parachutiste</a>
+        </li>
+        <li class="nav-item">
+            <a id="parachute" class="nav-link" [routerLink]="[ '/parachute' ]">Parachute</a>
+        </li>
+        <li class="nav-item">
+            <a id="avion" class="nav-link" [routerLink]="[ '/avion' ]">Avion</a>
+        </li>
+        <li class="nav-item">
+            <a id="pilote" class="nav-link" [routerLink]="[ '/pilote' ]">Pilote</a>
+        </li>
+        <li class="nav-item">
+            <a id="beer-list" class="nav-link" [routerLink]="[ '/beer-list' ]">Beer list</a>
+        </li>
+    </ul>
+</nav>
+
+<div class="container">
+    <button style="background-color: #f050ff; margin-bottom: 5px;" class="btn" (click)="ouvrirModal()">Ajouter un membre</button>
+</div>
+
+
 <div>
     <h4>Les membres qui doivent payer une bière sont :</h4>
 </div>
@@ -18,7 +53,8 @@
                 <td>{{ parachutistes.prenom }}</td>
                 <td>{{ parachutistes.id }}</td>
                 <td>
-                    <button class="btn btn-warning" (click)="supprimerMembre(parachutistes)">Retirer de la liste</button>
+                    <button class="btn btn-warning" (click)="supprimerMembre(parachutistes)">Retirer de la
+                        liste</button>
                 </td>
             </tr>
         </tbody>
@@ -27,12 +63,7 @@
 
 <hr>
 
-<div>
-    <Label>Ajouter un membre :</Label>
-    <div>
-        <button class="btn btn-success" (click)="ouvrirModal()">Liste des membres</button>
-    </div>
-</div>
+
 
 <modal #modal titre="{{ modalTitre }}">
     <table class="table table-striped">
@@ -50,7 +81,8 @@
                 <td>{{ p.prenom }}</td>
                 <td>{{ p.niveau }}</td>
                 <td>
-                    <button class="btn btn-warning" (click)="ajouterMembre(parachutistes)">Ajouter à la Beer list</button>
+                    <button class="btn btn-warning" (click)="ajouterMembre(parachutistes)">Ajouter à la Beer
+                        list</button>
                 </td>
             </tr>
         </tbody>
