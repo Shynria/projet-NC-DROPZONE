@@ -60,6 +60,7 @@ public class Parachute {
 
     @ManyToOne
     @JoinColumn(name="PARACHUTE_MEMBRE_ID", nullable = true)
+    @JsonView(Views.Parachute.class)
     private Parachutiste proprietaire;
 
     @OneToOne(mappedBy = "parachuteEquipe")

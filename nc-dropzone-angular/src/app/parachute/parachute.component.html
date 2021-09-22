@@ -59,11 +59,15 @@
             <td> {{ parachute.tailleVoileSecours }}</td>
             <td> {{ parachute.datePliageVoileSecours }}</td>
             <td> {{ (parachute.etat | disponible)}}</td>
-            <td>{{ parachute.proprietaire }}</td>
             <td>
                 <div *ngIf="parachute.utilisateur != null">
                     {{ parachute.utilisateur.nom}}
                 </div>
+            </td>
+            <td>
+              <div *ngIf="parachute.proprietaire != null">
+                {{ parachute.proprietaire.nom }}
+              </div>
             </td>
             <td><button (click)="editerParachute(parachute)" class="btn btn-warning">Editer</button></td>
             <td><button (click)="supprimerParachute(parachute)" class="btn btn-danger">Supprimer</button></td>
