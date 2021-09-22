@@ -1,23 +1,39 @@
 <modal #modal titre="{{ modalTitre }}">
   <div class="form-group">
+    <label>Hauteur du saut</label>
+        <select [(ngModel)]="formSautTandem.hauteur" class="form-control">
+            <option value="1200">1200</option>
+            <option value="1600">1600</option>
+            <option value="2000">2000</option>
+            <option value="2500">2500</option>
+            <option value="4000">4000</option>
+            <option value="6000">6000</option>
+        </select>
+  </div>
+  <div class="form-group">
       <label>Nom du parachustiste</label>
-      <input type="text" [(ngModel)]="formSautTandem.parachutiste.nom" class="form-control">
+      <select [(ngModel)]="formSautTandem.parachutiste.nom" class="form-control">
+        <option *ngFor="let p of parachutistesDebutant | async" value="p.nom">{{ p.nom }}</option>
+      </select>
   </div>
   <div class="form-group">
       <label>Prenom du parachutiste</label>
-      <input type="number" [(ngModel)]="formSautTandem.parachutiste.prenom" class="form-control">
+      <select [(ngModel)]="formSautTandem.parachutiste.prenom" class="form-control">
+        <option *ngFor="let p of parachutistesDebutant | async" value="p.nom">{{ p.prenom }}</option>
+      </select>
   </div>
   <div class="form-group">
       <label>Nom de l'instructeur</label>
-      <select class="form-control">
-        <option *ngFor="let p of parachutistes" value="p.nom">{{ p.nom }}</option>
+      <select [(ngModel)]="formSautTandem.instructeur.nom" class="form-control">
+        <option *ngFor="let p of parachutistesConfirme | async" value="p.nom">{{ p.nom }} {{ p.prenom }}</option>
       </select>
   </div>
   <div class="form-group">
       <label>Nom du videoman</label>
-      <select class="form-control">
-        <option *ngFor="let p of parachutistes" value="p.nom">{{ p.nom }}</option>
-      </select>  </div>
+      <select [(ngModel)]="formSautTandem.videoman.nom" class="form-control">
+        <option *ngFor="let p of parachutistesConfirme | async" value="p.nom">{{ p.nom }} {{ p.prenom }}</option>
+      </select>
+  </div>
   <div>
       <button *ngIf="edition" type="button" class="btn btn-outline-dark form-control" (click)="modifierSautTandem()">Modifier</button>
       <button *ngIf="!edition" type="button" class="btn btn-outline-dark form-control" (click)="ajouterSautTandem()">Ajouter</button>
@@ -29,6 +45,7 @@
 <table class="table table-striped">
   <thead>
       <tr>
+          <th>Hauteur du saut</th>
           <th>Nom du parachutiste</th>
           <th>Prénom du parachutiste</th>
           <th>Nom de l'instructeur</th>
@@ -41,6 +58,7 @@
   </thead>
   <tbody>
       <tr *ngFor="let s of sautsTandem | async">
+          <td>{{ s.hauteur }}</td>
           <td>{{ s.parachutiste.nom }}</td>
           <td>{{ s.parachutiste.prenom }}</td>
           <td>{{ s.instructeur.nom }}</td>

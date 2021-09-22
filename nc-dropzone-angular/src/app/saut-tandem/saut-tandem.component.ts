@@ -12,16 +12,20 @@ export class SautTandemComponent implements OnInit {
 
   constructor(private srvSautTandem: SautTandemService, private srvParachutiste: ParachutisteService) {
     this.refresh();
-    this.parachutistes = this.srvParachutiste.findAll();
+    this.parachutistesDebutant = this.srvParachutiste.findAllByNiveau("DEBUTANT");
+    this.parachutistesConfirme = this.srvParachutiste.findAllByNiveau("CONFIRME");
    }
 
   ngOnInit(): void {
   }
 
-  parachutistes: any = [];
+  parachutistesDebutant: any = [];
+  parachutistesConfirme: any = [];
+
 
   sautsTandem: any = [
     {
+      hauteur: 0,
       parachutiste: {
         nom: "",
         prenom: ""
@@ -75,6 +79,7 @@ export class SautTandemComponent implements OnInit {
 
   initSautTandem() {
     return {
+      hauteur: 0,
       parachutiste: {
         nom: "",
         prenom: ""

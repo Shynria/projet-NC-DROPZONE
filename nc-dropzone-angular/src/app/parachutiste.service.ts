@@ -33,4 +33,8 @@ export class ParachutisteService {
     return this.http.get(`${ this.ApiUrl }/by-prenom/${ parachutiste.nom }`);
   }
 
+  findAllByNiveau(niveau: string) {
+    return this.http.get(`${ this.ApiUrl }/${niveau}`)
+  }
+
 }

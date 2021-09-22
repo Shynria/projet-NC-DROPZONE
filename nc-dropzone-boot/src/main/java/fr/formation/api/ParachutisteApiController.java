@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.formation.dao.IParachutisteDaoJpaRepository;
+import fr.formation.model.Niveau;
 import fr.formation.model.Parachutiste;
 
 @RestController // remplace @Controller et @ResponseBody, (meta-annotation)
@@ -62,5 +63,10 @@ public class ParachutisteApiController {
     @GetMapping("/by-parachutiste/{parachutiste.nom}")
     public List<Parachutiste> findAllByNom(@PathVariable String nom){
         return this.daoParachutiste.findAllByNom(nom);
-    } 
+    }
+
+    @GetMapping("/{niveau}")
+    public List<Parachutiste> findAllByNiveau(@PathVariable Niveau niveau){
+        return this.daoParachutiste.findAllByNiveau(niveau);
+    }
 }
