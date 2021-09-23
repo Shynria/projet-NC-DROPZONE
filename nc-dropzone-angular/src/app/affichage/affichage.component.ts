@@ -9,8 +9,7 @@ import { ParachutisteService } from '../parachutiste.service';
   styleUrls: ['./affichage.component.css']
 })
 export class AffichageComponent implements OnInit {
-  vols: any = [];
-  vols2: any = [];
+  volsEnCours: any = [];
   sauts: any = [];
   volsEnAttente : any = []
 
@@ -22,7 +21,17 @@ export class AffichageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  refresh = () => this.vols = this.srvAffichage.findAllByEtatVol("EN_VOL");
+  refresh = () => {
+    this.srvVol.findAllByEtatVol("EN_VOL").subscribe(v => {
+      this.volsEnCours = v;
+      for(let vol of this.volsEnCours) {
+        vol.nbPara = 1;
+        for(let saut of vol.sauts) {
+          vol.nbPara += saut.parachutistes.length;
+        }
+      }
+    });
+  }
 
   refresh2() {
     this.srvVol.findAllByNonTermineNonIncident().subscribe(v => {

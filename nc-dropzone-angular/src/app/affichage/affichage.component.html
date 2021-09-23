@@ -36,15 +36,17 @@
 
     <table class="table table-striped">
       <thead>
-        <tr>
+        <tr style="text-align: center;">
           <th>Nom de l'avion</th>
           <th>Numéro de vol</th>
+          <th>Nombre de passagers</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let v of vols | async">
+        <tr style="text-align: center;" *ngFor="let v of volsEnCours">
           <td>{{ v.avion.nom }}</td>
           <td>{{ v.id }}</td>
+          <td>{{ v.nbPara}}</td>
         </tr>
       </tbody>
     </table>
@@ -52,43 +54,47 @@
   <div class="col">
     <h2>Prochain vols</h2>
     <hr>
-                    <table class="table table-striped">
-                        <thead>
-                            <th>#</th>
-                            <th>Avion</th>
-                            <th>Pilote</th>
-                            <th>Place libre</th>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let vol of volsEnAttente">
-                                <td>{{ vol.id }}</td>
-                                <td>{{ vol.avion.nom }}</td>
-                                <td>{{ vol.pilote.nom }}</td>
-                                <td>{{ vol.placeLibre }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+      <table class="table table-striped">
+          <thead>
+            <tr style="text-align: center;">
+              <th>#</th>
+              <th>Avion</th>
+              <th>Pilote</th>
+              <th>Place libre</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr style="text-align: center;" *ngFor="let vol of volsEnAttente">
+                  <td>{{ vol.id }}</td>
+                  <td>{{ vol.avion.nom }}</td>
+                  <td>{{ vol.pilote.nom }}</td>
+                  <td>{{ vol.placeLibre }}</td>
+              </tr>
+          </tbody>
+      </table>
   </div>
   <div class="col">
     <h2>Parachutistes en attente</h2>
     <hr>
-            <table class="table table-striped">
-                <thead>
-                    <th>Hauteur</th>
-                    <th>Nombre</th>
-                    <th>Nom</th>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let saut of sauts">
-                        <td>{{ saut.hauteur | hauteur }}</td>
-                        <td>{{ saut.parachutistes?.length }}</td>
-                        <td>
-                          <p *ngFor="let para of saut.parachutistes">
-                              {{ para.nom }} {{ para.prenom }}
-                          </p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+      <table class="table table-striped">
+          <thead>
+            <tr style="text-align: center;">
+              <th>Hauteur</th>
+              <th>Nombre</th>
+              <th>Nom</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr style="text-align: center;" *ngFor="let saut of sauts">
+                  <td>{{ saut.hauteur | hauteur }}</td>
+                  <td>{{ saut.parachutistes?.length }}</td>
+                  <td>
+                    <p *ngFor="let para of saut.parachutistes">
+                        {{ para.nom }} {{ para.prenom }}
+                    </p>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
   </div>
 </div>
