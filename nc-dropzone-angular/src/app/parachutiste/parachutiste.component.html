@@ -58,7 +58,7 @@
                 <td> {{ parachutiste.dateLicence | date: 'dd-MM-yyyy'}}</td>
                 <td>
                     <ul *ngIf="parachutiste.parachuteEquipe != null">
-                        {{ parachutiste.parachuteEquipe.id }}
+                        {{ parachutiste.parachuteEquipe.nomHaranis }}
                     </ul>
                 </td>
                 <td> <button style="background-color: #0affff;" class="btn" (click)="voirParachutePerso(parachutiste)">Voir les parachutes</button> </td>
@@ -110,7 +110,11 @@
         </select>
     </div>
     <div class="form-group">
-        <label>Date licence : </label>
+        <label>Licence  </label>
+        <input type="text" [(ngModel)]="formParachutiste.licence" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Date licence  </label>
         <input type="date" [(ngModel)]="formParachutiste.dateLicence" class="form-control">
     </div>
     <hr>
