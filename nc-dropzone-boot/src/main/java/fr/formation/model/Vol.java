@@ -32,17 +32,21 @@ public class Vol {
 
     @ManyToOne
     @JoinColumn(name = "VOL_AVION_ID")
+    @JsonView(Views.Vol.class)
     private Avion avion;
 
     @ManyToOne
+    @JsonView(Views.Vol.class)
     @JoinColumn(name = "VOL_PILOTE_ID")
     private Pilote pilote;
 
     @OneToMany(mappedBy = "vol")
+    @JsonView(Views.Vol.class)
     private List<Saut> sauts;
 
     @ManyToOne
     @JoinColumn(name = "VOL_MEMBRE_ID")
+    @JsonView(Views.Vol.class)
     private Parachutiste responsableVol;
 
     public int getId() {

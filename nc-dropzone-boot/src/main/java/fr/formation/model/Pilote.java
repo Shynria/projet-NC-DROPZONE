@@ -29,11 +29,11 @@ public class Pilote {
     private String licence;
 
     @Column(name = "PILOTE_NOM", length = 50, nullable = false)
-    @JsonView(Views.Pilote.class)
+    @JsonView({Views.Pilote.class, Views.Vol.class})
     private String nom;
 
     @Column(name = "PILOTE_PRENOM", length = 50, nullable = false)
-    @JsonView(Views.Pilote.class)
+    @JsonView({Views.Pilote.class, Views.Vol.class})
     private String prenom;
 
     @Column(name = "PILOTE_DISPONIBLE", nullable = false)
