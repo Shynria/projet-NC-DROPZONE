@@ -32,6 +32,18 @@ public class ParachutisteApiController {
         return this.daoParachutiste.findAll();
     }
     
+    @GetMapping("/by-parachutiste/{parachutiste.nom}")
+    @JsonView(Views.Parachutiste.class)
+    public List<Parachutiste> findAllByNom(@PathVariable String nom){
+        return this.daoParachutiste.findAllByNom(nom);
+    }
+
+    @GetMapping("/{niveau}")
+    @JsonView(Views.Parachutiste.class)
+    public List<Parachutiste> findAllByNiveau(@PathVariable Niveau niveau){
+        return this.daoParachutiste.findAllByNiveau(niveau);
+    }
+
     @PostMapping
     public boolean ajouter(@RequestBody Parachutiste parachutiste){
         try {
@@ -59,14 +71,5 @@ public class ParachutisteApiController {
         } catch (Exception e) {
             return false;
         }
-    }
-    @GetMapping("/by-parachutiste/{parachutiste.nom}")
-    public List<Parachutiste> findAllByNom(@PathVariable String nom){
-        return this.daoParachutiste.findAllByNom(nom);
-    }
-
-    @GetMapping("/{niveau}")
-    public List<Parachutiste> findAllByNiveau(@PathVariable Niveau niveau){
-        return this.daoParachutiste.findAllByNiveau(niveau);
     }
 }
