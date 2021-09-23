@@ -22,7 +22,7 @@ export class BeerListComponent implements OnInit {
   ];
 
  
-  constructor(private srvParachutiste: ParachutisteService, private formBuilder: FormBuilder) { 
+  constructor(private srvParachutiste: ParachutisteService) { 
     this.parachutistes = this.srvParachutiste.findAll();
   }
 
