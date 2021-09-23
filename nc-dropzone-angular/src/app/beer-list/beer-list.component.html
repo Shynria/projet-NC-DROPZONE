@@ -45,17 +45,15 @@
                 <td>{{ parachutiste.prenom }}</td>
                 <td>{{ parachutiste.niveau }}</td>
                 <td>{{ parachutiste.licence }}</td>
-                <td>
-
-                    <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic">
-                        <label ngbButtonLabel class="btn-success">
-                            <input ngbButton type="radio" [value]="false" [(ngModel)]="parachutiste.isBeerLine"> Non
+                <td >
+                    <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic"> 
+                        <label ngbButtonLabel class="btn-outline-success">
+                            <input ngbButton type="radio" [value]="false" [(ngModel)]="formParachutiste.isBeerLine">Non
                         </label>
-                        <label ngbButtonLabel class="btn-warning">
-                            <input ngbButton type="radio" value="true" [(ngModel)]="parachutiste.isBeerLine"> Oui
+                        <label ngbButtonLabel class="btn-outline-warning">
+                            <input ngbButton type="radio" [value]="true" [(ngModel)]="formParachutiste.isBeerLine">Oui
                         </label>
                     </div>
-
                 </td>
             </tr>
         </tbody>

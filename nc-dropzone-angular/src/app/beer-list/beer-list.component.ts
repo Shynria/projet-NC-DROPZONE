@@ -7,13 +7,15 @@ import { ParachutisteService } from '../parachutiste.service';
   styleUrls: ['./beer-list.component.css']
 })
 export class BeerListComponent implements OnInit {
+  
 
-  parachutiste: any = {
+  formParachutiste: any = {
     nom: "",
     prenom: "",
-    licence: 0,
     isBeerLine: false
-  }
+  };
+
+  parachutiste: any = {};
 
   parachutistes: any = [
   ];
@@ -26,7 +28,6 @@ export class BeerListComponent implements OnInit {
   refresh = () => this.parachutistes = this.srvParachutiste.findAll();
 
   ngOnInit(): void {
-      model: false;
   }
 
 }
