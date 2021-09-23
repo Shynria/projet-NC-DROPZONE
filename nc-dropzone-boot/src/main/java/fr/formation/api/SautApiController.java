@@ -32,6 +32,12 @@ public class SautApiController {
         return this.daoSaut.findAll();
     }
 
+    @GetMapping("/noVol")
+    @JsonView(Views.Saut.class)
+    public List<Saut> findAllByVol() {
+        return this.daoSaut.findAllByVol(null);
+    }
+
     @PostMapping
     public boolean ajouter(@RequestBody Saut saut) {
         try {

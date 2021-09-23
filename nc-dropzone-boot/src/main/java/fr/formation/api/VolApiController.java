@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.formation.dao.ISautDaoJpaRepository;
 import fr.formation.dao.IVolDaoJpaRepository;
 import fr.formation.model.EtatVol;
+import fr.formation.model.Saut;
 import fr.formation.model.Vol;
 
 @RestController
@@ -26,6 +28,8 @@ public class VolApiController {
 
     @Autowired
     private IVolDaoJpaRepository daoVol;
+    @Autowired
+    private ISautDaoJpaRepository daoSaut;
 
     @GetMapping
     @JsonView(Views.Vol.class)
@@ -62,6 +66,10 @@ public class VolApiController {
     @PutMapping("/{id}")
     public boolean edit(@PathVariable int id, @RequestBody Vol vol){
         try{
+            for(Saut saut : vol.getSauts()) {
+                saut.setVol(vol);
+                daoSaut.save(saut);
+            }
             vol.setId(id);
             this.daoVol.save(vol);
             return true;
