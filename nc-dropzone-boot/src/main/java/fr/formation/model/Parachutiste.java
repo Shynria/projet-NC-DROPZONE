@@ -68,8 +68,19 @@ public class Parachutiste {
     @JsonView(Views.Parachutiste.class)
     private boolean isBeerLine = false;
 
+    @Column(name = "MEMBRE_LICENCE")
+    @JsonView(Views.Parachutiste.class)
+    private String licence;
+
+
     
     
+    public String getLicence() {
+        return licence;
+    }
+    public void setLicence(String licence) {
+        this.licence = licence;
+    }
     public boolean isBeerLine() {
         return isBeerLine;
     }
