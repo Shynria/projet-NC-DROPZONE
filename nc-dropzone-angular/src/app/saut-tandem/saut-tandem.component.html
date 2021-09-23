@@ -43,13 +43,7 @@
   <div class="form-group">
     <label>Nom du parachustiste</label>
     <select [(ngModel)]="formSautTandem.parachutiste.nom" class="form-control">
-      <option *ngFor="let p of parachutistesDebutant | async" value="p.nom">{{ p.nom }}</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label>Prenom du parachutiste</label>
-    <select [(ngModel)]="formSautTandem.parachutiste.prenom" class="form-control">
-      <option *ngFor="let p of parachutistesDebutant | async" value="p.nom">{{ p.prenom }}</option>
+      <option *ngFor="let p of parachutistesDebutant | async" value="p.nom">{{ p.nom }} {{ p.prenom }}</option>
     </select>
   </div>
   <div class="form-group">
@@ -62,6 +56,7 @@
     <label>Nom du videoman</label>
     <select [(ngModel)]="formSautTandem.videoman.nom" class="form-control">
       <option *ngFor="let p of parachutistesConfirme | async" value="p.nom">{{ p.nom }} {{ p.prenom }}</option>
+      <option value="null">null</option>
     </select>
   </div>
   <div>
