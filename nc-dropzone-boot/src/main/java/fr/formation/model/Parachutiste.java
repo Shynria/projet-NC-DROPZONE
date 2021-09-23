@@ -28,11 +28,11 @@ public class Parachutiste {
     private int id;
 
     @Column(name = "MEMBRE_NOM", nullable = false, length = 50)
-    @JsonView({Views.Parachutiste.class, Views.Parachute.class, Views.BeerLine.class, Views.Vol.class, Views.Saut.class})
+    @JsonView({Views.Parachutiste.class, Views.Parachute.class, Views.BeerLine.class, Views.Vol.class, Views.Saut.class, Views.SautTandem.class})
     private String nom;
 
     @Column(name = "MEMBRE_PRENOM", nullable = false, length = 50)
-    @JsonView({Views.Parachutiste.class, Views.BeerLine.class, Views.Vol.class, Views.Saut.class})
+    @JsonView({Views.Parachutiste.class, Views.BeerLine.class, Views.Vol.class, Views.Saut.class, Views.SautTandem.class})
     private String prenom;
 
     @Column(name = "MEMBRE_DATE_LICENCE", nullable = false)
@@ -57,6 +57,9 @@ public class Parachutiste {
 
     @ManyToMany(mappedBy = "parachutistes")
     private List<Saut> sauts;
+
+    @OneToMany(mappedBy = "parachutiste")
+    private List<SautTandem> sautTandem;
 
     @OneToMany(mappedBy = "instructeur")
     private List<SautTandem> ListeSautInstructeur;

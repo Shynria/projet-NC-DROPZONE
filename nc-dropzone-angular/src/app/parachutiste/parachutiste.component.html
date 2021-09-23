@@ -60,9 +60,9 @@
                 <td> {{ parachutiste.licence }}</td>
                 <td> {{ parachutiste.dateLicence | date: 'dd-MM-yyyy'}}</td>
                 <td>
-                    <ul *ngIf="parachutiste.parachuteEquipe != null">
-                        {{ parachutiste.parachuteEquipe.nomHaranis }}
-                    </ul>
+                    <div *ngIf="parachutiste.parachuteEquipe != null">
+                        {{ parachutiste.parachuteEquipe.nomHarnais }}
+                    </div>
                 </td>
                 <td> <button style="background-color: #0affff;" class="btn"
                         (click)="voirParachutePerso(parachutiste)">Voir les parachutes</button> </td>
@@ -76,7 +76,7 @@
                                     <button ngbDropdownItem (click)="retirerParachute(parachutiste)">Retirer
                                         parachute</button>
                                     <button ngbDropdownItem *ngFor="let parachute of parachutes | async"
-                                        (click)="associerParachute(parachutiste,parachute)">{{parachute.id}}</button>
+                                        (click)="associerParachute(parachutiste,parachute)">{{parachute.nomHarnais}}</button>
                                 </div>
                             </div>
                         </div>

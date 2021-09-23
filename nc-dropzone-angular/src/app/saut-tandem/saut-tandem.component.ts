@@ -23,7 +23,7 @@ export class SautTandemComponent implements OnInit {
   parachutistesConfirme: any = [];
 
 
-  sautTandem: any = {};
+  sautTandem: any = [];
 
   formSautTandem: any = {
     hauteur: 0,
@@ -45,15 +45,20 @@ export class SautTandemComponent implements OnInit {
   modalTitre : string = "pas de titre";
   edition: boolean = false; // si false => creation, si true modification
 
-  refresh = () => this.sautTandem = this.srvSautTandem.findAll();
+  refresh = () => 
+  {
+    this.sautTandem = this.srvSautTandem.findAll();
+    this.parachutistesDebutant = this.srvParachutiste.findAllByNiveau("DEBUTANT");
+    this.parachutistesConfirme = this.srvParachutiste.findAllByNiveau("CONFIRME");
+  }
 
   ajouterSautTandem() {
-    this.modal.close();
     this.srvSautTandem.add(this.formSautTandem).subscribe(this.refresh);
+    console.log(this.formSautTandem.parachutiste)
   }
 
   ajouterSautTandemModal() {
-    // this.formSautTandem = this.initSautTandem();
+    this.formSautTandem = this.initSautTandem();
     this.modalTitre = "Ajouter un Saut Tandem";
     this.edition = false;
     this.modal.open();

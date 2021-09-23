@@ -42,21 +42,21 @@
   </div>
   <div class="form-group">
     <label>Nom du parachustiste</label>
-    <select [(ngModel)]="formSautTandem.parachutiste.nom" class="form-control">
-      <option *ngFor="let p of parachutistesDebutant | async" value="p.nom">{{ p.nom }} {{ p.prenom }}</option>
+    <select [(ngModel)]="formSautTandem.parachutiste" class="form-control">
+      <option *ngFor="let p of parachutistesDebutant | async" value="{{p}}">{{ p.nom }} {{ p.prenom }}</option>
     </select>
   </div>
   <div class="form-group">
     <label>Nom de l'instructeur</label>
-    <select [(ngModel)]="formSautTandem.instructeur.nom" class="form-control">
-      <option *ngFor="let p of parachutistesConfirme | async" value="p.nom">{{ p.nom }} {{ p.prenom }}</option>
+    <select [(ngModel)]="formSautTandem.instructeur" class="form-control">
+      <option *ngFor="let p of parachutistesConfirme | async" value="{{p}}">{{ p.nom }} {{ p.prenom }}</option>
     </select>
   </div>
   <div class="form-group">
     <label>Nom du videoman</label>
-    <select [(ngModel)]="formSautTandem.videoman.nom" class="form-control">
-      <option *ngFor="let p of parachutistesConfirme | async" value="p.nom">{{ p.nom }} {{ p.prenom }}</option>
+    <select [(ngModel)]="formSautTandem.videoman" class="form-control">
       <option value="null">null</option>
+      <option *ngFor="let p of parachutistesConfirme | async" value="{{p}}">{{ p.nom }} {{ p.prenom }}</option>
     </select>
   </div>
   <div>
@@ -68,13 +68,13 @@
 </modal>
 
 <div class="container">
-  <button style="background-color: #ffff2e; margin-bottom: 5px;" class="btn"
-    (click)="ajouterSautTandemModal()">Ajouter un saut-tandem</button>
+  <button style="background-color: #ffff2e; margin-bottom: 5px;" class="btn" (click)="ajouterSautTandemModal()">Ajouter
+    un saut-tandem</button>
 </div>
 
 <table class="table table-striped">
   <thead>
-    <tr>
+    <tr style="text-align: center;">
       <th>Hauteur du saut</th>
       <th>Nom du parachutiste</th>
       <th>Prénom du parachutiste</th>
@@ -87,14 +87,22 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let s of sautTandem | async">
-      <td>{{ s.hauteur }}</td>
+    <tr *ngFor="let s of sautTandem | async" style="text-align: center;">
+      <td>{{ (s.hauteur | hauteur) }}</td>
       <td>{{ s.parachutiste.nom }}</td>
       <td>{{ s.parachutiste.prenom }}</td>
       <td>{{ s.instructeur.nom }}</td>
       <td>{{ s.instructeur.prenom }}</td>
-      <td>{{ s.videoman.nom }}</td>
-      <td>{{ s.videoman.prenom }}</td>
+      <td>
+        <div *ngIf="s.videoman != null">
+          {{ s.videoman.nom }}
+        </div>
+      </td>
+      <td>
+        <div *ngIf="s.videoman != null">
+          {{ s.videoman.prenom }}
+        </div>
+      </td>
       <td><button class="btn btn-warning" (click)="modifierSautTandemModal(s)">Editer</button></td>
       <td><button class="btn btn-danger" (click)="supprimerSautTandem(s)">Supprimer</button></td>
     </tr>
