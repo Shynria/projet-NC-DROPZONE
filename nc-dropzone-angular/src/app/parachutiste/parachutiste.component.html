@@ -77,11 +77,13 @@
                                         parachute</button>
                                     <ng-container *ngFor="let parachute of parachutes | async">
                                         <button ngbDropdownItem *ngIf="!parachute.proprietaire"
-                                            (click)="associerParachute(parachutiste,parachute)">Centre {{parachute.nomHarnais}}</button>
+                                            (click)="associerParachute(parachutiste,parachute)">Centre
+                                            {{parachute.nomHarnais}}</button>
                                     </ng-container>
                                     <ng-container *ngFor="let parachute of parachutiste.listeParachute">
-                                        <button ngbDropdownItem 
-                                            (click)="associerParachute(parachutiste,parachute)">Perso {{parachute.nomHarnais}}</button>
+                                        <button ngbDropdownItem
+                                            (click)="associerParachute(parachutiste,parachute)">Perso
+                                            {{parachute.nomHarnais}}</button>
                                     </ng-container>
                                 </div>
                             </div>
@@ -169,9 +171,13 @@
     </table>
 
     <hr>
-    <button (click)="ouvrirModalAjoutParachute()" class="form-control btn btn-success"> ajouter </button>
+    <div class="container">
+        <button (click)="ouvrirModalAjoutParachute()" class="form-control btn btn-success"> ajouter </button>
+    </div>
     <hr>
-    <button (click)="retourParachutistes()" class="form-control btn btn-warning"> Retour </button>
+    <div class="container">
+        <button (click)="retourParachutistes()" class="form-control btn btn-warning"> Retour </button>
+    </div>
 </div>
 
 <!-- MODAl CREATION PARACHUTE PERSO -->
