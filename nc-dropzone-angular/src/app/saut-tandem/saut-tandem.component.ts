@@ -28,6 +28,7 @@ export class SautTandemComponent implements OnInit {
   formSautTandem: any = {
     hauteur: 0,
     parachutiste: {
+      id: 0,
       nom: "",
       prenom: ""
     },
@@ -53,8 +54,12 @@ export class SautTandemComponent implements OnInit {
   }
 
   ajouterSautTandem() {
+    if(this.formSautTandem.videoman.id==0){
+      this.formSautTandem.videoman=null;
+    }
     this.srvSautTandem.add(this.formSautTandem).subscribe(this.refresh);
-    console.log(this.formSautTandem.parachutiste)
+    this.modal.close();
+    this.formSautTandem = this.initSautTandem();
   }
 
   ajouterSautTandemModal() {
@@ -69,12 +74,19 @@ export class SautTandemComponent implements OnInit {
   }
 
   modifierSautTandem() {
-    this.modal.close();
+    if(this.formSautTandem.videoman.id==0){
+      this.formSautTandem.videoman=null;
+    }
     this.srvSautTandem.update(this.formSautTandem).subscribe(this.refresh);
+    this.modal.close();
+    this.formSautTandem = this.initSautTandem();
   }
 
   modifierSautTandemModal(sautTandem: any) {
     this.formSautTandem = Object.assign({}, sautTandem);
+    if(this.formSautTandem.videoman == null){
+      this.formSautTandem.videoman = {id:0};
+    }
     this.modalTitre = "Modifier un Saut Tandem";
     this.edition = true;
     this.modal.open();

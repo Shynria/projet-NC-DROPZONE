@@ -75,8 +75,14 @@
                                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                                     <button ngbDropdownItem (click)="retirerParachute(parachutiste)">Retirer
                                         parachute</button>
-                                    <button ngbDropdownItem *ngFor="let parachute of parachutes | async"
-                                        (click)="associerParachute(parachutiste,parachute)">{{parachute.nomHarnais}}</button>
+                                    <ng-container *ngFor="let parachute of parachutes | async">
+                                        <button ngbDropdownItem *ngIf="!parachute.proprietaire"
+                                            (click)="associerParachute(parachutiste,parachute)">Centre {{parachute.nomHarnais}}</button>
+                                    </ng-container>
+                                    <ng-container *ngFor="let parachute of parachutiste.listeParachute">
+                                        <button ngbDropdownItem 
+                                            (click)="associerParachute(parachutiste,parachute)">Perso {{parachute.nomHarnais}}</button>
+                                    </ng-container>
                                 </div>
                             </div>
                         </div>
@@ -89,7 +95,6 @@
     </table>
 
     <hr>
-
 
 </div>
 

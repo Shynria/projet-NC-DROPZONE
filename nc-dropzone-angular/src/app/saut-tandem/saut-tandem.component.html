@@ -42,21 +42,21 @@
   </div>
   <div class="form-group">
     <label>Nom du parachustiste</label>
-    <select [(ngModel)]="formSautTandem.parachutiste" class="form-control">
-      <option *ngFor="let p of parachutistesDebutant | async" value="{{p}}">{{ p.nom }} {{ p.prenom }}</option>
+    <select [(ngModel)]="formSautTandem.parachutiste.id" class="form-control">
+      <option *ngFor="let p of parachutistesDebutant | async" [value]="p.id">{{ p.nom }} {{ p.prenom }}</option>
     </select>
   </div>
   <div class="form-group">
     <label>Nom de l'instructeur</label>
-    <select [(ngModel)]="formSautTandem.instructeur" class="form-control">
-      <option *ngFor="let p of parachutistesConfirme | async" value="{{p}}">{{ p.nom }} {{ p.prenom }}</option>
+    <select [(ngModel)]="formSautTandem.instructeur.id" class="form-control">
+      <option *ngFor="let p of parachutistesConfirme | async" [value]="p.id">{{ p.nom }} {{ p.prenom }}</option>
     </select>
   </div>
   <div class="form-group">
     <label>Nom du videoman</label>
-    <select [(ngModel)]="formSautTandem.videoman" class="form-control">
-      <option value="null">null</option>
-      <option *ngFor="let p of parachutistesConfirme | async" value="{{p}}">{{ p.nom }} {{ p.prenom }}</option>
+    <select [(ngModel)]="formSautTandem.videoman.id" class="form-control">
+      <option value="0">null</option>
+      <option *ngFor="let p of parachutistesConfirme | async" [value]="p.id">{{ p.nom }} {{ p.prenom }}</option>
     </select>
   </div>
   <div>

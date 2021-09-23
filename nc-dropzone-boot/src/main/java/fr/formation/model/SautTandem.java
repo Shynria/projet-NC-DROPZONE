@@ -45,7 +45,7 @@ public class SautTandem {
     public Parachutiste instructeur;
     
     @ManyToOne
-    @JoinColumn(name = "TANDEM_VIDEOMAN")
+    @JoinColumn(name = "TANDEM_VIDEOMAN", nullable = true)
     @JsonView({Views.Parachutiste.class, Views.SautTandem.class})
     public Parachutiste videoman;
     
