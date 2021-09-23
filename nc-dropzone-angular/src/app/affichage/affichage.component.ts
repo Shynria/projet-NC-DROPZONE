@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AffichageService } from '../affichage.service';
+import { InscriptionService } from '../inscription.service';
 import { ParachutisteService } from '../parachutiste.service';
 
 @Component({
@@ -10,9 +11,10 @@ import { ParachutisteService } from '../parachutiste.service';
 export class AffichageComponent implements OnInit {
   vols: any = [];
   vols2: any = [];
-  parachutistes: any = [];
+  sauts: any = [];
+  volsEnAttente : any = []
 
-  constructor(private srvAffichage: AffichageService, private srvParachutiste : ParachutisteService) {
+  constructor(private srvAffichage: AffichageService, private srvSaut : InscriptionService, private srvVol: AffichageService) {
     this.refresh();
     this.refresh2();
   }
@@ -21,9 +23,22 @@ export class AffichageComponent implements OnInit {
   }
 
   refresh = () => this.vols = this.srvAffichage.findAllByEtatVol("EN_VOL");
-  refresh2(){
-    this.vols2.push(this.srvAffichage.findAllByEtatVol("EN_ATTENTE"));
-    this.vols2.push(this.srvAffichage.findAllByEtatVol("EN_PREPARATION"));
-    this.vols2.push(this.srvAffichage.findAllByEtatVol("EN_ENBARQUEMENT"));
+
+  refresh2() {
+    this.srvVol.findAllByNonTermineNonIncident().subscribe(v => {
+      this.volsEnAttente = v;
+      for(let vol of this.volsEnAttente) {
+        vol.placeLibre = vol.avion.capacite - 1 ; // -1 pour le responsable de vol
+        for(let saut of vol.sauts) {
+          vol.placeLibre -= saut.parachutistes.length;
+        }
+      }
+    });
+
+    this.srvSaut.findAllNoVol().subscribe(s => {
+      this.sauts = s;
+    });
+
   }
+
 }

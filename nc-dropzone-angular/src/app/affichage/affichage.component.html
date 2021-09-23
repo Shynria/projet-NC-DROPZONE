@@ -50,50 +50,45 @@
     </table>
   </div>
   <div class="col">
-    <h2 class="text-center">Prochains vols</h2>
-
+    <h2>Prochain vols</h2>
     <hr>
-
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Nom de l'avion</th>
-          <th>Numéro de vol</th>
-          <th>Passagers</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let v of vols2 | async">
-          <td>{{ v.avion.nom }}</td>
-          <td>{{ v.id }}</td>
-          <td>
-            <ul>
-              <li *ngFor="let p of parachutistes | async">
-               <p>{{ p.nom }}</p>
-               <p>{{ p.prenom }}</p>
-              </li>
-            </ul>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+                    <table class="table table-striped">
+                        <thead>
+                            <th>#</th>
+                            <th>Avion</th>
+                            <th>Pilote</th>
+                            <th>Place libre</th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let vol of volsEnAttente">
+                                <td>{{ vol.id }}</td>
+                                <td>{{ vol.avion.nom }}</td>
+                                <td>{{ vol.pilote.nom }}</td>
+                                <td>{{ vol.placeLibre }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
   </div>
   <div class="col">
-    <h2 class="text-center">Parachutistes en attente</h2>
-
+    <h2>Parachutistes en attente</h2>
     <hr>
-
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Nom</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let p of parachutistes | async">
-          <td>{{ p.nom }}</td>
-        </tr>
-      </tbody>
-    </table>
+            <table class="table table-striped">
+                <thead>
+                    <th>Hauteur</th>
+                    <th>Nombre</th>
+                    <th>Nom</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let saut of sauts">
+                        <td>{{ saut.hauteur }}</td>
+                        <td>{{ saut.parachutistes?.length }}</td>
+                        <td>
+                          <p *ngFor="let para of saut.parachutistes">
+                              {{ para.nom }} {{ para.prenom }}
+                          </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
   </div>
 </div>
