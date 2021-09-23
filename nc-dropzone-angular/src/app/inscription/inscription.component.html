@@ -39,7 +39,7 @@
                     <ng-container *ngIf="(formSaut.parachutistes[i] | typeOf) == 'object'">
                         <select name="parachute" [(ngModel)]="formSaut.parachutistes[i].parachuteEquipe">
                             <ng-container *ngFor="let parachute of parachutes">
-                                <option *ngIf="!parachute.proprietaire" value="{{ parachute }}">Centre {{parachute.nomVoilePrincipale}}</option>
+                                <option *ngIf="!parachute.proprietaire" [ngValue]=" parachute ">Centre {{parachute.nomVoilePrincipale}}</option>
                                 <option *ngIf="parachute.proprietaire && parachute.proprietaire.id == formSaut.parachutistes[i].id" [ngValue]="parachute">Perso {{parachute.nomVoilePrincipale}}</option> -->
                             </ng-container>
                         </select> 
