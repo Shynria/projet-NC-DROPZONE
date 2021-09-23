@@ -101,6 +101,7 @@
                         </td>
                         <td>
                             <select (change)="onChange($any($event.target).value, saut)">
+                                <option></option>
                                 <option *ngFor="let vol of volsEnAttente" value="{{ vol.id }}">{{ vol.id }}</option>
                             </select>
                         </td>
