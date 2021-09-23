@@ -15,6 +15,10 @@ export class InscriptionService {
     return this.http.get(this.ApiUrl)
   }
 
+  findAllNoVol(){
+    return this.http.get(`${this.ApiUrl}/noVol`)
+  }
+
   add(saut: any){
     return this.http.post(this.ApiUrl, saut)
   }
