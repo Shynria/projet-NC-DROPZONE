@@ -64,7 +64,41 @@ public class VolApiController {
     }
 
     @PutMapping("/{id}")
-    public boolean edit(@PathVariable int id, @RequestBody Vol vol){
+    public Msg edit(@PathVariable int id, @RequestBody Vol vol){
+
+        // si on veut passer un vol a EN_VOL
+        if( vol.getEtatVol() == EtatVol.EN_VOL && daoVol.getById(id).getEtatVol() != EtatVol.EN_VOL) {
+            if( vol.getAvion().isDisponible()) {
+                return new Msg("Avion indisponible");
+            }
+            
+            for(Vol v : daoVol.findAllByEtatVol(EtatVol.EN_VOL)) {
+                if( v.getAvion().getId() == vol.getAvion().getId()) {
+                    return new Msg("Avion déjà en vol");
+                }
+            }
+
+            for(Vol v : daoVol.findAllByEtatVol(EtatVol.EN_VOL)) {
+                if( v.getPilote().getId() == vol.getPilote().getId()) {
+                    return new Msg("Pilote déjà en vol");
+                }
+            }
+
+            for(Vol v : daoVol.findAllByEtatVol(EtatVol.EN_VOL)) {
+                if( v.getResponsableVol().getId() == vol.getResponsableVol().getId()) {
+                    return new Msg("Responsable déjà en vol");
+                }
+            }
+
+            int count = 1;
+            for(Saut s : vol.getSauts()) {
+                count += s.getParachutistes().size();
+            }
+            if( vol.getAvion().getCapacite() < count) {
+                return new Msg("Trop de monde dans l'avion");
+            }
+        }
+
         try{
             for(Saut saut : vol.getSauts()) {
                 saut.setVol(vol);
@@ -72,9 +106,9 @@ public class VolApiController {
             }
             vol.setId(id);
             this.daoVol.save(vol);
-            return true;
+            return new Msg("true");
         }catch(Exception e){
-            return false;
+            return new Msg("Error");
         }
     }
 

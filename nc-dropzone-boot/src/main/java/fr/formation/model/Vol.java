@@ -89,6 +89,12 @@ public class Vol {
         this.responsableVol = responsableVol;
     }
 
-    
+    public EtatVol getEtatVol() {
+        return etatVol;
+    }
+
+    public void setEtatVol(EtatVol etatVol) {
+        this.etatVol = etatVol;
+    }
     
 }

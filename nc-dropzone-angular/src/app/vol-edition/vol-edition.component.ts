@@ -13,48 +13,52 @@ import { PiloteService } from '../pilote.service';
 export class VolEditionComponent implements OnInit {
 
   constructor(
-      private srvVol : AffichageService,
-      private srvAvion : AvionService,
-      private srvPilote : PiloteService,
-      private srvSaut: InscriptionService,
-      private srvParachutiste: ParachutisteService
-  ) { 
+    private srvVol: AffichageService,
+    private srvAvion: AvionService,
+    private srvPilote: PiloteService,
+    private srvSaut: InscriptionService,
+    private srvParachutiste: ParachutisteService,
+
+  ) {
     this.refresh();
   }
 
   ngOnInit(): void {
   }
 
-  sauts : any = []
+  sauts: any = []
 
-  volsEnCours : any = [];
-  volsEnAttente : any = [];
+  volsEnCours: any = [];
+  volsEnAttente: any = [];
 
-  avions : any = [];
-  pilotes : any = [];
+  avions: any = [];
+  pilotes: any = [];
   parasConfirm: any = [];
 
   formVol = this.initVol();
 
   @ViewChild('modal') modal: any;
-  modalTitre : string = "pas de titre";
+  modalTitre: string = "pas de titre";
   edition: boolean = false; // si false => creation, si true modification
+
+  isError = false;
+  error = "";
 
   refresh = () => {
     this.srvVol.findAllByEtatVol("EN_VOL").subscribe(v => {
       this.volsEnCours = v;
-      for(let vol of this.volsEnCours) {
+      for (let vol of this.volsEnCours) {
         vol.nbPara = 1;
-        for(let saut of vol.sauts) {
+        for (let saut of vol.sauts) {
           vol.nbPara += saut.parachutistes.length;
         }
       }
     });
-    this.srvVol.findAllByNonTermineNonIncident().subscribe(v => { 
+    this.srvVol.findAllByNonTermineNonIncident().subscribe(v => {
       this.volsEnAttente = v;
-      for(let vol of this.volsEnAttente) {
-        vol.placeLibre = vol.avion.capacite - 1 ; // -1 pour le responsable de vol
-        for(let saut of vol.sauts) {
+      for (let vol of this.volsEnAttente) {
+        vol.placeLibre = vol.avion.capacite - 1; // -1 pour le responsable de vol
+        for (let saut of vol.sauts) {
           vol.placeLibre -= saut.parachutistes.length;
         }
       }
@@ -64,7 +68,7 @@ export class VolEditionComponent implements OnInit {
     this.srvPilote.findAll().subscribe(p => this.pilotes = p);
     this.srvParachutiste.findAllByNiveau("CONFIRME").subscribe(p => this.parasConfirm = p);
 
-    this.srvSaut.findAllNoVol().subscribe(s => { 
+    this.srvSaut.findAllNoVol().subscribe(s => {
       this.sauts = s;
     });
   }
@@ -75,6 +79,7 @@ export class VolEditionComponent implements OnInit {
   }
 
   ajouterVolModal() {
+    this.isError = false;
     this.formVol = this.initVol();
     this.modalTitre = "Ajouter un vol";
     this.edition = false;
@@ -86,11 +91,21 @@ export class VolEditionComponent implements OnInit {
   }
 
   modifierVol() {
-    this.modal.close();
-    this.srvVol.update(this.formVol).subscribe(this.refresh);
+    this.srvVol.update(this.formVol)
+      .subscribe((res: any) => {
+        if( res.msg == "true") {
+          this.refresh();
+          this.modal.close();
+          this.isError = false;
+        } else {
+          this.isError = true;
+          this.error = res.msg;
+        }
+      });
   }
 
   modifierVolModal(vol: any) {
+    this.isError = false;
     this.formVol = Object.assign({}, vol);
     this.modalTitre = "Modifier un vol";
     this.edition = true;
@@ -98,12 +113,12 @@ export class VolEditionComponent implements OnInit {
   }
 
   sautSelector: any = [
-    {id: "", volId: ""}
-  ]; 
+    { id: "", volId: "" }
+  ];
 
   onChange(volId: any, saut: any) {
-    for(let vol of this.volsEnAttente) {
-      if( vol.id == volId) {
+    for (let vol of this.volsEnAttente) {
+      if (vol.id == volId) {
         vol.sauts.push(saut);
         this.srvVol.update(vol).subscribe(this.refresh);
       }
@@ -113,11 +128,11 @@ export class VolEditionComponent implements OnInit {
   initVol() {
     return {
       etatVol: "EN_ATTENTE",
-      avion : {id: ""},
-      pilote: {id: ""},
+      avion: { id: "" },
+      pilote: { id: "" },
       sauts: [],
-      responsableVol: {id: ""},
-      placeLibre : ""
+      responsableVol: { id: "" },
+      placeLibre: ""
     };
   }
 }

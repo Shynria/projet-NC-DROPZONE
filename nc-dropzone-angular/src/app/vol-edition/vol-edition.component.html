@@ -29,6 +29,9 @@
 </nav>
 
 <modal #modal titre="{{ modalTitre }}">
+    <div *ngIf="isError" class="alert alert-danger">
+        <strong>Error: </strong>{{ error }}
+    </div>
     <div class="form-group">
         <label>Etat du vol</label>
         <select [(ngModel)]="formVol.etatVol">
