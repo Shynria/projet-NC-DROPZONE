@@ -101,7 +101,7 @@ nav {
   nav a[id="pilote"]{
     display: block;
     font: normal bold 19px/23px "Roboto",Helvetica,Arial,Verdana,sans-serif;
-    color: #a456fd;
+    color: white;
     text-decoration: initial;
       transition: all 0.25s ease-in-out;
     padding-top: 30px;
@@ -115,7 +115,7 @@ nav {
   nav a[id="beer-list"]{
     display: block;
     font: normal bold 19px/23px "Roboto",Helvetica,Arial,Verdana,sans-serif;
-    color: white;
+    color: #f050ff;
     text-decoration: initial;
       transition: all 0.25s ease-in-out;
     padding-top: 30px;

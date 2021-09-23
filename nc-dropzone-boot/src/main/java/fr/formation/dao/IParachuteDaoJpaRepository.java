@@ -8,4 +8,6 @@ import fr.formation.model.Parachute;
 
 public interface IParachuteDaoJpaRepository extends JpaRepository<Parachute, Integer> {
     public List<Parachute> findAllByProprietaireId(int proprietaireID);
+
+    public List<Parachute> findAllByEtat(Boolean etat);
 }
