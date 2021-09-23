@@ -8,7 +8,6 @@ import { ParachutisteService } from '../parachutiste.service';
   styleUrls: ['./beer-list.component.css']
 })
 export class BeerListComponent implements OnInit {
-  public radioGroupForm: FormGroup;
 
   parachutiste: any = {
     nom: "",
@@ -28,9 +27,7 @@ export class BeerListComponent implements OnInit {
   refresh = () => this.parachutistes = this.srvParachutiste.findAll();
 
   ngOnInit(): void {
-    this.radioGroupForm = this.formBuilder.group({
-      'model': false
-    });
+      model: false;
   }
 
 }
