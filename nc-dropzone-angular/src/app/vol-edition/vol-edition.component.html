@@ -68,6 +68,28 @@
 
     <div class="form-group">
         <label>Sauts</label>
+        <table>
+            <thead>
+                <tr>
+                    <th>Hauteur</th>
+                    <th>Nom</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let saut of sauts">
+                    <td>{{ saut.hauteur }}</td>
+                    <td>
+                        <ul>
+                            <!-- <li *ngFor="let para of saut.parachutistes">
+                                {{ para.nom }} {{ para.prenom }}
+                            </li> -->
+                        </ul>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
 
     </div>
 
@@ -83,14 +105,16 @@
             <h3>Parachutistes en attente</h3>
             <table class="table table-striped table-responsive-sm table-dark">
                 <thead>
-                    <th>Hauteur</th>
-                    <th>Nombre</th>
-                    <th>Nom</th>
-                    <th>Ajouter au vol</th>
+                    <tr>
+                        <th>Hauteur</th>
+                        <th>Nombre</th>
+                        <th>Nom</th>
+                        <th>Ajouter au vol</th>
+                    </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let saut of sauts">
-                        <td>{{ saut.hauteur }}</td>
+                        <td>{{ saut.hauteur | hauteur }}</td>
                         <td>{{ saut.parachutistes?.length }}</td>
                         <td>
                             <ul>
