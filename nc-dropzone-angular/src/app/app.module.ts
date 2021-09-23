@@ -18,6 +18,7 @@ import { DisponiblePipe } from './disponible.pipe';
 import { BeerListComponent } from './beer-list/beer-list.component';
 import { SautTandemComponent } from './saut-tandem/saut-tandem.component';
 import { HauteurPipe } from './hauteur.pipe';
+import { TypeOfPipe } from './type-of.pipe';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { HauteurPipe } from './hauteur.pipe';
     DisponiblePipe,
     BeerListComponent,
     SautTandemComponent,
-    HauteurPipe
+    HauteurPipe,
+    TypeOfPipe
   ],
   imports: [
     BrowserModule,

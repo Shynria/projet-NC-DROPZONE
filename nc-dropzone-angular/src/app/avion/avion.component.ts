@@ -15,15 +15,7 @@ export class AvionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  avions: any = [
-    {
-      nom: "TEST",
-      capacite: 5,
-      nbRotaMax: 5,
-      altitudeMax: 5,
-      disponible: false
-    }
-  ];
+  avions: any = [];
 
   formAvion = this.initAvion();
 

@@ -45,7 +45,7 @@ public class Parachutiste {
 
     @OneToOne
     @JoinColumn(name = "PARACHUTE_EQUIPE", nullable = true)
-    @JsonView(Views.Parachutiste.class)
+    @JsonView({Views.Parachutiste.class, Views.Saut.class})
     private Parachute parachuteEquipe;
 
     @OneToMany(mappedBy = "responsableVol")

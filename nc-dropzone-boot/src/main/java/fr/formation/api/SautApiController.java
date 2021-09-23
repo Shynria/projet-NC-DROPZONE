@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.formation.dao.IParachutisteDaoJpaRepository;
 import fr.formation.dao.ISautDaoJpaRepository;
+import fr.formation.model.Parachutiste;
 import fr.formation.model.Saut;
 
 @RestController
@@ -25,6 +27,9 @@ public class SautApiController {
 
     @Autowired
     private ISautDaoJpaRepository daoSaut;
+
+    @Autowired
+    private IParachutisteDaoJpaRepository daoParachutiste;
 
     @GetMapping
     @JsonView(Views.Saut.class)
@@ -42,6 +47,9 @@ public class SautApiController {
     public boolean ajouter(@RequestBody Saut saut) {
         try {
             this.daoSaut.save(saut);
+            for(Parachutiste p : saut.getParachutistes()) {
+                daoParachutiste.save(p);
+            }
             return true;
         } catch (Exception e) {
             return false;

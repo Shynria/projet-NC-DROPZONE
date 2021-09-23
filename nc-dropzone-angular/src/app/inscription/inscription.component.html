@@ -15,7 +15,7 @@
 
     <div>
         <label>Taille du groupe</label>
-        <input type="number" [(ngModel)]="tailleGroupe">
+        <input type="number" [(ngModel)]="tailleGroupe" min="1">
     </div>
     <table class="table">
         <thead style="text-align: center;">
@@ -31,28 +31,20 @@
             <tr *ngFor="let temp of counter(tailleGroupe); let i = index"> <!-- counter -> function pour generer un tableau de taille: tailleGroupe (voir component) -->
                 <td>
                     <div>
-                        <label for="typeahead-basic">Nom :</label>
-                        <input id="typeahead-basic" type="text" [(ngModel)]="formSaut.parachutistes[i]" [ngbTypeahead]="search" [inputFormatter]="formatter" [resultTemplate]="rt"/>
+                        <label for="typeahead-basic">Nom:</label>
+                        <input id="typeahead-basic" type="text" [(ngModel)]="formSaut.parachutistes[i]"
+                            [ngbTypeahead]="search" [inputFormatter]="formatter" [resultTemplate]="rt" />
                     </div>
                 </td>
                 <td>
-                    <div class="d-grid gap-2 d-md-block">
-                        <div ngbDropdown class="d-inline-block">
-                            <button class="btn btn-success" id="dropdownBasic1" ngbDropdownToggle>Personnel</button>
-
-                            <!-- <div ngbDropdownMenu aria-labelledby="dropdownBasic1" *ngFor="let parachute of parachutes">
-                                <button ngbDropdownItem>{{ parachute.nomHarnais }}, {{ parachute.etat }}</button>
-                            </div> -->
-                        </div>
-                    </div>
-                    <div ngbDropdown class="d-inline-block">
-                        <button class="btn btn-primary" id="dropdownBasic1" ngbDropdownToggle>Club</button>
-
-                        <!-- <div ngbDropdownMenu aria-labelledby="dropdownBasic1" *ngFor="let parachute of parachutes">
-                            <button ngbDropdownItem>{{ parachute.nomHarnais }}, {{ parachute.etat }}</button>
-                        </div> -->
-
-                    </div>
+                    <ng-container *ngIf="(formSaut.parachutistes[i] | typeOf) == 'object'">
+                        <select name="parachute" [(ngModel)]="formSaut.parachutistes[i].parachuteEquipe">
+                            <ng-container *ngFor="let parachute of parachutes">
+                                <option *ngIf="!parachute.proprietaire" value="{{ parachute }}">Centre {{parachute.nomVoilePrincipale}}</option>
+                                <option *ngIf="parachute.proprietaire && parachute.proprietaire.id == formSaut.parachutistes[i].id" [ngValue]="parachute">Perso {{parachute.nomVoilePrincipale}}</option> -->
+                            </ng-container>
+                        </select> 
+                    </ng-container>
                 </td>
             </tr>
         </tbody>
@@ -61,28 +53,3 @@
         <button (click)="ajouterSaut()">Sauter!</button>
     </div>
 </div>
-
-<modal #modal titre="Liste des parachutes">
-    <table class="table table-striped">
-        <thead>
-            <tr style="text-align: center;">
-                <th>Harnais</th>
-                <th>Système de sécurité</th>
-                <th>Voile principale</th>
-                <th>Voile de secours</th>
-                <th>Etat</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- <tr *ngFor="let p of parachutes" style="text-align: center;">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr> -->
-        </tbody>
-    </table>
-</modal>
