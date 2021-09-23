@@ -80,7 +80,7 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let saut of sauts">
-                        <td>{{ saut.hauteur }}</td>
+                        <td>{{ saut.hauteur | hauteur }}</td>
                         <td>{{ saut.parachutistes?.length }}</td>
                         <td>
                           <p *ngFor="let para of saut.parachutistes">
