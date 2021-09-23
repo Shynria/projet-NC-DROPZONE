@@ -94,6 +94,22 @@
                     </p>
                   </td>
               </tr>
+              <tr style="text-align: center;" *ngFor="let saut of sautsTandem">
+                <td>{{ saut.hauteur | hauteur }}</td>
+                <td>
+                  <p *ngIf="!saut.videoman">2</p>
+                  <p *ngIf="saut.videoman">3</p>
+                </td>
+                <td>
+                  <ul>
+                    <p>{{ saut.parachutiste.nom }} {{ saut.parachutiste.prenom }}</p>
+                    <p>{{ saut.instructeur.nom }} {{ saut.instructeur.prenom }}</p>
+                    <p *ngIf="saut.videoman">{{ saut.videoman.nom }} {{ saut.videoman.prenom }}</p>
+                  </ul>
+
+
+                </td>
+            </tr>
           </tbody>
       </table>
   </div>

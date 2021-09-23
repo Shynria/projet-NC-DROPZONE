@@ -15,6 +15,10 @@ export class SautTandemService {
     return this.http.get(this.apiUrl);
   }
 
+  findAllNoVol(){
+    return this.http.get(`${this.apiUrl}/noVol`)
+  }
+
   add(sautTandem: any) {
     return this.http.post(this.apiUrl, sautTandem);
   }

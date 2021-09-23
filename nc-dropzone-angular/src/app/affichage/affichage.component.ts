@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AffichageService } from '../affichage.service';
 import { InscriptionService } from '../inscription.service';
 import { ParachutisteService } from '../parachutiste.service';
+import { SautTandemService } from '../saut-tandem.service';
 
 @Component({
   selector: 'app-affichage',
@@ -11,9 +12,10 @@ import { ParachutisteService } from '../parachutiste.service';
 export class AffichageComponent implements OnInit {
   volsEnCours: any = [];
   sauts: any = [];
-  volsEnAttente : any = []
+  volsEnAttente : any = [];
+  sautsTandem: any = [];
 
-  constructor(private srvAffichage: AffichageService, private srvSaut : InscriptionService, private srvVol: AffichageService) {
+  constructor(private srvAffichage: AffichageService, private srvSaut : InscriptionService, private srvVol: AffichageService, private srvSautTandem: SautTandemService) {
     this.refresh();
     this.refresh2();
   }
@@ -47,6 +49,10 @@ export class AffichageComponent implements OnInit {
     this.srvSaut.findAllNoVol().subscribe(s => {
       this.sauts = s;
     });
+
+    this.srvSautTandem.findAllNoVol().subscribe(s => {
+      this.sautsTandem = s;
+    })
 
   }
 

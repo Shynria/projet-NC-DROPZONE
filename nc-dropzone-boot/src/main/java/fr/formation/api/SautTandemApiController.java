@@ -31,6 +31,12 @@ public class SautTandemApiController {
         return this.daoSautTandem.findAll();
     }
 
+    @GetMapping("/noVol")
+    @JsonView(Views.SautTandem.class)
+    public List<SautTandem> findAllByVol() {
+        return this.daoSautTandem.findAllByVol(null);
+    }
+
     @PostMapping
     public boolean ajouter(@RequestBody SautTandem tandem) {
         try {

@@ -49,6 +49,10 @@ public class Vol {
     @JsonView(Views.Vol.class)
     private Parachutiste responsableVol;
 
+    @OneToMany(mappedBy = "vol")
+    @JsonView(Views.Vol.class)
+    private List<SautTandem> sautsTandem;
+
     public int getId() {
         return id;
     }
