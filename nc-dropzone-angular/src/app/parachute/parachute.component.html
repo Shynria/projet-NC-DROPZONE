@@ -36,21 +36,23 @@
 
 <table class="table table-striped">
     <thead>
-        <th>Harnais</th>
-        <th>Système de sécurité</th>
-        <th>Nom voile principale</th>
-        <th>Nom voile de secours</th>
-        <th>Taille voile principale</th>
-        <th>Taille voile de secours</th>
-        <th>Date de pliage</th>
-        <th>Etat</th>
-        <th>Utilisateur</th>
-        <th>Propriétaire</th>
-        <th></th>
-        <th></th>
+        <tr style="text-align: center;">
+            <th>Harnais</th>
+            <th>Système de sécurité</th>
+            <th>Nom voile principale</th>
+            <th>Nom voile de secours</th>
+            <th>Taille voile principale</th>
+            <th>Taille voile de secours</th>
+            <th>Date de pliage</th>
+            <th>Etat</th>
+            <th>Utilisateur</th>
+            <th>Propriétaire</th>
+            <th></th>
+            <th></th>
+        </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let parachute of parachutes | async">
+        <tr *ngFor="let parachute of parachutes | async" style="text-align: center;">
             <td> {{ parachute.nomHarnais }}</td>
             <td> {{ parachute.systemeSecurite }}</td>
             <td> {{ parachute.nomVoilePrincipale }}</td>
@@ -65,9 +67,9 @@
                 </div>
             </td>
             <td>
-              <div *ngIf="parachute.proprietaire != null">
-                {{ parachute.proprietaire.nom }}
-              </div>
+                <div *ngIf="parachute.proprietaire != null">
+                    {{ parachute.proprietaire.nom }}
+                </div>
             </td>
             <td><button (click)="editerParachute(parachute)" class="btn btn-warning">Editer</button></td>
             <td><button (click)="supprimerParachute(parachute)" class="btn btn-danger">Supprimer</button></td>
