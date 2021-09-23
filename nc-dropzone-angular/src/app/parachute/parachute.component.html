@@ -46,34 +46,75 @@
             <th>Date de pliage</th>
             <th>Etat</th>
             <th>Utilisateur</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let parachute of parachutes | async">
+            <tr *ngIf="parachute.proprietaire==null" style="text-align: center;">
+                <td> {{ parachute.nomHarnais }}</td>
+                <td> {{ parachute.systemeSecurite }}</td>
+                <td> {{ parachute.nomVoilePrincipale }}</td>
+                <td> {{ parachute.nomVoileSecours }}</td>
+                <td> {{ parachute.tailleVoilePrincipale }}</td>
+                <td> {{ parachute.tailleVoileSecours }}</td>
+                <td> {{ parachute.datePliageVoileSecours | date: 'dd-MM-yyyy'}}</td>
+                <td> {{ (parachute.etat | disponible)}}</td>
+                <td>
+                    <div *ngIf="parachute.utilisateur != null">
+                        {{ parachute.utilisateur.nom}}
+                    </div>
+                </td>
+                <td><button (click)="editerParachute(parachute)" class="btn btn-warning">Editer</button></td>
+                <td><button (click)="supprimerParachute(parachute)" class="btn btn-danger">Supprimer</button></td>
+            </tr>
+        </ng-container>
+    </tbody>
+</table>
+
+<hr>
+
+<table class="table table-striped">
+    <thead>
+        <tr style="text-align: center;">
+            <th>Harnais</th>
+            <th>Système de sécurité</th>
+            <th>Nom voile principale</th>
+            <th>Nom voile de secours</th>
+            <th>Taille voile principale</th>
+            <th>Taille voile de secours</th>
+            <th>Date de pliage</th>
+            <th>Etat</th>
+            <th>Utilisateur</th>
             <th>Propriétaire</th>
             <th></th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let parachute of parachutes | async" style="text-align: center;">
-            <td> {{ parachute.nomHarnais }}</td>
-            <td> {{ parachute.systemeSecurite }}</td>
-            <td> {{ parachute.nomVoilePrincipale }}</td>
-            <td> {{ parachute.nomVoileSecours }}</td>
-            <td> {{ parachute.tailleVoilePrincipale }}</td>
-            <td> {{ parachute.tailleVoileSecours }}</td>
-            <td> {{ parachute.datePliageVoileSecours | date: 'dd-MM-yyyy'}}</td>
-            <td> {{ (parachute.etat | disponible)}}</td>
-            <td>
-                <div *ngIf="parachute.utilisateur != null">
-                    {{ parachute.utilisateur.nom}}
-                </div>
-            </td>
-            <td>
-                <div *ngIf="parachute.proprietaire != null">
+        <ng-container *ngFor="let parachute of parachutes | async">
+            <tr *ngIf="parachute.proprietaire!=null" style="text-align: center;">
+                <td> {{ parachute.nomHarnais }}</td>
+                <td> {{ parachute.systemeSecurite }}</td>
+                <td> {{ parachute.nomVoilePrincipale }}</td>
+                <td> {{ parachute.nomVoileSecours }}</td>
+                <td> {{ parachute.tailleVoilePrincipale }}</td>
+                <td> {{ parachute.tailleVoileSecours }}</td>
+                <td> {{ parachute.datePliageVoileSecours | date: 'dd-MM-yyyy'}}</td>
+                <td> {{ (parachute.etat | disponible)}}</td>
+                <td>
+                    <div *ngIf="parachute.utilisateur != null">
+                        {{ parachute.utilisateur.nom}}
+                    </div>
+                </td>
+                <td>
                     {{ parachute.proprietaire.nom }}
-                </div>
-            </td>
-            <td><button (click)="editerParachute(parachute)" class="btn btn-warning">Editer</button></td>
-            <td><button (click)="supprimerParachute(parachute)" class="btn btn-danger">Supprimer</button></td>
-        </tr>
+                </td>
+                <td><button (click)="editerParachute(parachute)" class="btn btn-warning">Editer</button></td>
+                <td><button (click)="supprimerParachute(parachute)" class="btn btn-danger">Supprimer</button></td>
+            </tr>
+        </ng-container>
     </tbody>
 </table>
 
