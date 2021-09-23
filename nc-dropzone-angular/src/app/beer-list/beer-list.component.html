@@ -5,7 +5,7 @@
             <a id="accueilVol" class="nav-link" [routerLink]="[ '/' ]">Accueil</a>
         </li>
         <li class="nav-item">
-            <a id="affichage" class="nav-link" [routerLink]="[ '/affichage' ]">Affichage</a>
+            <a id="affichage" class="nav-link" [routerLink]="[ '/affichage' ]">Avionnage</a>
         </li>
         <li class="nav-item">
             <a id="saut-tandem" class="nav-link" [routerLink]="[ '/saut-tandem' ]">Saut Tandem</a>
@@ -47,10 +47,10 @@
                 <td>{{ parachutiste.licence }}</td>
                 <td >
                     <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="parachutiste.isBeerLine"> 
-                        <label ngbButtonLabel class="btn-outline-success">
+                        <label ngbButtonLabel class="btn-outline-secondary">
                             <input ngbButton type="radio" [value]="false" (click)="beerFalse(parachutiste)">Non
                         </label>
-                        <label ngbButtonLabel class="btn-outline-warning">
+                        <label ngbButtonLabel class="btn-outline-primary">
                             <input ngbButton type="radio" [value]="true" (click)="beerTrue(parachutiste)">Oui
                         </label>
                     </div>
