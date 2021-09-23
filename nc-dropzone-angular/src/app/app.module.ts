@@ -17,6 +17,7 @@ import { VolEditionComponent } from './vol-edition/vol-edition.component';
 import { DisponiblePipe } from './disponible.pipe';
 import { BeerListComponent } from './beer-list/beer-list.component';
 import { SautTandemComponent } from './saut-tandem/saut-tandem.component';
+import { HauteurPipe } from './hauteur.pipe';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { SautTandemComponent } from './saut-tandem/saut-tandem.component';
     VolEditionComponent,
     DisponiblePipe,
     BeerListComponent,
-    SautTandemComponent
+    SautTandemComponent,
+    HauteurPipe
   ],
   imports: [
     BrowserModule,
