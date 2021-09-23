@@ -47,10 +47,10 @@
                 <td>{{ parachutiste.licence }}</td>
                 <td >
                     <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="parachutiste.isBeerLine">
-                        <label ngbButtonLabel class="btn-outline-success">
+                        <label ngbButtonLabel class="btn-outline-secondary">
                             <input ngbButton type="radio" [value]="false" (click)="beerFalse(parachutiste)">Non
                         </label>
-                        <label ngbButtonLabel class="btn-outline-warning">
+                        <label ngbButtonLabel class="btn-outline-primary">
                             <input ngbButton type="radio" [value]="true" (click)="beerTrue(parachutiste)">Oui
                         </label>
                     </div>
