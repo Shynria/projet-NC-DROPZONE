@@ -65,6 +65,7 @@ public class Parachutiste {
     private List<SautTandem> ListeSautVideoman;
 
     @Column(name = "MEMBRE_BEER_LINE")
+    @JsonView(Views.Parachutiste.class)
     private boolean isBeerLine = false;
 
     
