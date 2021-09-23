@@ -39,6 +39,16 @@ public class VolApiController {
         return this.daoVol.findAllByEtatVol(etat);
     }
 
+    @GetMapping("/attente")
+    @JsonView(Views.Vol.class)
+    public List<Vol> findAllByNonTermineNonIncident() {
+        List <Vol> vol = this.daoVol.findAllByEtatVol(EtatVol.EN_ATTENTE);
+        vol.addAll(this.daoVol.findAllByEtatVol(EtatVol.EN_PREPARATION));
+        vol.addAll(this.daoVol.findAllByEtatVol(EtatVol.EN_EMBARQUEMENT));
+        
+        return vol;
+    }
+
     @PostMapping
     public boolean add(@RequestBody Vol vol){
         try{

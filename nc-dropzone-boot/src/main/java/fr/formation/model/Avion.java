@@ -25,11 +25,11 @@ public class Avion {
     private int id;
 
     @Column(name = "AVION_NOM", length = 50, nullable = false)
-    @JsonView(Views.Avion.class)
+    @JsonView({Views.Avion.class, Views.Vol.class})
     private String nom;
 
     @Column(name = "AVION_CAPACITE", nullable = false)
-    @JsonView(Views.Avion.class)
+    @JsonView({Views.Avion.class, Views.Vol.class})
     private int capacite;
 
     @Column(name = "AVION_DISPONIBLE", nullable = false)

@@ -27,7 +27,7 @@ public class Saut {
     private int id;
 
     @ManyToMany
-    @JsonView(Views.Saut.class)
+    @JsonView({Views.Saut.class, Views.Vol.class})
     @JoinTable(
         name = "LISTE_PARTICIPANTS",
         joinColumns = @JoinColumn(name = "ID_SAUT", referencedColumnName = "SAUT_ID"),
@@ -44,7 +44,7 @@ public class Saut {
     private Vol vol;
 
     @Column(name = "SAUT_HAUTEUR", nullable = false)
-    @JsonView(Views.Saut.class)
+    @JsonView({Views.Saut.class, Views.Vol.class})
     private Hauteur hauteur;
 
     public int getId() {

@@ -55,7 +55,7 @@
                 <td> {{ parachutiste.prenom }}</td>
                 <td> {{ parachutiste.niveau }}</td>
                 <td> {{ parachutiste.id }}</td>
-                <td> {{ parachutiste.dateLicence }}</td>
+                <td> {{ parachutiste.dateLicence | date: 'dd-MM-yyyy'}}</td>
                 <td>
                     <ul *ngIf="parachutiste.parachuteEquipe != null">
                         {{ parachutiste.parachuteEquipe.id }}
@@ -71,8 +71,8 @@
                                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                                     <button ngbDropdownItem (click)="retirerParachute(parachutiste)">Retirer
                                         parachute</button>
-                                    <button ngbDropdownItem *ngFor="let parachute of parachutes | async"
-                                        (click)="associerParachute(parachutiste,parachute)">{{parachute.id}}</button>
+                                        <button ngbDropdownItem *ngFor="let parachute of parachutes | async"
+                                            (click)="associerParachute(parachutiste,parachute)">{{parachute.id}}</button>
                                 </div>
                             </div>
                         </div>
@@ -128,7 +128,6 @@
     <hr>
     <table class="table table-striped">
         <thead>
-            <th>id</th>
             <th>Harnais</th>
             <th>Système de sécurité</th>
             <th>Nom voile principale</th>
@@ -140,7 +139,6 @@
         </thead>
         <tbody>
             <tr *ngFor="let parachute of parachutesPerso">
-                <td> {{ parachute.id }}</td>
                 <td> {{ parachute.nomHarnais }}</td>
                 <td> {{ parachute.systemeSecurite }}</td>
                 <td> {{ parachute.nomVoilePrincipale }}</td>
@@ -197,7 +195,7 @@
             <input type="date" [(ngModel)]="formParachute.datePliageVoileSecours" class="form-control">
         </div>
         <hr>
-        <button *ngIf="!edit" (click)="ajouterParachute()" class="form-control btn btn-success"> ajouter </button>
-        <button *ngIf="edit" (click)="modifierParachute()" class="form-control btn btn-warning"> Modifier </button>
+        <button *ngIf="!editParachute" (click)="ajouterParachute()" class="form-control btn btn-success"> ajouter </button>
+        <button *ngIf="editParachute" (click)="modifierParachute()" class="form-control btn btn-warning"> Modifier </button>
     </div>
 </modal>

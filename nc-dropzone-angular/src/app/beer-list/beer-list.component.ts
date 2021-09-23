@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ParachutisteService } from '../parachutiste.service';
 
 @Component({
@@ -21,7 +22,7 @@ export class BeerListComponent implements OnInit {
   ];
 
  
-  constructor(private srvParachutiste: ParachutisteService) { 
+  constructor(private srvParachutiste: ParachutisteService, private formBuilder: FormBuilder) { 
     this.parachutistes = this.srvParachutiste.findAll();
   }
 

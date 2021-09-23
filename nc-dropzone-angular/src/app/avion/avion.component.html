@@ -81,7 +81,7 @@
             <td>{{ avion.capacite }}</td>
             <td>{{ avion.nbRotaMax }}</td>
             <td>{{ avion.altitudeMax }}</td>
-            <td>{{ avion.disponible }}</td>
+            <td>{{ avion.disponible | disponible}}</td>
             <td><button class="btn btn-warning" (click)="modifierAvionModal(avion)">Editer</button></td>
             <td><button class="btn btn-danger" (click)="supprimerAvion(avion)">Supprimer</button></td>
         </tr>

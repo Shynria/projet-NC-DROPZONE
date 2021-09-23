@@ -93,9 +93,10 @@ export class ParachutisteComponent implements OnInit {
     this.formParachutiste = {
       nom: "",
       prenom: "",
-      licence: 0,
+      licence: "00000",
       dateLicence: new Date(),
-      parachuteEquip: null
+      parachuteEquip: null,
+      isBeerLine: false
     }
   }
 
@@ -111,7 +112,7 @@ export class ParachutisteComponent implements OnInit {
     this.srvParachutiste.edit(this.formParachutiste).subscribe(this.refresh);
   }
   
-  parachutesPerso: any = new Observable();
+  parachutesPerso: any = [];
 
   afficheParachutePerso: boolean = false;
 
@@ -121,7 +122,6 @@ export class ParachutisteComponent implements OnInit {
 
   voirParachutePerso(parachutiste: any){
     this.parachutesPerso = parachutiste.listeParachute;
-    console.log(this.parachutesPerso)
     this.afficheParachutePerso = true;
     this.proprietaireParachute = parachutiste;
   }
@@ -130,16 +130,25 @@ export class ParachutisteComponent implements OnInit {
     this.afficheParachutePerso = false;
   }
 
-  editerParachute(parachute: any){
+  ouvrirModalAjoutParachute(){
+    this.initParachute();
     this.modalParachute.open();
-    this.formParachute = Object.assign({}, parachute);
-    this.editParachute = true;
-    this.modalTitre = "Modification parachute"
+    this.editParachute = false;
+    this.modalTitre = "Ajout parachute"
   }
 
   ajouterParachute(){
     this.srvParachute.add(this.formParachute).subscribe()
+    this.parachutesPerso.push(this.formParachute)
     this.initParachute();
+  }
+  
+  editerParachute(parachute: any){
+    this.modalParachute.open();
+    this.formParachute = Object.assign({}, parachute);
+    this.formParachute.proprietaire = this.proprietaireParachute
+    this.editParachute = true;
+    this.modalTitre = "Modification parachute"
   }
 
   modifierParachute(){
@@ -149,13 +158,6 @@ export class ParachutisteComponent implements OnInit {
 
   supprimerParachute(parachute: any){
     this.srvParachute.delete(parachute).subscribe();
-  }
-
-  ouvrirModalAjoutParachute(){
-    this.initParachute();
-    this.modalParachute.open();
-    this.editParachute = false;
-    this.modalTitre = "Ajout parachute"
   }
 
   initParachute(){
