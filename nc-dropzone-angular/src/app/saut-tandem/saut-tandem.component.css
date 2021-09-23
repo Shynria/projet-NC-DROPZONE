@@ -1,19 +1,10 @@
 nav {
-<<<<<<< HEAD
-  background-color: rgb(94, 91, 91);
-  height: 80px;
-  margin-bottom: 5px;
-  margin-left: -15px;
-  margin-right: -15px;
-}
-=======
     background-color: rgb(94, 91, 91);
     height: 80px;
     margin-bottom: 5px;
     margin-left: -15px;
     margin-right: -15px;
   }
->>>>>>> 0c171e297321a97ea06b67c131799968a1a7696e
   
   img[name="dropZone"]{
     position: absolute;
