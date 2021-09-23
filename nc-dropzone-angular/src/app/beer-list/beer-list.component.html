@@ -48,10 +48,10 @@
                 <td >
                     <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic"> 
                         <label ngbButtonLabel class="btn-outline-success">
-                            <input ngbButton type="radio" [value]="false" [(ngModel)]="formParachutiste.isBeerLine">Non
+                            <input ngbButton type="radio" [value]="false" [(ngModel)]="parachutiste.isBeerLine" (click)="beerFalse(parachutiste)">Non
                         </label>
                         <label ngbButtonLabel class="btn-outline-warning">
-                            <input ngbButton type="radio" [value]="true" [(ngModel)]="formParachutiste.isBeerLine">Oui
+                            <input ngbButton type="radio" [value]="true" [(ngModel)]="parachutiste.isBeerLine"(click)="beerTrue(parachutiste)">Oui
                         </label>
                     </div>
                 </td>
