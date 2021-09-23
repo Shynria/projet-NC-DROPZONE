@@ -29,6 +29,10 @@ export class ParachutisteService {
     return this.http.delete(this.ApiUrl+`/${parachutiste.id}`)
   }
 
+  update(parachutiste: any){ 
+    return this.http.put(`${ this.ApiUrl }/${ parachutiste.id }`, parachutiste);
+  }
+
   findAllByNom(parachutiste: any){
     return this.http.get(`${ this.ApiUrl }/by-prenom/${ parachutiste.nom }`);
   }
