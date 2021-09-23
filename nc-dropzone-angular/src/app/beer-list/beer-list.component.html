@@ -39,23 +39,23 @@
                 <th></th>
             </tr>
         </thead>
-        <tbody >
+        <tbody>
             <tr *ngFor="let parachutiste of parachutistes | async" style="text-align: center;">
                 <td>{{ parachutiste.nom }}</td>
                 <td>{{ parachutiste.prenom }}</td>
                 <td>{{ parachutiste.niveau }}</td>
                 <td>{{ parachutiste.licence }}</td>
                 <td>
-                    <form class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic">
-                        <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" formControlName="model">
-                          <label ngbButtonLabel class="btn-outline-success">
+
+                    <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic">
+                        <label ngbButtonLabel class="btn-success">
                             <input ngbButton type="radio" [value]="false" [(ngModel)]="parachutiste.isBeerLine"> Non
-                          </label>
-                          <label ngbButtonLabel class="btn-primary">
-                            <input ngbButton type="radio" value="true" [(ngModel)]="parachutiste.isBeerLine"> Middle
-                          </label>
-                        </div>
-                      </form>
+                        </label>
+                        <label ngbButtonLabel class="btn-warning">
+                            <input ngbButton type="radio" value="true" [(ngModel)]="parachutiste.isBeerLine"> Oui
+                        </label>
+                    </div>
+
                 </td>
             </tr>
         </tbody>

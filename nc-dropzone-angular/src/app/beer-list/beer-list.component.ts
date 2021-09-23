@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { ParachutisteService } from '../parachutiste.service';
 
 @Component({
@@ -11,16 +10,16 @@ export class BeerListComponent implements OnInit {
 
   parachutiste: any = {
     nom: "",
-      prenom: "",
-      licence: 0,
-      isBeerLine: false
+    prenom: "",
+    licence: 0,
+    isBeerLine: false
   }
 
   parachutistes: any = [
   ];
 
  
-  constructor(private srvParachutiste: ParachutisteService, private formBuilder: FormBuilder) { 
+  constructor(private srvParachutiste: ParachutisteService) { 
     this.parachutistes = this.srvParachutiste.findAll();
   }
 
