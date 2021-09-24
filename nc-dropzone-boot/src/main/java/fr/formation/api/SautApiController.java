@@ -57,7 +57,7 @@ public class SautApiController {
     }
 
     @DeleteMapping("/{id}")
-    public boolean edit(@PathVariable int id) {
+    public boolean delete(@PathVariable int id) {
         try {
             this.daoSaut.deleteById(id);
             return true;

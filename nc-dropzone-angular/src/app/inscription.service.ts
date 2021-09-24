@@ -28,7 +28,7 @@ export class InscriptionService {
   }
 
   delete(saut: any){
-    return this.http.delete(this.ApiUrl+`/${saut.id}`)
+    return this.http.delete(`${this.ApiUrl}/${saut.id}`)
   }
 
 }

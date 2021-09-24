@@ -72,10 +72,8 @@ export class VolEditionComponent implements OnInit {
         }
         for (let saut of vol.sautsTandem) {
           if( saut.videoman ) {
-            console.log("HERE")
             vol.placeLibre -= 3;
           } else {
-            console.log("HARA")
             vol.placeLibre -= 2;
           }
         }
@@ -112,6 +110,11 @@ export class VolEditionComponent implements OnInit {
     this.srvVol.delete(vol).subscribe(this.refresh);
   }
 
+  terminerVol(vol: any) {
+    vol.etatVol = "TERMINE";
+    this.srvVol.update(vol).subscribe(this.refresh);
+  }
+
   modifierVol() {
     this.srvVol.update(this.formVol)
       .subscribe((res: any) => {
@@ -134,10 +137,6 @@ export class VolEditionComponent implements OnInit {
     this.modal.open();
   }
 
-  sautSelector: any = [
-    { id: "", volId: "" }
-  ];
-
   onChange(volId: any, saut: any) {
     for (let vol of this.volsEnAttente) {
       if (vol.id == volId) {
@@ -154,6 +153,14 @@ export class VolEditionComponent implements OnInit {
         this.srvVol.update(vol).subscribe(this.refresh);
       }
     }
+  }
+
+  supprimerSaut(saut :any) {
+    this.srvSaut.delete(saut).subscribe(this.refresh);
+  }
+  
+  supprimerSautTandem(saut :any) {
+    this.srvSautTandem.delete(saut).subscribe(this.refresh);
   }
 
   initVol() {
