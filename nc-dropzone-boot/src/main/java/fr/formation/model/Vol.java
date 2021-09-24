@@ -61,6 +61,14 @@ public class Vol {
         this.id = id;
     }
 
+    public List<SautTandem> getSautsTandem() {
+        return sautsTandem;
+    }
+
+    public void setSautsTandem(List<SautTandem> sautsTandem) {
+        this.sautsTandem = sautsTandem;
+    }
+
     public Avion getAvion() {
         return avion;
     }

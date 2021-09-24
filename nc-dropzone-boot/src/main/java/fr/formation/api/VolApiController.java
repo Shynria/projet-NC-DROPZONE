@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.formation.dao.ISautDaoJpaRepository;
+import fr.formation.dao.ISautTandemDaoJpaRepository;
 import fr.formation.dao.IVolDaoJpaRepository;
 import fr.formation.model.EtatVol;
 import fr.formation.model.Saut;
+import fr.formation.model.SautTandem;
 import fr.formation.model.Vol;
 
 @RestController
@@ -30,6 +32,8 @@ public class VolApiController {
     private IVolDaoJpaRepository daoVol;
     @Autowired
     private ISautDaoJpaRepository daoSaut;
+    @Autowired
+    private ISautTandemDaoJpaRepository daoSautTandem;
 
     @GetMapping
     @JsonView(Views.Vol.class)
@@ -104,6 +108,11 @@ public class VolApiController {
                 saut.setVol(vol);
                 daoSaut.save(saut);
             }
+            for(SautTandem saut : vol.getSautsTandem()) {
+                saut.setVol(vol);
+                daoSautTandem.save(saut);
+            }
+            
             vol.setId(id);
             this.daoVol.save(vol);
             return new Msg("true");

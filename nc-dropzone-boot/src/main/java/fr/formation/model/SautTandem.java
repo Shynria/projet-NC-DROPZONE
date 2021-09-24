@@ -40,13 +40,13 @@ public class SautTandem {
     private Hauteur hauteur;
 
     @ManyToOne
-    @JoinColumn(name = "TANDEM_INSTRUCTEUR")
-    @JsonView({Views.Parachutiste.class, Views.SautTandem.class})
+    @JoinColumn(name = "TANDEM_INSTRUCTEUR", nullable = false)
+    @JsonView({Views.Parachutiste.class, Views.SautTandem.class, Views.Vol.class})
     public Parachutiste instructeur;
     
     @ManyToOne
     @JoinColumn(name = "TANDEM_VIDEOMAN", nullable = true)
-    @JsonView({Views.Parachutiste.class, Views.SautTandem.class})
+    @JsonView({Views.Parachutiste.class, Views.SautTandem.class, Views.Vol.class})
     public Parachutiste videoman;
     
     public int getId() {
@@ -71,5 +71,37 @@ public class SautTandem {
 
     public void setVideoman(Parachutiste videoman) {
         this.videoman = videoman;
+    }
+
+    public Parachutiste getParachutiste() {
+        return parachutiste;
+    }
+
+    public void setParachutiste(Parachutiste parachutiste) {
+        this.parachutiste = parachutiste;
+    }
+
+    public boolean isOutsideZone() {
+        return isOutsideZone;
+    }
+
+    public void setOutsideZone(boolean isOutsideZone) {
+        this.isOutsideZone = isOutsideZone;
+    }
+
+    public Vol getVol() {
+        return vol;
+    }
+
+    public void setVol(Vol vol) {
+        this.vol = vol;
+    }
+
+    public Hauteur getHauteur() {
+        return hauteur;
+    }
+
+    public void setHauteur(Hauteur hauteur) {
+        this.hauteur = hauteur;
     }
 }

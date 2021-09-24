@@ -4,6 +4,7 @@ import { AvionService } from '../avion.service';
 import { InscriptionService } from '../inscription.service';
 import { ParachutisteService } from '../parachutiste.service';
 import { PiloteService } from '../pilote.service';
+import { SautTandemService } from '../saut-tandem.service';
 
 @Component({
   selector: 'app-vol-edition',
@@ -18,7 +19,7 @@ export class VolEditionComponent implements OnInit {
     private srvPilote: PiloteService,
     private srvSaut: InscriptionService,
     private srvParachutiste: ParachutisteService,
-
+    private srvSautTandem: SautTandemService
   ) {
     this.refresh();
   }
@@ -26,7 +27,8 @@ export class VolEditionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  sauts: any = []
+  sauts: any = [];
+  sautsTandem: any = [];
 
   volsEnCours: any = [];
   volsEnAttente: any = [];
@@ -52,6 +54,13 @@ export class VolEditionComponent implements OnInit {
         for (let saut of vol.sauts) {
           vol.nbPara += saut.parachutistes.length;
         }
+        for (let saut of vol.sautsTandem) {
+          if( saut.videoman ) {
+            vol.nbPara += 3;
+          } else {
+            vol.nbPara += 2;
+          }
+        }
       }
     });
     this.srvVol.findAllByNonTermineNonIncident().subscribe(v => {
@@ -60,6 +69,15 @@ export class VolEditionComponent implements OnInit {
         vol.placeLibre = vol.avion.capacite - 1; // -1 pour le responsable de vol
         for (let saut of vol.sauts) {
           vol.placeLibre -= saut.parachutistes.length;
+        }
+        for (let saut of vol.sautsTandem) {
+          if( saut.videoman ) {
+            console.log("HERE")
+            vol.placeLibre -= 3;
+          } else {
+            console.log("HARA")
+            vol.placeLibre -= 2;
+          }
         }
       }
     });
@@ -71,6 +89,10 @@ export class VolEditionComponent implements OnInit {
     this.srvSaut.findAllNoVol().subscribe(s => {
       this.sauts = s;
     });
+
+    this.srvSautTandem.findAllNoVol().subscribe(s => {
+      this.sautsTandem = s;
+    })
   }
 
   ajouterVol() {
@@ -125,12 +147,22 @@ export class VolEditionComponent implements OnInit {
     }
   }
 
+  onChangeTandem(volId: any, saut: any) {
+    for (let vol of this.volsEnAttente) {
+      if (vol.id == volId) {
+        vol.sautsTandem.push(saut);
+        this.srvVol.update(vol).subscribe(this.refresh);
+      }
+    }
+  }
+
   initVol() {
     return {
       etatVol: "EN_ATTENTE",
       avion: { id: "" },
       pilote: { id: "" },
       sauts: [],
+      sautsTandem: [],
       responsableVol: { id: "" },
       placeLibre: ""
     };
