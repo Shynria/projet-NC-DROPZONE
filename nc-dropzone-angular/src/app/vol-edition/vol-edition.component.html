@@ -102,7 +102,7 @@
                         </ul>
                     </td>
                     <td>
-                        <select (change)="onChange($any($event.target).value, saut)">
+                        <select (change)="onChange($any($event.target).value, saut)" class="form-control">
                             <option></option>
                             <option *ngFor="let vol of volsEnAttente" value="{{ vol.id }}">{{ vol.id }}</option>
                         </select>
@@ -123,7 +123,7 @@
                         </ul>
                     </td>
                     <td>
-                        <select (change)="onChangeTandem($any($event.target).value, saut)">
+                        <select (change)="onChangeTandem($any($event.target).value, saut)" class="form-control">
                             <option></option>
                             <option *ngFor="let vol of volsEnAttente" value="{{ vol.id }}">{{ vol.id }}</option>
                         </select>
