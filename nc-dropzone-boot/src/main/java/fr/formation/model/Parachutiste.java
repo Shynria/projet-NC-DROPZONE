@@ -72,7 +72,7 @@ public class Parachutiste {
     private boolean isBeerLine = false;
 
     @Column(name = "MEMBRE_LICENCE")
-    @JsonView(Views.Parachutiste.class)
+    @JsonView({Views.Parachutiste.class, Views.BeerLine.class})
     private String licence;
 
 
