@@ -55,7 +55,7 @@
         <label>Pilote</label>
         <select [(ngModel)]="formVol.pilote.id" class="form-control">
             <ng-container *ngFor="let pilote of pilotes">
-                <option value="{{ pilote.id }}">{{ pilote.name }} {{ pilote.prenom }}</option>
+                <option value="{{ pilote.id }}">{{ pilote.nom }} {{ pilote.prenom }}</option>
             </ng-container>
         </select>
     </div>
@@ -64,7 +64,7 @@
         <label>Responsable</label>
         <select [(ngModel)]="formVol.responsableVol.id" class="form-control">
             <ng-container *ngFor="let responsable of parasConfirm">
-                <option value="{{ responsable.id }}">{{ responsable.name }} {{ responsable.prenom }}</option>
+                <option value="{{ responsable.id }}">{{ responsable.nom }} {{ responsable.prenom }}</option>
             </ng-container>
         </select>
     </div>
