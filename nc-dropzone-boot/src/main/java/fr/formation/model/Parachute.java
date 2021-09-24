@@ -27,7 +27,7 @@ public class Parachute {
     private int id;
 
     @Column(name="PARACHUTE_NOM_HARNAIS", nullable = false, length = 50)
-    @JsonView({Views.Parachute.class,Views.Parachutiste.class})
+    @JsonView({Views.Parachute.class,Views.Parachutiste.class,Views.SautTandem.class})
     private String nomHarnais;
 
     @Column(name="PARACHUTE_SYSTEME_SECURITE", nullable = false, length = 50)
