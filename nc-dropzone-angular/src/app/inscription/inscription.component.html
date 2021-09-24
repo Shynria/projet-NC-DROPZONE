@@ -1,8 +1,14 @@
-<div class="container">
-    <h4>Inscription à un saut: </h4>
+<div class="container-fluid">
+    <nav>
+        <img src="../assets/images/dropzonenc.png" name="dropZone">
+        <h3 class="text-center">Inscription à un saut :</h3>
+        
+    </nav>
+    
+    <hr>
 
-    <div>
-        <label>Hauteur du saut :</label>
+    <div class="text-center" style="margin-bottom: 5px;">
+        <label style="margin-right: 2px;">Hauteur du saut </label>
         <select name="hauteur" id="hauteur" [(ngModel)]="formSaut.hauteur">
             <option value="MILLE_DEUX_CENTS">1 200 m</option>
             <option value="MILLE_SIX_CENTS">1 600 m</option>
@@ -11,12 +17,11 @@
             <option value="QUATRE_MILLES">4 000 m</option>
             <option value="SIX_MILLES">6 000 m</option>
         </select>
+        
+        <label style="margin-left: 10px; margin-right: 2px;"> Taille du groupe</label>
+        <input style="width: 90px; height: 25px;" type="number" [(ngModel)]="tailleGroupe" min="1">
     </div>
 
-    <div>
-        <label>Taille du groupe</label>
-        <input type="number" [(ngModel)]="tailleGroupe" min="1">
-    </div>
     <table class="table table-striped">
         <thead style="text-align: center;">
             <tr>
@@ -25,10 +30,12 @@
             </tr>
         </thead>
         <tbody style="text-align: center;">
-            <ng-template #rt let-r="result" let-t="term"> <!-- pour generer la liste sous le typehead -->
+            <ng-template #rt let-r="result" let-t="term">
+                <!-- pour generer la liste sous le typehead -->
                 <span>{{ r.nom }} {{ r.prenom }}</span>
             </ng-template>
-            <tr *ngFor="let temp of counter(tailleGroupe); let i = index"> <!-- counter -> function pour generer un tableau de taille: tailleGroupe (voir component) -->
+            <tr *ngFor="let temp of counter(tailleGroupe); let i = index">
+                <!-- counter -> function pour generer un tableau de taille: tailleGroupe (voir component) -->
                 <td>
                     <div>
                         <input id="typeahead-basic" type="text" [(ngModel)]="formSaut.parachutistes[i]"
@@ -39,16 +46,19 @@
                     <ng-container *ngIf="(formSaut.parachutistes[i] | typeOf) == 'object'">
                         <select name="parachute" [(ngModel)]="formSaut.parachutistes[i].parachuteEquipe">
                             <ng-container *ngFor="let parachute of parachutes">
-                                <option *ngIf="!parachute.proprietaire" [ngValue]=" parachute ">Centre {{parachute.nomVoilePrincipale}}</option>
-                                <option *ngIf="parachute.proprietaire && parachute.proprietaire.id == formSaut.parachutistes[i].id" [ngValue]="parachute">Perso {{parachute.nomVoilePrincipale}}</option> -->
+                                <option *ngIf="!parachute.proprietaire" [ngValue]=" parachute ">Centre
+                                    {{parachute.nomVoilePrincipale}}</option>
+                                <option
+                                    *ngIf="parachute.proprietaire && parachute.proprietaire.id == formSaut.parachutistes[i].id"
+                                    [ngValue]="parachute">Perso {{parachute.nomVoilePrincipale}}</option> -->
                             </ng-container>
-                        </select> 
+                        </select>
                     </ng-container>
                 </td>
             </tr>
         </tbody>
     </table>
-    <div>
-        <button (click)="ajouterSaut()">Sauter!</button>
+    <div class="text-center">
+        <button class="btn btn-outline-danger btn-lg" (click)="ajouterSaut()">Sauter!</button>
     </div>
 </div>
