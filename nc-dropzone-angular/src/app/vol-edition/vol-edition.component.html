@@ -128,7 +128,7 @@
                             <option *ngFor="let vol of volsEnAttente" value="{{ vol.id }}">{{ vol.id }}</option>
                         </select>
                     </td>
-                    <td><button (click)="supprimerSautTandem(saut)">Supprimer</button></td>
+                    <td><button class="btn btn-danger" (click)="supprimerSautTandem(saut)">Supprimer</button></td>
                 </tr>
             </tbody>
         </table>
