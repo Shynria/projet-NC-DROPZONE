@@ -30,51 +30,7 @@
 
 <div class="row align-items-start">
   <div class="col">
-    <h2 class="text-center">Vol en cours</h2>
-
-    <hr>
-
-    <table class="table table-striped">
-      <thead>
-        <tr style="text-align: center;">
-          <th>Nom de l'avion</th>
-          <th>Numéro de vol</th>
-          <th>Nombre de passagers</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style="text-align: center;" *ngFor="let v of volsEnCours">
-          <td>{{ v.avion.nom }}</td>
-          <td>{{ v.id }}</td>
-          <td>{{ v.nbPara}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="col">
-    <h2>Prochain vols</h2>
-    <hr>
-      <table class="table table-striped">
-          <thead>
-            <tr style="text-align: center;">
-              <th>#</th>
-              <th>Avion</th>
-              <th>Pilote</th>
-              <th>Place libre</th>
-            </tr>
-          </thead>
-          <tbody>
-              <tr style="text-align: center;" *ngFor="let vol of volsEnAttente">
-                  <td>{{ vol.id }}</td>
-                  <td>{{ vol.avion.nom }}</td>
-                  <td>{{ vol.pilote.nom }}</td>
-                  <td>{{ vol.placeLibre }}</td>
-              </tr>
-          </tbody>
-      </table>
-  </div>
-  <div class="col">
-    <h2>Parachutistes en attente</h2>
+    <h2 class="text-center">Parachutistes en attente</h2>
     <hr>
       <table class="table table-striped">
           <thead>
@@ -113,4 +69,51 @@
           </tbody>
       </table>
   </div>
+
+  <div class="col">
+    <h2 class="text-center">Prochain vols</h2>
+    <hr>
+      <table class="table table-striped">
+          <thead>
+            <tr style="text-align: center;">
+              <th>#</th>
+              <th>Avion</th>
+              <th>Pilote</th>
+              <th>Place libre</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr style="text-align: center;" *ngFor="let vol of volsEnAttente">
+                  <td>{{ vol.id }}</td>
+                  <td>{{ vol.avion.nom }}</td>
+                  <td>{{ vol.pilote.nom }}</td>
+                  <td>{{ vol.placeLibre }}</td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+
+  <div class="col">
+    <h2 class="text-center">Vol en cours</h2>
+
+    <hr>
+
+    <table class="table table-striped">
+      <thead>
+        <tr style="text-align: center;">
+          <th>Nom de l'avion</th>
+          <th>Numéro de vol</th>
+          <th>Nombre de passagers</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="text-align: center;" *ngFor="let v of volsEnCours">
+          <td>{{ v.avion.nom }}</td>
+          <td>{{ v.id }}</td>
+          <td>{{ v.nbPara}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
 </div>
