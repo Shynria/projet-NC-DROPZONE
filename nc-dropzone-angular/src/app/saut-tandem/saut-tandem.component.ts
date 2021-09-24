@@ -102,7 +102,7 @@ export class SautTandemComponent implements OnInit {
     this.formParachutiste = Object.assign({}, parachutiste);
     this.formParachutiste.parachuteEquipe = parachute;
     console.log(this.formParachutiste)
-    this.srvParachutiste.update(this.formParachutiste).subscribe();
+    this.srvParachutiste.update(this.formParachutiste).subscribe(this.refresh);
   }
 
   retirerParachute(parachutiste: any){
