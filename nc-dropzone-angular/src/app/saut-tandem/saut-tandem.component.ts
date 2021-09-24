@@ -98,15 +98,27 @@ export class SautTandemComponent implements OnInit {
   }
 
   associerParachute(parachutiste: any, parachute: any){
+    this.initParachutiste();
     this.formParachutiste = Object.assign({}, parachutiste);
     this.formParachutiste.parachuteEquipe = parachute;
-    this.srvParachutiste.edit(this.formParachutiste).subscribe(this.refresh);
+    console.log(this.formParachutiste)
+    this.srvParachutiste.update(this.formParachutiste).subscribe();
   }
 
   retirerParachute(parachutiste: any){
+    this.initParachutiste();
     this.formParachutiste = Object.assign({}, parachutiste);
     this.formParachutiste.parachuteEquipe = null;
-    this.srvParachutiste.edit(this.formParachutiste).subscribe(this.refresh);
+    this.srvParachutiste.update(this.formParachutiste).subscribe(this.refresh);
+  }
+
+  initParachutiste(){
+    this.formParachutiste = {
+      nom: "",
+      prenom: "",
+      parachuteEquip: null,
+      listeParachute: []
+    }
   }
 
   initSautTandem() {

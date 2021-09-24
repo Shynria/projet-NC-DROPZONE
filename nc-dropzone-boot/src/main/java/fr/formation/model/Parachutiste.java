@@ -36,7 +36,7 @@ public class Parachutiste {
     private String prenom;
 
     @Column(name = "MEMBRE_DATE_LICENCE", nullable = false)
-    @JsonView(Views.Parachutiste.class)
+    @JsonView({Views.Parachutiste.class,  Views.SautTandem.class})
     private LocalDate dateLicence;
 
     @OneToMany(mappedBy = "proprietaire")
@@ -72,7 +72,7 @@ public class Parachutiste {
     private boolean isBeerLine = false;
 
     @Column(name = "MEMBRE_LICENCE")
-    @JsonView({Views.Parachutiste.class, Views.BeerLine.class})
+    @JsonView({Views.Parachutiste.class, Views.BeerLine.class,  Views.SautTandem.class})
     private String licence;
 
 
