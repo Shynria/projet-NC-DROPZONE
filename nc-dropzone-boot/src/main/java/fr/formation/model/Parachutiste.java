@@ -52,7 +52,7 @@ public class Parachutiste {
     private List<Vol> vol;
 
     @Column(name = "MEMBRE_NIVEAU")
-    @JsonView({Views.Parachutiste.class, Views.BeerLine.class})
+    @JsonView({Views.Parachutiste.class, Views.BeerLine.class, Views.SautTandem.class})
     private Niveau niveau;
 
     @ManyToMany(mappedBy = "parachutistes")
