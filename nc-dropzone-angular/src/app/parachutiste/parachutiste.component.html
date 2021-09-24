@@ -76,12 +76,12 @@
                                     <button ngbDropdownItem (click)="retirerParachute(parachutiste)">Retirer
                                         parachute</button>
                                     <ng-container *ngFor="let parachute of parachutes | async">
-                                        <button ngbDropdownItem *ngIf="!parachute.proprietaire"
+                                        <button ngbDropdownItem *ngIf="!parachute.proprietaire && !parachute.utilisateur"
                                             (click)="associerParachute(parachutiste,parachute)">Centre
                                             {{parachute.nomHarnais}}</button>
                                     </ng-container>
                                     <ng-container *ngFor="let parachute of parachutiste.listeParachute">
-                                        <button ngbDropdownItem
+                                        <button ngbDropdownItem *ngIf="parachute.etat" 
                                             (click)="associerParachute(parachutiste,parachute)">Perso
                                             {{parachute.nomHarnais}}</button>
                                     </ng-container>

@@ -40,12 +40,12 @@ public class Parachutiste {
     private LocalDate dateLicence;
 
     @OneToMany(mappedBy = "proprietaire")
-    @JsonView(Views.Parachutiste.class)
+    @JsonView({Views.Parachutiste.class,  Views.SautTandem.class})
     private List<Parachute> listeParachute;
 
     @OneToOne
     @JoinColumn(name = "PARACHUTE_EQUIPE", nullable = true)
-    @JsonView({Views.Parachutiste.class, Views.Saut.class})
+    @JsonView({Views.Parachutiste.class, Views.Saut.class, Views.SautTandem.class})
     private Parachute parachuteEquipe;
 
     @OneToMany(mappedBy = "responsableVol")
@@ -72,7 +72,7 @@ public class Parachutiste {
     private boolean isBeerLine = false;
 
     @Column(name = "MEMBRE_LICENCE")
-    @JsonView(Views.Parachutiste.class)
+    @JsonView({Views.Parachutiste.class, Views.BeerLine.class})
     private String licence;
 
 

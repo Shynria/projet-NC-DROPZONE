@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { ParachuteService } from '../parachute.service';
 import { ParachutisteService } from '../parachutiste.service';
 import { SautTandemService } from '../saut-tandem.service';
 
@@ -10,7 +11,7 @@ import { SautTandemService } from '../saut-tandem.service';
 })
 export class SautTandemComponent implements OnInit {
 
-  constructor(private srvSautTandem: SautTandemService, private srvParachutiste: ParachutisteService) {
+  constructor(private srvSautTandem: SautTandemService, private srvParachutiste: ParachutisteService, private srvParachute: ParachuteService) {
     this.refresh();
     this.parachutistesDebutant = this.srvParachutiste.findAllByNiveau("DEBUTANT");
     this.parachutistesConfirme = this.srvParachutiste.findAllByNiveau("CONFIRME");
@@ -22,8 +23,11 @@ export class SautTandemComponent implements OnInit {
   parachutistesDebutant: any = [];
   parachutistesConfirme: any = [];
 
+  parachutes: any = [];
 
   sautTandem: any = [];
+
+  formParachutiste: any = {};
 
   formSautTandem: any = {
     hauteur: 0,
@@ -51,6 +55,7 @@ export class SautTandemComponent implements OnInit {
     this.sautTandem = this.srvSautTandem.findAll();
     this.parachutistesDebutant = this.srvParachutiste.findAllByNiveau("DEBUTANT");
     this.parachutistesConfirme = this.srvParachutiste.findAllByNiveau("CONFIRME");
+    this.parachutes = this.srvParachute.findAll();
   }
 
   ajouterSautTandem() {
@@ -90,6 +95,18 @@ export class SautTandemComponent implements OnInit {
     this.modalTitre = "Modifier un Saut Tandem";
     this.edition = true;
     this.modal.open();
+  }
+
+  associerParachute(parachutiste: any, parachute: any){
+    this.formParachutiste = Object.assign({}, parachutiste);
+    this.formParachutiste.parachuteEquipe = parachute;
+    this.srvParachutiste.edit(this.formParachutiste).subscribe(this.refresh);
+  }
+
+  retirerParachute(parachutiste: any){
+    this.formParachutiste = Object.assign({}, parachutiste);
+    this.formParachutiste.parachuteEquipe = null;
+    this.srvParachutiste.edit(this.formParachutiste).subscribe(this.refresh);
   }
 
   initSautTandem() {

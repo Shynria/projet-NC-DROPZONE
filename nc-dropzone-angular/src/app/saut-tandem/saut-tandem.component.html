@@ -76,31 +76,93 @@
   <thead>
     <tr style="text-align: center;">
       <th>Hauteur du saut</th>
-      <th>Nom du parachutiste</th>
-      <th>Prénom du parachutiste</th>
-      <th>Nom de l'instructeur</th>
-      <th>Prénom de l'instructeur</th>
-      <th>Nom du vidéoman</th>
-      <th>Prénom du vidéoman</th>
+      <th>Parachutiste</th>
+      <th>Instructeur</th>
+      <th>Vidéoman</th>
       <th></th>
       <th></th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let s of sautTandem | async" style="text-align: center;">
-      <td>{{ (s.hauteur | hauteur) }}</td>
-      <td>{{ s.parachutiste.nom }}</td>
-      <td>{{ s.parachutiste.prenom }}</td>
-      <td>{{ s.instructeur.nom }}</td>
-      <td>{{ s.instructeur.prenom }}</td>
       <td>
-        <div *ngIf="s.videoman != null">
-          {{ s.videoman.nom }}
+        {{ (s.hauteur | hauteur) }}
+      </td>
+      <td>
+        {{ s.parachutiste.nom }} {{ s.parachutiste.prenom }}
+        <div class="row">
+          <div class="col">
+              <div ngbDropdown class="d-inline-block">
+                  <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Associer
+                      parachute</button>
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                      <button ngbDropdownItem (click)="retirerParachute(s.parachutiste)">Retirer
+                          parachute</button>
+                      <ng-container *ngFor="let parachute of parachutes | async">
+                          <button ngbDropdownItem *ngIf="!parachute.proprietaire && !parachute.utilisateur"
+                              (click)="associerParachute(s.parachutiste,parachute)">Centre
+                              {{parachute.nomHarnais}}</button>
+                      </ng-container>
+                      <ng-container *ngFor="let parachute of s.parachutiste.listeParachute">
+                          <button ngbDropdownItem
+                              (click)="associerParachute(s.parachutiste,parachute)">
+                              {{parachute.nomHarnais}}</button>
+                      </ng-container>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </td>
+      <td>
+        {{ s.instructeur.nom }} {{ s.instructeur.prenom }}
+        <div class="row">
+          <div class="col">
+              <div ngbDropdown class="d-inline-block">
+                  <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Associer
+                      parachute</button>
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                      <button ngbDropdownItem (click)="retirerParachute(s.instructeur)">Retirer
+                          parachute</button>
+                      <ng-container *ngFor="let parachute of parachutes | async">
+                          <button ngbDropdownItem *ngIf="!parachute.proprietaire && !parachute.utilisateur"
+                              (click)="associerParachute(s.instructeur,parachute)">Centre
+                              {{parachute.nomHarnais}}</button>
+                      </ng-container>
+                      <ng-container *ngFor="let parachute of s.instructeur.listeParachute">
+                          <button ngbDropdownItem
+                              (click)="associerParachute(s.instructeur,parachute)">
+                              {{parachute.nomHarnais}}</button>
+                      </ng-container>
+                  </div>
+              </div>
+          </div>
         </div>
       </td>
       <td>
         <div *ngIf="s.videoman != null">
-          {{ s.videoman.prenom }}
+          {{ s.videoman.nom }} {{ s.videoman.prenom }}
+          <div class="row">
+            <div class="col">
+                <div ngbDropdown class="d-inline-block">
+                    <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Associer
+                        parachute</button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button ngbDropdownItem (click)="retirerParachute(s.videoman)">Retirer
+                            parachute</button>
+                        <ng-container *ngFor="let parachute of parachutes | async">
+                            <button ngbDropdownItem *ngIf="!parachute.proprietaire && !parachute.utilisateur"
+                                (click)="associerParachute(s.videoman,parachute)">Centre
+                                {{parachute.nomHarnais}}</button>
+                        </ng-container>
+                        <ng-container *ngFor="let parachute of s.videoman.listeParachute">
+                            <button ngbDropdownItem
+                                (click)="associerParachute(s.videoman,parachute)">
+                                {{parachute.nomHarnais}}</button>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+          </div>
         </div>
       </td>
       <td><button class="btn btn-warning" (click)="modifierSautTandemModal(s)">Editer</button></td>
@@ -108,3 +170,4 @@
     </tr>
   </tbody>
 </table>
+
