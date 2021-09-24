@@ -34,7 +34,7 @@
     </div>
     <div class="form-group">
         <label>Etat du vol</label>
-        <select [(ngModel)]="formVol.etatVol">
+        <select [(ngModel)]="formVol.etatVol" class="form-control">
             <option value="EN_ATTENTE">En attente</option>
             <option value="EN_PREPARATION">En preparation</option>
             <option value="EN_EMBARQUEMENT">En embarquement</option>
@@ -45,7 +45,7 @@
     </div>
     <div class="form-group">
         <label>Avion</label>
-        <select [(ngModel)]="formVol.avion.id">
+        <select [(ngModel)]="formVol.avion.id" class="form-control">
             <ng-container *ngFor="let avion of avions">
                 <option value="{{ avion.id }}">{{ avion.nom }}</option>
             </ng-container>
@@ -53,7 +53,7 @@
     </div>
     <div class="form-group">
         <label>Pilote</label>
-        <select [(ngModel)]="formVol.pilote.id">
+        <select [(ngModel)]="formVol.pilote.id" class="form-control">
             <ng-container *ngFor="let pilote of pilotes">
                 <option value="{{ pilote.id }}">{{ pilote.name }} {{ pilote.prenom }}</option>
             </ng-container>
@@ -62,7 +62,7 @@
 
     <div class="form-group">
         <label>Responsable</label>
-        <select [(ngModel)]="formVol.responsableVol.id">
+        <select [(ngModel)]="formVol.responsableVol.id" class="form-control">
             <ng-container *ngFor="let responsable of parasConfirm">
                 <option value="{{ responsable.id }}">{{ responsable.name }} {{ responsable.prenom }}</option>
             </ng-container>
@@ -78,7 +78,8 @@
 <div class="row align-items-start">
 
     <div class="col-sm-5">
-        <h3>Parachutistes en attente</h3>
+        <h2 class="text-center">Parachutistes en attente</h2>
+        <hr>
         <table class="table table-striped table-responsive-sm">
             <thead>
                 <tr>
@@ -134,27 +135,8 @@
     </div>
 
     <div class="col-sm">
-        <h3>Vol en cours</h3>
-        <table class="table table-striped table-responsive-sm">
-            <thead>
-                <th>#</th>
-                <th>Avion</th>
-                <th>Nombre parachutistes</th>
-                <th></th>
-            </thead>
-            <tbody>
-                <tr *ngFor="let vol of volsEnCours">
-                    <td>{{ vol.id }}</td>
-                    <td>{{ vol.avion.nom }}</td>
-                    <td>{{ vol.nbPara }}</td>
-                    <td><button class="btn btn-warning" (click)="terminerVol(vol)">Terminer</button></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="col-sm">
-        <h3>Prochain vols</h3>
+        <h2 class="text-center">Prochain vols</h2>
+        <hr>
         <table class="table table-striped table-responsive-sm">
             <thead>
                 <th>#</th>
@@ -181,5 +163,26 @@
                 Ajouter un vol
             </button>
         </div>
+    </div>
+
+    <div class="col-sm">
+        <h2 class="text-center">Vol en cours</h2>
+        <hr>
+        <table class="table table-striped table-responsive-sm">
+            <thead>
+                <th>#</th>
+                <th>Avion</th>
+                <th>Nombre parachutistes</th>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let vol of volsEnCours">
+                    <td>{{ vol.id }}</td>
+                    <td>{{ vol.avion.nom }}</td>
+                    <td>{{ vol.nbPara }}</td>
+                    <td><button class="btn btn-warning" (click)="terminerVol(vol)">Terminer</button></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
